@@ -10,7 +10,9 @@ The custom WeVoi Redesign account-creation handler is enabled only when the Word
 
 On pages containing [wevoi_site] (unless chrome="no" is set), the redesign hides the theme header and page title without affecting the WordPress admin toolbar. Authenticated users see a role-appropriate Dashboard link and Log Out; guest navigation is unchanged.
 
-Successful logins through the WeVoi Redesign form default to the authenticated user's role-specific dashboard. A valid explicit redirect destination takes precedence; invalid destinations safely fall back to the role-based route. Login submissions are handled before template rendering, and the handler checks whether headers have already been sent before redirecting. If WordPress cannot send the redirect header, the form displays a safe browser-side redirect with a manual link instead of a blank page. Other WordPress login flows are not changed.
+Successful logins through the WeVoi Redesign form default to a role-specific destination for students, supervisors, parents, and agencies. Other roles default to the site home page. A valid explicit redirect destination takes precedence; invalid or Login-page destinations safely fall back to the role-based destination. Login submissions are handled before template rendering, and the handler checks whether headers have already been sent before redirecting. If WordPress cannot send the redirect header, the form displays a safe browser-side redirect with a manual link instead of a blank page. Other WordPress login flows are not changed.
+
+The local `?wv=register` route renders the existing `[wevoi_register_form]` shortcode when it is available. The WeVoi Register plugin must be installed and active for competition registration, including its existing account and payment handling. The redesign does not replace that registration logic.
 
 == Usage ==
 1. Plugins > Add New > Upload Plugin > wevoi-redesign-0.1.24.zip > Activate.
@@ -24,16 +26,20 @@ Successful logins through the WeVoi Redesign form default to the authenticated u
 [wevoi_site chrome="no"]      hide the WeVoi header/footer (use the theme's)
 
 == Page slugs ==
-home, rounds, wevoi-spark, wevoi-reload, wevoi-summit, forum, how-it-works, voicehub, speech-guidelines, evaluation-criteria, video-recording-guidelines, how-to-prepare, ambassadors-partners, partner-with-wevoi, student-ambassadors, about, workshops, results, blog, startervoi, youngstervoi, juniorvoi, teenvoi, spark-poster, login, signup, supervisor-dashboard, parent-dashboard, student-dashboard, submissions, bulk-registration
+home, rounds, wevoi-spark, wevoi-reload, wevoi-summit, forum, how-it-works, voicehub, speech-guidelines, evaluation-criteria, video-recording-guidelines, how-to-prepare, ambassadors-partners, partner-with-wevoi, student-ambassadors, about, workshops, results, blog, startervoi, youngstervoi, juniorvoi, teenvoi, spark-poster, login, signup, register, supervisor-dashboard, parent-dashboard, student-dashboard, submissions, bulk-registration
 
 == Account dashboards ==
 The supervisor-dashboard, parent-dashboard, student-dashboard, submissions, and bulk-registration routes render existing approved WeVoi shortcodes inside the redesign layout. The corresponding shortcode-provider plugins must be installed and active. Each dashboard route requires its matching user role; bulk registration is restricted to supervisors and agencies.
 
 == Developer hook ==
-add_filter( 'wevoi_rd_page_url', fn( $url, $slug ) => $url, 10, 2 ); // map a slug to a real WP page URL later.
+function my_wevoi_redesign_page_url( $url, $slug ) {
+	// Map an internal slug to a custom WordPress page URL if needed.
+	return $url;
+}
+add_filter( 'wevoi_rd_page_url', 'my_wevoi_redesign_page_url', 10, 2 );
 
 == Release package ==
-Run bash build-release.sh --check to verify the explicit production-file allowlist without creating an archive. Run bash build-release.sh to create the ZIP next to the plugin directory. The archive excludes nested reference plugins, local-only helpers and operating-system metadata.
+Run bash build-release.sh --check to verify the explicit production-file allowlist without creating an archive. Run bash build-release.sh to create the ZIP next to the plugin directory. The archive excludes nested reference plugins, local-only helpers and operating-system metadata. Before releasing route or template changes, ensure every required template is included in the allowlist.
 
 == Removal ==
 Deactivate and delete the plugin.
