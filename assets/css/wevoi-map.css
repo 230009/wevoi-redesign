@@ -1,0 +1,5 @@
+/* Map style B: soft lilac */
+.wevoi-app .wv-map .wv-map-canvas,
+.wevoi-app .wv-map .leaflet-container{background:#f6f2ff}
+.wevoi-app .wv-map path.leaflet-interactive{fill:#c9bcf3!important;stroke:#fff!important}
+.wevoi-app .wv-map path.leaflet-interactive:hover{fill:#a98df0!important}

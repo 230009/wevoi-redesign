@@ -1,0 +1,327 @@
+/**
+ * Judge Admin Styles
+ */
+
+/* Değerlendirme yapmamış jüriler için stil */
+.assignment-count.not-started {
+    color: #f44336; /* Kırmızı renk */
+    font-weight: bold;
+}
+
+/* Değerlendirme yapan ama tamamlamamış jüriler için stil */
+.assignment-count.in-progress {
+    color: #ff9800; /* Turuncu renk */
+    font-weight: bold;
+}
+
+/* Tüm değerlendirmeleri tamamlamış jüriler için stil */
+.assignment-count.completed {
+    color: #4caf50; /* Yeşil renk */
+    font-weight: bold;
+}
+
+/* Değerlendirme sayısı kolonu için ek stil */
+.column-assignments {
+    text-align: center;
+}
+
+/* Değerlendirme açıklaması için stil */
+.assignment-help {
+    display: block;
+    font-size: 12px;
+    color: #666;
+    margin-top: 5px;
+}
+
+/* Durum metni için stil */
+.evaluation-status {
+    display: block;
+    font-size: 12px;
+    margin-top: 5px;
+}
+
+.evaluation-status.not-started {
+    color: #f44336;
+}
+
+.evaluation-status.in-progress {
+    color: #ff9800;
+}
+
+.evaluation-status.completed {
+    color: #4caf50;
+}
+
+/* Modal Styles */
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0,0,0,0.7);
+    z-index: 159900;
+}
+
+.modal-content {
+    position: relative;
+    background: #fff;
+    margin: 30px auto;
+    max-width: 800px;
+    max-height: calc(100vh - 60px);
+    overflow-y: auto;
+    border-radius: 4px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+}
+
+.modal-header {
+    padding: 15px 20px;
+    border-bottom: 1px solid #ddd;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #f8f9fa;
+}
+
+.modal-header h2 {
+    margin: 0;
+    padding: 0;
+    font-size: 1.3em;
+}
+
+.modal-body {
+    padding: 20px;
+}
+
+.modal-close {
+    cursor: pointer;
+    background: none;
+    border: none;
+    font-size: 24px;
+    color: #666;
+    padding: 0;
+    margin: 0;
+    line-height: 1;
+}
+
+/* Form Styles */
+.edit-form {
+    margin: 0;
+    padding: 0;
+}
+
+.form-row {
+    margin-bottom: 15px;
+}
+
+.form-row label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: 600;
+}
+
+.form-row input,
+.form-row select,
+.form-row textarea {
+    width: 100%;
+    max-width: 100%;
+    padding: 8px;
+}
+
+.error {
+    border-color: #dc3232;
+}
+
+.error-message {
+    color: #dc3232;
+    font-size: 12px;
+    margin-top: 5px;
+    display: block;
+}
+
+.submit-row {
+    margin-top: 20px;
+    text-align: right;
+}
+
+.submit-row .spinner {
+    float: none;
+    margin-right: 4px;
+}
+
+/* Button Styles */
+.button.email-compose {
+    background-color: #f6f7f7;
+    border-color: #c3c4c7;
+    box-shadow: 0 1px 0 #c3c4c7;
+    margin-right: 0;
+    text-align: center;
+    line-height: 1.5;
+}
+
+.button.email-compose .dashicons {
+    font-size: 16px;
+    width: 16px;
+    height: 16px;
+    line-height: 1;
+    color: #2271b1; /* Blue icon color */
+    vertical-align: text-bottom;
+    display: inline-block;
+}
+
+.button.email-compose:hover {
+    background-color: #f0f0f1;
+    border-color: #8c8f94;
+}
+
+/* Judge Detail Styles */
+.judge-details-wrapper {
+    max-width: 100%;
+    padding: 0;
+}
+
+.section {
+    background: #fff;
+    border: 1px solid #e2e4e7;
+    border-radius: 6px;
+    margin-bottom: 25px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+}
+
+.section h3 {
+    margin: 0;
+    padding: 15px 20px;
+    background: #f0f0f1;
+    border-bottom: 1px solid #e2e4e7;
+    border-radius: 6px 6px 0 0;
+    font-size: 14px;
+    font-weight: 600;
+    color: #1d2327;
+}
+
+.judge-details-wrapper table {
+    border-spacing: 0;
+    width: 100%;
+    border: none;
+    margin: 0;
+}
+
+.judge-details-wrapper th,
+.judge-details-wrapper td {
+    padding: 12px 20px;
+    border-bottom: 1px solid #f0f0f1;
+}
+
+/* Status badge styles */
+.status-badge {
+    display: inline-block;
+    padding: 4px 12px;
+    border-radius: 15px;
+    font-size: 12px;
+    font-weight: 500;
+    text-align: center;
+    min-width: 80px;
+}
+
+.status-active {
+    background: #e8f5e9;
+    color: #1b5e20;
+}
+
+.status-completed {
+    background: #e3f2fd;
+    color: #0d47a1;
+}
+
+.status-cancelled {
+    background: #ffebee;
+    color: #c62828;
+}
+
+.status-pending {
+    background: #fff3e0;
+    color: #e65100;
+}
+
+.status-evaluated {
+    background: #e8f5e9;
+    color: #1b5e20;
+}
+
+/* Certificate link styles */
+.certificate-link {
+    display: inline-flex;
+    align-items: center;
+    text-decoration: none;
+    padding: 6px 12px;
+    border-radius: 4px;
+    color: #2271b1;
+    background: #f0f6fc;
+    border: 1px solid #c5d9ed;
+    transition: all 0.2s ease;
+    margin: 0 5px;
+    font-size: 12px;
+}
+
+.certificate-link:hover {
+    background: #2271b1;
+    color: #fff;
+    border-color: #2271b1;
+}
+
+.certificate-link .dashicons {
+    font-size: 14px;
+    width: 14px;
+    height: 14px;
+    margin-right: 5px;
+}
+
+/* No items message */
+.no-items {
+    padding: 15px 20px;
+    background: #f8f9fa;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    color: #666;
+    margin: 15px 20px;
+}
+
+/* Loading and error styles */
+.loading {
+    text-align: center;
+    padding: 20px;
+    color: #666;
+}
+
+.error {
+    color: #dc3232;
+    padding: 10px;
+    border-left: 4px solid #dc3232;
+    background: #f8f8f8;
+    margin: 10px 0;
+}
+
+/* Export CSV button styles */
+.export-csv-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.export-csv-button .dashicons {
+    font-size: 16px;
+    width: 16px;
+    height: 16px;
+    line-height: 26px;
+}
+
+/* Ensure export button has enough space in the admin header */
+.tablenav .alignright {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.tablenav .search-box {
+    margin-right: 10px;
+}

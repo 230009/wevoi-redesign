@@ -1,0 +1,481 @@
+/* Forum Form Styles */
+.wevoi-form-container {
+    max-width: 900px;
+    margin: 30px auto;
+    padding: 0 20px;
+    font-family: Arial, sans-serif;
+}
+
+.wevoi-card {
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 25px 30px;
+    margin-bottom: 25px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+}
+
+.wevoi-card h3 {
+    margin-top: 0;
+    margin-bottom: 20px;
+    color: #333;
+    font-size: 20px;
+    font-weight: 600;
+    padding-bottom: 10px;
+    border-bottom: 2px solid #f0f0f0;
+}
+
+.wevoi-card h4 {
+    margin-top: 25px;
+    margin-bottom: 15px;
+    color: #555;
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.wevoi-section-subtitle {
+    margin-top: 30px;
+    margin-bottom: 20px;
+    padding-top: 20px;
+    border-top: 2px solid #f0f0f0;
+    color: #333;
+    font-size: 20px;
+    font-weight: 600;
+}
+
+.wevoi-form-row {
+    margin-bottom: 20px;
+}
+
+.wevoi-form-row:last-child {
+    margin-bottom: 0;
+}
+
+.wevoi-form-row label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 600;
+    color: #333;
+    font-size: 14px;
+}
+
+.wevoi-form-row input[type="text"],
+.wevoi-form-row input[type="email"],
+.wevoi-form-row input[type="date"],
+.wevoi-form-row input[type="url"],
+.wevoi-form-row select {
+    width: 100%;
+    padding: 12px 15px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    font-size: 15px;
+    box-sizing: border-box;
+    transition: border-color 0.2s, box-shadow 0.2s;
+    min-height: 48px;
+    height: 48px;
+}
+
+.wevoi-form-row input[type="text"]:focus,
+.wevoi-form-row input[type="email"]:focus,
+.wevoi-form-row input[type="date"]:focus,
+.wevoi-form-row input[type="url"]:focus,
+.wevoi-form-row select:focus {
+    outline: none;
+    border-color: #0066cc;
+    box-shadow: 0 0 0 3px rgba(0, 102, 204, 0.1);
+}
+
+.wevoi-readonly-field {
+    padding: 12px 15px;
+    background-color: #f8f9fa;
+    border: 1px solid #e0e0e0;
+    border-radius: 6px;
+    color: #555;
+    font-size: 15px;
+    min-height: 20px;
+}
+
+.wevoi-user-info-display {
+    padding: 12px 15px;
+    background-color: #f8f9fa;
+    border: 1px solid #e0e0e0;
+    border-radius: 6px;
+    color: #333;
+    font-size: 15px;
+    font-weight: 500;
+    min-height: 48px;
+    display: flex;
+    align-items: center;
+}
+
+.wevoi-user-name-display {
+    background-color: #f8f9fa;
+    border: 1px solid #e0e0e0;
+    border-radius: 6px;
+    padding: 12px 15px;
+    margin-bottom: 20px;
+    color: #333;
+    font-size: 15px;
+    font-weight: 500;
+    min-height: 48px;
+    display: flex;
+    align-items: center;
+}
+
+.wevoi-inline-row {
+    display: flex;
+    gap: 25px;
+    margin-bottom: 0;
+    align-items: flex-start;
+}
+
+.wevoi-inline-row .wevoi-form-row {
+    flex: 1;
+    margin-bottom: 20px;
+    min-width: 0; /* Prevents flex items from overflowing */
+}
+
+.wevoi-three-column-row {
+    display: flex;
+    gap: 25px;
+    margin-bottom: 0;
+    align-items: flex-start;
+}
+
+.wevoi-three-column-row .wevoi-form-row {
+    flex: 1;
+    margin-bottom: 20px;
+    min-width: 0; /* Prevents flex items from overflowing */
+}
+
+/* Ensure proper spacing between inline form rows */
+.wevoi-inline-row .wevoi-form-row + .wevoi-form-row {
+    margin-left: 0;
+}
+
+.wevoi-competition-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.wevoi-competition-item {
+    margin: 0;
+}
+
+.wevoi-competition-item label {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    cursor: pointer;
+    padding: 15px 18px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    transition: all 0.2s;
+    margin: 0;
+}
+
+.wevoi-competition-item label:hover {
+    background-color: #f9f9f9;
+}
+
+.wevoi-competition-item input[type="radio"]:checked + label,
+.wevoi-competition-item label:has(input[type="radio"]:checked) {
+    background-color: #e8f4f8;
+    border-color: #0066cc;
+}
+
+.wevoi-competition-info {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    flex: 1;
+}
+
+.wevoi-competition-name-date {
+    font-weight: 500;
+    color: #333;
+}
+
+.wevoi-competition-details {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    font-size: 13px;
+    color: #666;
+    margin-top: 4px;
+}
+
+.wevoi-event-venue,
+.wevoi-event-duration {
+    display: inline-block;
+}
+
+.wevoi-section-divider {
+    margin-top: 30px;
+    margin-bottom: 20px;
+    padding-top: 25px;
+    border-top: 2px solid #e8e8e8;
+}
+
+.wevoi-supervisor-parent-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 25px;
+    margin-bottom: 25px;
+}
+
+.wevoi-supervisor-parent-container .wevoi-card {
+    margin-bottom: 0;
+}
+
+.wevoi-total-amount {
+    font-size: 24px;
+    font-weight: bold;
+    color: #333;
+    text-align: center;
+    padding: 10px 0;
+}
+
+.wevoi-price-info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    padding: 15px 0;
+}
+
+.wevoi-price-label {
+    font-size: 13px;
+    color: #777;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.wevoi-price-value {
+    font-size: 32px;
+    color: #0066cc;
+    font-weight: 700;
+}
+
+.wevoi-coupon-container {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 0;
+}
+
+.wevoi-coupon-container input {
+    flex: 1;
+    padding: 12px 15px;
+}
+
+.wevoi-button {
+    padding: 12px 24px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 15px;
+    font-weight: 600;
+    transition: all 0.3s;
+    white-space: nowrap;
+}
+
+.wevoi-button:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+}
+
+.wevoi-button-primary {
+    background-color: #0066cc;
+    color: white;
+    width: 100%;
+    padding: 15px 20px;
+    font-weight: 700;
+    font-size: 16px;
+    margin-top: 10px;
+}
+
+.wevoi-button-primary:hover {
+    background-color: #0052a3;
+}
+
+.wevoi-button-primary:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+}
+
+.wevoi-stripe-element {
+    padding: 12px 15px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    background: #fff;
+    min-height: 48px;
+    transition: border-color 0.2s, box-shadow 0.2s;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.wevoi-stripe-element:focus-within {
+    border-color: #0066cc;
+    box-shadow: 0 0 0 3px rgba(0, 102, 204, 0.1);
+}
+
+/* Stripe Elements iframe styling */
+.wevoi-stripe-element .StripeElement {
+    width: 100%;
+    padding: 0;
+}
+
+.wevoi-stripe-element iframe {
+    width: 100% !important;
+}
+
+.wevoi-message {
+    margin-top: 10px;
+    padding: 10px;
+    border-radius: 4px;
+}
+
+.wevoi-message.success {
+    background-color: #d4edda;
+    color: #155724;
+    border: 1px solid #c3e6cb;
+}
+
+.wevoi-message.error {
+    background-color: #f8d7da;
+    color: #721c24;
+    border: 1px solid #f5c6cb;
+}
+
+.wevoi-notification {
+    margin-bottom: 20px;
+    padding: 15px;
+    border-radius: 4px;
+    text-align: center;
+}
+
+.wevoi-notification.success {
+    background-color: #d4edda;
+    color: #155724;
+}
+
+.wevoi-notification.error {
+    background-color: #f8d7da;
+    color: #721c24;
+}
+
+/* Supervisor/Agency message (invalid email): smaller font, green */
+#supervisor-agency-name.error,
+.wevoi-supervisor-name-display.error {
+    font-size: 12px !important;
+    color: #2e7d32 !important;
+    font-weight: normal;
+}
+
+.wevoi-consent-container {
+    margin-bottom: 20px;
+    padding: 15px;
+    background-color: #f8f9fa;
+    border-radius: 6px;
+}
+
+.wevoi-consent-label {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    font-size: 14px;
+    line-height: 1.6;
+    color: #555;
+    margin: 0;
+}
+
+.wevoi-consent-label input[type="checkbox"] {
+    margin-top: 4px;
+    flex-shrink: 0;
+    width: 18px;
+    height: 18px;
+    cursor: pointer;
+}
+
+.wevoi-consent-label a {
+    color: #0066cc;
+    text-decoration: underline;
+}
+
+.required {
+    color: #d63638;
+}
+
+.wevoi-amount-coupon-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 25px;
+    margin-bottom: 25px;
+}
+
+@media (max-width: 768px) {
+    .wevoi-form-container {
+        padding: 0 15px;
+        margin: 20px auto;
+    }
+
+    .wevoi-card {
+        padding: 20px;
+        margin-bottom: 20px;
+    }
+
+    .wevoi-amount-coupon-row {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+
+    .wevoi-inline-row {
+        flex-direction: column;
+        gap: 0;
+    }
+
+    .wevoi-inline-row .wevoi-form-row {
+        flex: none;
+        width: 100%;
+        margin-bottom: 20px;
+    }
+
+    .wevoi-three-column-row {
+        grid-template-columns: 1fr;
+        gap: 0;
+    }
+
+    .wevoi-three-column-row .wevoi-form-row {
+        margin-bottom: 20px;
+    }
+
+    .wevoi-supervisor-parent-container {
+        grid-template-columns: 1fr;
+        gap: 25px;
+    }
+}
+
+#card-errors {
+    color: #dc3545;
+    font-size: 14px;
+    margin-top: 8px;
+    min-height: 20px;
+    display: none;
+}
+
+#card-errors:not(:empty) {
+    display: block;
+}
+
+.wevoi-error {
+    color: #dc3545;
+    font-size: 14px;
+    margin-top: 8px;
+    padding: 8px;
+    background-color: #fff5f5;
+    border: 1px solid #feb2b2;
+    border-radius: 4px;
+}
+

@@ -1,0 +1,194 @@
+/* WeVoi Summit Videos Admin Styles */
+
+.wevoi-admin-header {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: #fff;
+    padding: 30px;
+    border-radius: 10px;
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+.wevoi-admin-header h2 {
+    margin: 0 0 10px 0;
+    font-size: 2rem;
+    font-weight: 300;
+}
+
+.wevoi-admin-header p {
+    margin: 0;
+    font-size: 1.1rem;
+    opacity: 0.9;
+}
+
+.wevoi-admin-content {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 30px;
+    align-items: start;
+}
+
+.wevoi-admin-main {
+    background: #fff;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.wevoi-admin-sidebar {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.wevoi-admin-box {
+    background: #fff;
+    padding: 25px;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    border-left: 4px solid #667eea;
+}
+
+.wevoi-admin-box h3 {
+    margin: 0 0 15px 0;
+    color: #2c3e50;
+    font-size: 1.3rem;
+    font-weight: 600;
+}
+
+.wevoi-admin-box h4 {
+    margin: 20px 0 10px 0;
+    color: #34495e;
+    font-size: 1.1rem;
+    font-weight: 600;
+}
+
+.wevoi-admin-box p {
+    margin: 0 0 15px 0;
+    color: #5a6c7d;
+    line-height: 1.6;
+}
+
+.wevoi-admin-box ul {
+    margin: 0;
+    padding-left: 20px;
+    color: #5a6c7d;
+}
+
+.wevoi-admin-box li {
+    margin-bottom: 8px;
+    line-height: 1.5;
+}
+
+.wevoi-admin-box code {
+    background: #f8f9fa;
+    padding: 8px 12px;
+    border-radius: 5px;
+    font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+    font-size: 0.9rem;
+    color: #e74c3c;
+    border: 1px solid #e9ecef;
+    display: inline-block;
+    margin: 5px 0;
+}
+
+.wevoi-admin-box strong {
+    color: #2c3e50;
+    font-weight: 600;
+}
+
+.wevoi-admin-box a {
+    color: #667eea;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.wevoi-admin-box a:hover {
+    color: #5a6fd8;
+    text-decoration: underline;
+}
+
+/* Form Styles */
+.form-table th {
+    width: 200px;
+    padding: 20px 10px 20px 0;
+    vertical-align: top;
+}
+
+.form-table td {
+    padding: 20px 10px;
+}
+
+.form-table input[type="text"],
+.form-table input[type="number"],
+.form-table select {
+    width: 100%;
+    max-width: 300px;
+    padding: 8px 12px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 14px;
+    transition: border-color 0.3s ease;
+}
+
+.form-table input[type="text"]:focus,
+.form-table input[type="number"]:focus,
+.form-table select:focus {
+    border-color: #667eea;
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(102, 126, 234, 0.2);
+}
+
+.form-table .description {
+    font-size: 13px;
+    color: #666;
+    margin-top: 5px;
+    line-height: 1.4;
+}
+
+/* Settings Section */
+.wevoi-admin-main h2 {
+    margin: 0 0 20px 0;
+    color: #2c3e50;
+    font-size: 1.5rem;
+    font-weight: 600;
+    padding-bottom: 10px;
+    border-bottom: 2px solid #ecf0f1;
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+    .wevoi-admin-content {
+        grid-template-columns: 1fr;
+    }
+
+    .wevoi-admin-sidebar {
+        order: -1;
+    }
+}
+
+@media (max-width: 768px) {
+    .wevoi-admin-header {
+        padding: 20px;
+    }
+
+    .wevoi-admin-header h2 {
+        font-size: 1.5rem;
+    }
+
+    .wevoi-admin-main,
+    .wevoi-admin-box {
+        padding: 20px;
+    }
+
+    .form-table th,
+    .form-table td {
+        padding: 15px 10px;
+    }
+
+    .form-table input[type="text"],
+    .form-table input[type="number"],
+    .form-table select {
+        max-width: 100%;
+    }
+}

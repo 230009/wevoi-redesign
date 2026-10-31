@@ -1,0 +1,1446 @@
+<?php
+if (!defined('ABSPATH')) {
+    exit;
+}
+
+class WeVoi_Register_Form_Handler {
+    private static $instance = null;
+    private $stripe_handler;
+    private $db;
+    private $email_handler;
+    private $logger;
+
+    public static function instance() {
+        if (self::$instance == null) {
+            self::$instance = new self();
+        }
+        return self::$instance;
+    }
+
+private function __construct() {
+    global $wpdb;
+    $this->db = $wpdb;
+    $this->stripe_handler = WeVoi_Register_Stripe_Handler::instance();
+    $this->email_handler = WeVoi_Register_Email_Handler::instance();
+    $this->logger = WeVoi_Register_Logger::instance();
+
+    // Existing hooks
+    add_shortcode('wevoi_register_form', array($this, 'render_form'));
+    add_action('wp_ajax_wevoi_validate_coupon', array($this, 'validate_coupon'));
+    add_action('wp_ajax_wevoi_process_registration', array($this, 'process_registration'));
+    add_action('wp_ajax_wevoi_get_competitions', array($this, 'get_competitions'));
+    add_action('wp_ajax_wevoi_update_payment_status', array($this, 'update_payment_status'));
+
+    // New hooks
+    add_shortcode('wevoi_my_competitions', array($this, 'render_my_competitions'));
+    add_action('wp_ajax_wevoi_update_application_status', array($this, 'update_application_status'));
+
+    // Video güncelleme hook'u
+    add_action('wp_ajax_wevoi_update_video_link', array($this, 'update_video_link'));
+
+    // Topics hook'u
+    add_action('wp_ajax_wevoi_get_topics', array($this, 'get_topics'));
+}
+
+    public function render_form() {
+        if (!is_user_logged_in()) {
+            return '<div style="text-align: center;
+                                margin-top: 20px;"><p style="font-weight: bold;">
+                                Please <a href="https://www.wevoi.org/wp-login.php" style="text-decoration: none; color: blue;">log in</a> to submit a video.
+                                </p></div>';
+        }
+
+        if (!$this->user_has_student_role()) {
+            return '<div style="text-align: center; margin-top: 20px;"><p style="font-weight: bold;">To submit a video, please <a href="https://www.wevoi.org/wp-login.php" target="_blank">log in</a> with a student account.</p></div>';
+
+        }
+
+        $competitions = $this->get_active_competitions();
+        if (empty($competitions)) {
+            return '<p>No active competitions available.</p>';
+        }
+
+        ob_start();
+        include WEVOI_REGISTER_PLUGIN_DIR . 'public/templates/payment-form.php';
+        $form_html = ob_get_clean();
+
+        $this->enqueue_assets();
+
+        return $form_html;
+    }
+
+    private function user_has_student_role() {
+        $user = wp_get_current_user();
+        return in_array('student', (array) $user->roles);
+    }
+
+    private function get_active_competitions() {
+        return $this->db->get_results(
+            $this->db->prepare(
+                "SELECT competition_code, competition_name, competition_date, competition_price
+                FROM {$this->db->prefix}wevoi_competitions
+                WHERE competition_status = %s
+                ORDER BY competition_date",
+                'ON AIR'
+            )
+        );
+    }
+
+public function validate_coupon() {
+    // Clear output buffer first
+    if (ob_get_level()) {
+        ob_clean();
+    }
+
+    try {
+        // Set headers
+        header('Content-Type: application/json');
+        header('Cache-Control: no-cache');
+
+        // Nonce check
+        check_ajax_referer('wevoi_register_nonce', 'nonce');
+
+        $competition_code = isset($_POST['competition_code']) ? intval($_POST['competition_code']) : 0;
+        $coupon_code = isset($_POST['coupon_code']) ? sanitize_text_field(trim($_POST['coupon_code'])) : '';
+
+        if (empty($competition_code) || empty($coupon_code)) {
+            echo json_encode([
+                'success' => false,
+                'data' => 'Please fill in all fields.'
+            ]);
+            die();
+        }
+
+        // Get coupon with competition details
+        $coupon = $this->db->get_row($this->db->prepare(
+            "SELECT c.*, comp.competition_status, comp.competition_price
+             FROM {$this->db->prefix}wevoi_coupons c
+             JOIN {$this->db->prefix}wevoi_competitions comp
+             ON c.competition_code = comp.competition_code
+             WHERE c.coupon_code = %s
+             AND c.competition_code = %d
+             AND comp.competition_status = 'ON AIR'",
+            $coupon_code,
+            $competition_code
+        ));
+
+        if (!$coupon) {
+            echo json_encode([
+                'success' => false,
+                'data' => 'Invalid coupon code or competition is not active.'
+            ]);
+            die();
+        }
+
+        // Check expiration date if set
+        if ($coupon->coupon_limit_expiration_date !== null) {
+            $expiration_date = new DateTime($coupon->coupon_limit_expiration_date);
+            $current_date = new DateTime();
+
+            if ($current_date > $expiration_date) {
+                echo json_encode([
+                    'success' => false,
+                    'data' => 'This coupon has expired.'
+                ]);
+                die();
+            }
+        }
+
+        // Check usage limit if no expiration date is set or if both are set
+        if ($coupon->coupon_limit > 0) {
+            if ($coupon->coupon_used >= $coupon->coupon_limit) {
+                echo json_encode([
+                    'success' => false,
+                    'data' => 'This coupon code has reached its usage limit.'
+                ]);
+                die();
+            }
+        }
+
+        // Calculate discount and prepare message
+        $discount_amount = 0;
+        $discount_percentage = 0;
+        $message = '';
+
+        if ($coupon->coupon_discount_amount > 0) {
+            // Fixed amount discount
+            $discount_amount = floatval($coupon->coupon_discount_amount);
+            $message = "Your coupon was successfully applied, giving you a £{$discount_amount} discount.";
+        }
+        elseif ($coupon->coupon_discount_percentage > 0) {
+            // Percentage discount
+            $discount_percentage = intval($coupon->coupon_discount_percentage);
+            $calculated_discount = ($coupon->competition_price * $discount_percentage) / 100;
+            $message = "Your coupon was successfully applied, giving you a {$discount_percentage}% discount.";
+        }
+
+        echo json_encode([
+            'success' => true,
+            'data' => [
+                'discount_amount' => $discount_amount,
+                'discount_percentage' => $discount_percentage,
+                'message' => $message
+            ]
+        ]);
+        die();
+
+    } catch (Exception $e) {
+        echo json_encode([
+            'success' => false,
+            'data' => 'An error occurred while validating the coupon: ' . $e->getMessage()
+        ]);
+        die();
+    }
+}
+
+
+
+private function validate_youtube_link($url) {
+    // Trim and clean the URL
+    $url = trim($url);
+
+    // Array of valid YouTube URL patterns
+    $patterns = array(
+        'standard' => '/^(?:https?:\/\/)?(?:www\.|m\.)?youtube\.com\/watch\?(?:.*&)?v=([a-zA-Z0-9_-]{11})(?:\S*)?$/',
+        'shortened' => '/^(?:https?:\/\/)?(?:www\.|m\.)?youtu\.be\/([a-zA-Z0-9_-]{11})(?:\S*)?$/',
+        'shorts' => '/^(?:https?:\/\/)?(?:www\.|m\.)?youtube\.com\/shorts\/([a-zA-Z0-9_-]{11})(?:\S*)?$/',
+        'embed' => '/^(?:https?:\/\/)?(?:www\.|m\.)?youtube\.com\/embed\/([a-zA-Z0-9_-]{11})(?:\S*)?$/'
+    );
+
+    // Test URL against each pattern
+    foreach ($patterns as $pattern) {
+        if (preg_match($pattern, $url)) {
+            return true;
+        }
+    }
+
+    return false;
+}
+
+public function process_registration() {
+    if (ob_get_level()) {
+        ob_clean();
+    }
+
+    try {
+        // Set headers
+        header('Content-Type: application/json');
+
+        // Debug logging
+        error_log('WeVoi Register: process_registration started');
+        error_log('WeVoi Register: POST data: ' . print_r($_POST, true));
+
+
+        // Verify nonce
+        error_log('WeVoi Register: Verifying nonce');
+        check_ajax_referer('wevoi_register_nonce', 'nonce');
+        error_log('WeVoi Register: Nonce verified successfully');
+
+        $user_id = get_current_user_id();
+        error_log('WeVoi Register: User ID: ' . $user_id);
+        if (!$user_id) {
+            error_log('WeVoi Register: User not logged in');
+            wp_send_json_error('User not logged in');
+            return;
+        }
+
+        // Get and validate form data
+        $competition_code = isset($_POST['competition_code']) ? intval($_POST['competition_code']) : 0;
+        $youtube_link = isset($_POST['youtube_link']) ? esc_url_raw($_POST['youtube_link']) : '';
+        $coupon_code = isset($_POST['coupon_code']) ? sanitize_text_field($_POST['coupon_code']) : '';
+        $payer_name = isset($_POST['payer_name']) ? sanitize_text_field($_POST['payer_name']) : '';
+        $payer_countryid = isset($_POST['payer_countryid']) ? intval($_POST['payer_countryid']) : 0;
+
+
+        // Validate YouTube link
+        if (!$this->validate_youtube_link($youtube_link)) {
+            wp_send_json_error('Invalid YouTube link format');
+            return;
+        }
+
+        // Validate required fields
+        if (empty($competition_code) || empty($youtube_link)) {
+
+            wp_send_json_error('Missing required fields');
+            return;
+        }
+
+        $this->db->query('START TRANSACTION');
+
+        // Get competition details
+        $competition = $this->db->get_row(
+            $this->db->prepare(
+                "SELECT * FROM {$this->db->prefix}wevoi_competitions
+                WHERE competition_code = %d AND competition_status = 'ON AIR'",
+                $competition_code
+            )
+        );
+
+        if (!$competition) {
+            // Debug: Check what competition status actually is
+            $debug_competition = $this->db->get_row(
+                $this->db->prepare(
+                    "SELECT competition_code, competition_name, competition_status FROM {$this->db->prefix}wevoi_competitions WHERE competition_code = %d",
+                    $competition_code
+                )
+            );
+
+            $error_msg = 'Invalid competition';
+            if ($debug_competition) {
+                $error_msg .= ' (Status: ' . $debug_competition->competition_status . ')';
+            }
+            wp_send_json_error($error_msg);
+            return;
+        }
+
+        $price = $competition->competition_price;
+        $is_free = false;
+
+        // Process coupon if exists
+        if (!empty($coupon_code)) {
+
+
+            $coupon = $this->db->get_row(
+                $this->db->prepare(
+                    "SELECT * FROM {$this->db->prefix}wevoi_coupons
+                    WHERE coupon_code = %s AND competition_code = %d",
+                    $coupon_code,
+                    $competition_code
+                )
+            );
+
+            if ($coupon) {
+
+
+                if ($coupon->coupon_discount_amount > 0) {
+                    if ($coupon->coupon_discount_amount >= $price) {
+                        $is_free = true;
+                        $price = 0;
+                    } else {
+                        $price = $price - $coupon->coupon_discount_amount;
+                    }
+                } elseif ($coupon->coupon_discount_percentage > 0) {
+                    $discount = ($price * $coupon->coupon_discount_percentage) / 100;
+                    if ($discount >= $price) {
+                        $is_free = true;
+                        $price = 0;
+                    } else {
+                        $price = $price - $discount;
+                    }
+                }
+            }
+        }
+
+        if ($is_free) {
+            $result = $this->process_free_registration($user_id, $competition_code, $youtube_link, $coupon_code);
+            $this->db->query('COMMIT');
+            return;
+        } else {
+
+            if (empty($payer_name) || empty($payer_countryid)) {
+                wp_send_json_error('Missing payer information');
+                return;
+            }
+
+            $result = $this->process_paid_registration(
+                $user_id,
+                $competition_code,
+                $youtube_link,
+                $coupon_code,
+                $price,
+                $payer_name,
+                $payer_countryid
+            );
+            $this->db->query('COMMIT');
+            return;
+        }
+
+    } catch (Exception $e) {
+        $this->db->query('ROLLBACK');
+        wp_send_json_error($e->getMessage());
+    }
+}
+
+private function process_free_registration($user_id, $competition_code, $youtube_link, $coupon_code) {
+    try {
+        if (ob_get_level()) {
+            ob_clean();
+        }
+
+
+        // Start transaction
+        $this->db->query('START TRANSACTION');
+
+        $inserted = $this->db->insert(
+            $this->db->prefix . 'wevoi_registrations',
+            [
+                'user_id' => $user_id,
+                'competition_code' => $competition_code,
+                'youtube_link' => $youtube_link,
+                'paid_status' => 'FREE',
+                'price' => 0,
+                'coupon_code' => $coupon_code,
+                'registration_date' => current_time('mysql')
+            ],
+            [
+                '%d', '%d', '%s', '%s', '%f', '%s', '%s'
+            ]
+        );
+
+        if (!$inserted) {
+            throw new Exception('Failed to insert registration');
+        }
+
+        $registration_id = $this->db->insert_id;
+
+        // Kupon güncellemesi burada yapılıyor
+        if (!empty($coupon_code)) {
+
+
+            // İlk kullanım değerini al ve kilitle
+            $initial_usage = $this->db->get_var($this->db->prepare(
+                "SELECT coupon_used FROM {$this->db->prefix}wevoi_coupons WHERE coupon_code = %s FOR UPDATE",
+                $coupon_code
+            ));
+
+
+            // Güncelleme yap
+            $update_result = $this->db->query($this->db->prepare(
+                "UPDATE {$this->db->prefix}wevoi_coupons
+                SET coupon_used = %d
+                WHERE coupon_code = %s",
+                intval($initial_usage) + 1,
+                $coupon_code
+            ));
+
+            if ($update_result === false) {
+                throw new Exception('Failed to update coupon usage');
+            }
+
+            // Son değeri kontrol et
+            $final_usage = $this->db->get_var($this->db->prepare(
+                "SELECT coupon_used FROM {$this->db->prefix}wevoi_coupons WHERE coupon_code = %s",
+                $coupon_code
+            ));
+
+
+            if ($final_usage <= $initial_usage) {
+                throw new Exception('Coupon usage update failed verification');
+            }
+
+        }
+
+        // Send emails
+        $this->email_handler->send_emails($registration_id);
+
+        // Commit transaction
+        $this->db->query('COMMIT');
+
+        wp_send_json_success(['message' => 'Registration successful']);
+        return true;
+
+    } catch (Exception $e) {
+        // Rollback on error
+        $this->db->query('ROLLBACK');
+
+        wp_send_json_error($e->getMessage());
+        return false;
+    }
+}
+
+
+
+
+private function process_paid_registration($user_id, $competition_code, $youtube_link, $coupon_code, $price, $payer_name, $payer_countryid) {
+    if (ob_get_level()) {
+        ob_clean();
+    }
+
+    try {
+        // Start transaction
+        $this->db->query('START TRANSACTION');
+
+
+        $user = get_user_by('id', $user_id);
+        $user_email = $user->user_email;
+
+        // Get country code
+        $country = $this->db->get_row(
+            $this->db->prepare(
+                "SELECT iso FROM {$this->db->prefix}wevoi_countries WHERE countryid = %d",
+                $payer_countryid
+            )
+        );
+
+        if (!$country) {
+            throw new Exception('Invalid country selected');
+        }
+
+        // Create Stripe customer
+        $customer_id = $this->stripe_handler->create_customer([
+            'name' => $payer_name,
+            'email' => $user_email,
+            'country_id' => $payer_countryid,
+            'country_code' => $country->iso
+        ]);
+
+        if (is_wp_error($customer_id)) {
+            throw new Exception($customer_id->get_error_message());
+        }
+
+
+        // First insert registration to get the ID
+        $inserted = $this->db->insert(
+            $this->db->prefix . 'wevoi_registrations',
+            [
+                'user_id' => $user_id,
+                'competition_code' => $competition_code,
+                'youtube_link' => $youtube_link,
+                'payer_name' => $payer_name,
+                'payer_countryid' => $payer_countryid,
+                'paid_status' => 'PENDING',
+                'price' => $price,
+                'coupon_code' => $coupon_code,
+                'registration_date' => current_time('mysql')
+            ],
+            [
+                '%d', '%d', '%s', '%s', '%d', '%s', '%f', '%s', '%s'
+            ]
+        );
+
+        if (!$inserted) {
+            throw new Exception('Failed to insert registration');
+        }
+
+        $registration_id = $this->db->insert_id;
+
+        // Get competition name for Stripe description
+        $competition_info = $this->db->get_row(
+            $this->db->prepare(
+                "SELECT competition_name FROM {$this->db->prefix}wevoi_competitions WHERE competition_code = %d",
+                $competition_code
+            )
+        );
+
+        // Create payment intent with registration ID in metadata
+        error_log('WeVoi Register: Creating payment intent for amount: ' . $price);
+        $payment_intent = $this->stripe_handler->create_payment_intent($price, [
+            'registration_id' => $registration_id,
+            'competition_code' => $competition_code,
+            'competition_name' => $competition_info ? $competition_info->competition_name : 'Unknown Competition',
+            'customer_email' => $user_email,
+            'receipt_email' => $user_email,
+            'user_id' => $user_id
+        ]);
+
+        if (is_wp_error($payment_intent)) {
+            error_log('WeVoi Register: Payment intent creation failed: ' . $payment_intent->get_error_message());
+            throw new Exception($payment_intent->get_error_message());
+        }
+        error_log('WeVoi Register: Payment intent created successfully: ' . $payment_intent->id);
+
+        // Update registration with payment_intent_id
+        $this->db->update(
+            $this->db->prefix . 'wevoi_registrations',
+            ['payment_intent_id' => $payment_intent->id],
+            ['register_id' => $registration_id],
+            ['%s'],
+            ['%d']
+        );
+
+
+        // Commit transaction
+        $this->db->query('COMMIT');
+
+
+
+        wp_send_json_success([
+            'registration_id' => $registration_id,
+            'customer_id' => $customer_id,
+            'client_secret' => $payment_intent->client_secret,
+            'country_code' => $country->iso
+        ]);
+
+    } catch (Exception $e) {
+        error_log('WeVoi Register: Exception caught: ' . $e->getMessage());
+        error_log('WeVoi Register: Exception trace: ' . $e->getTraceAsString());
+        $this->db->query('ROLLBACK');
+
+        wp_send_json_error($e->getMessage());
+    }
+}
+
+
+
+
+
+
+
+
+public function update_payment_status() {
+    check_ajax_referer('wevoi_register_nonce', 'nonce');
+
+    try {
+
+
+        // Start transaction
+        $this->db->query('START TRANSACTION');
+
+        $payment_intent_id = sanitize_text_field($_POST['payment_intent_id']);
+        $customer_id = sanitize_text_field($_POST['customer_id']);
+        $registration_id = intval($_POST['registration_id']);
+
+
+        // Get registration details including coupon code
+$registration = $this->db->get_row($this->db->prepare(
+    "SELECT * FROM {$this->db->prefix}wevoi_registrations
+    WHERE register_id = %d
+    AND paid_status = 'PENDING'
+    AND payment_intent_id IS NOT NULL",  // payment_intent_id kontrolü ekledik
+    $registration_id
+));
+
+if (!$registration) {
+    throw new Exception('Registration not found or not in pending status');
+}
+
+        // Update registration status
+        $updated = $this->db->update(
+            $this->db->prefix . 'wevoi_registrations',
+            [
+                'paid_status' => 'PAID',
+                'customer_code' => $customer_id
+            ],
+            ['register_id' => $registration_id],
+            ['%s', '%s'],
+            ['%d']
+        );
+
+        if ($updated === false) {
+            throw new Exception('Failed to update registration status');
+        }
+
+        // Update coupon usage if coupon was used
+        if (!empty($registration->coupon_code)) {
+
+
+            // Get and lock current coupon usage
+            $initial_usage = $this->db->get_var($this->db->prepare(
+                "SELECT coupon_used FROM {$this->db->prefix}wevoi_coupons
+                WHERE coupon_code = %s FOR UPDATE",
+                $registration->coupon_code
+            ));
+
+
+            // Update the usage count
+            $update_result = $this->db->query($this->db->prepare(
+                "UPDATE {$this->db->prefix}wevoi_coupons
+                SET coupon_used = %d
+                WHERE coupon_code = %s",
+                intval($initial_usage) + 1,
+                $registration->coupon_code
+            ));
+
+            if ($update_result === false) {
+                throw new Exception('Failed to update coupon usage');
+            }
+
+            // Verify the update
+            $final_usage = $this->db->get_var($this->db->prepare(
+                "SELECT coupon_used FROM {$this->db->prefix}wevoi_coupons
+                WHERE coupon_code = %s",
+                $registration->coupon_code
+            ));
+
+
+
+            if ($final_usage <= $initial_usage) {
+                throw new Exception('Coupon usage update failed verification');
+            }
+
+        }
+
+        // Send confirmation emails
+        $this->email_handler->send_emails($registration_id);
+
+        // Commit the transaction
+        $this->db->query('COMMIT');
+
+        wp_send_json_success('Payment status updated');
+
+    } catch (Exception $e) {
+        // Rollback on error
+        $this->db->query('ROLLBACK');
+        wp_send_json_error($e->getMessage());
+    }
+}
+
+
+
+
+
+
+private function update_coupon_usage($coupon_code) {
+    try {
+
+        // SQL sorgusunu hazırla
+        $sql = $this->db->prepare(
+            "UPDATE {$this->db->prefix}wevoi_coupons
+            SET coupon_used = IFNULL(coupon_used, 0) + 1
+            WHERE coupon_code = %s",
+            $coupon_code
+        );
+
+
+        // Güncellemeyi yap
+        $result = $this->db->query($sql);
+
+
+        if ($result === false) {
+            throw new Exception('Failed to update coupon usage. MySQL Error: ' . $this->db->last_error);
+        }
+
+        // Güncellenmiş değeri kontrol et
+        $updated_value = $this->db->get_var($this->db->prepare(
+            "SELECT coupon_used FROM {$this->db->prefix}wevoi_coupons WHERE coupon_code = %s",
+            $coupon_code
+        ));
+
+        return true;
+    } catch (Exception $e) {
+        throw $e;
+    }
+}
+
+
+
+
+
+
+   public function update_video_link() {
+    try {
+        check_ajax_referer('wevoi_register_nonce', 'nonce');
+
+        if (!is_user_logged_in()) {
+            wp_send_json_error('User not logged in');
+            return;
+        }
+
+        $registration_id = isset($_POST['registration_id']) ? intval($_POST['registration_id']) : 0;
+        $new_video_link = isset($_POST['video_link']) ? esc_url_raw($_POST['video_link']) : '';
+
+        // Önce mevcut video linkini alalım
+        $current_video_link = $this->db->get_var($this->db->prepare(
+            "SELECT youtube_link FROM {$this->db->prefix}wevoi_registrations WHERE register_id = %d",
+            $registration_id
+        ));
+
+        // Eğer yeni link mevcut linkle aynıysa, güncelleme yapmayalım
+        if ($current_video_link === $new_video_link) {
+            wp_send_json_error('Video link is the same as current one');
+            return;
+        }
+
+        // Check if application is already accepted
+        $status = $this->db->get_var($this->db->prepare(
+            "SELECT application_status FROM {$this->db->prefix}wevoi_registrations WHERE register_id = %d",
+            $registration_id
+        ));
+
+        if ($status === 'APPLICATION_ACCEPTED') {
+            wp_send_json_error('Cannot update video link for accepted applications');
+            return;
+        }
+
+        if (!$this->validate_youtube_link($new_video_link)) {
+            wp_send_json_error('Invalid YouTube link format');
+            return;
+        }
+
+        // Get user information for email notification
+        $user_info = $this->db->get_row($this->db->prepare(
+            "SELECT u.user_email,
+                    CONCAT(um_first.meta_value, ' ', um_last.meta_value) as student_name,
+                    c.competition_name
+             FROM {$this->db->prefix}wevoi_registrations r
+             JOIN {$this->db->prefix}users u ON r.user_id = u.ID
+             JOIN {$this->db->prefix}wevoi_competitions c ON r.competition_code = c.competition_code
+             LEFT JOIN {$this->db->prefix}usermeta um_first ON r.user_id = um_first.user_id AND um_first.meta_key = 'first_name'
+             LEFT JOIN {$this->db->prefix}usermeta um_last ON r.user_id = um_last.user_id AND um_last.meta_key = 'last_name'
+             WHERE r.register_id = %d",
+            $registration_id
+        ));
+
+        // Update video link
+        $updated = $this->db->update(
+            $this->db->prefix . 'wevoi_registrations',
+            ['youtube_link' => $new_video_link],
+            ['register_id' => $registration_id],
+            ['%s'],
+            ['%d']
+        );
+
+        if ($updated === false) {
+            wp_send_json_error('Failed to update video link');
+            return;
+        }
+
+        // Send notification email to admin with HTML template
+        $this->send_admin_video_update_notification($user_info, $new_video_link);
+
+        wp_send_json_success('Video link updated successfully');
+
+    } catch (Exception $e) {
+        wp_send_json_error($e->getMessage());
+    }
+}
+
+
+
+
+
+
+
+
+
+
+public function update_application_status() {
+    try {
+        if (!current_user_can('administrator')) {
+            wp_send_json_error('Unauthorized');
+            return;
+        }
+
+        check_ajax_referer('wevoi_register_nonce', 'nonce');
+
+        $registration_id = isset($_POST['registration_id']) ? intval($_POST['registration_id']) : 0;
+        $new_status = isset($_POST['status']) ? sanitize_text_field($_POST['status']) : '';
+
+        // Get user and supervisor information before updating
+        $user_info = $this->db->get_row($this->db->prepare(
+            "SELECT u.user_email,
+                    um_super_email.meta_value as supervisor_email,
+                    um_super_name.meta_value as supervisor_name,
+                    c.competition_name,
+                    CONCAT(um_first.meta_value, ' ', um_last.meta_value) as student_name
+             FROM {$this->db->prefix}wevoi_registrations r
+             JOIN {$this->db->prefix}users u ON r.user_id = u.ID
+             JOIN {$this->db->prefix}wevoi_competitions c ON r.competition_code = c.competition_code
+             LEFT JOIN {$this->db->prefix}usermeta um_super_email ON r.user_id = um_super_email.user_id AND um_super_email.meta_key = 'supervisoremail'
+             LEFT JOIN {$this->db->prefix}usermeta um_super_name ON r.user_id = um_super_name.user_id AND um_super_name.meta_key = 'supervisorfullname'
+             LEFT JOIN {$this->db->prefix}usermeta um_first ON r.user_id = um_first.user_id AND um_first.meta_key = 'first_name'
+             LEFT JOIN {$this->db->prefix}usermeta um_last ON r.user_id = um_last.user_id AND um_last.meta_key = 'last_name'
+             WHERE r.register_id = %d",
+            $registration_id
+        ));
+
+        $updated = $this->db->update(
+            $this->db->prefix . 'wevoi_registrations',
+            ['application_status' => $new_status],
+            ['register_id' => $registration_id],
+            ['%s'],
+            ['%d']
+        );
+
+        if ($updated === false) {
+            wp_send_json_error('Update failed');
+            return;
+        }
+
+        // Send notification emails
+        $this->send_status_update_notifications($new_status, $user_info);
+
+        wp_send_json_success(['message' => 'Status updated successfully']);
+
+    } catch (Exception $e) {
+        wp_send_json_error($e->getMessage());
+    }
+}
+
+private function send_status_update_notifications($status, $user_info) {
+    $subject = "WeVoi Competition - Application Status Update";
+
+    // Get status-specific message and color
+    $status_info = $this->get_status_message_and_color($status);
+
+    // Email template for student
+    $student_html = $this->get_email_template([
+        'recipient_name' => $user_info->student_name,
+        'competition_name' => $user_info->competition_name,
+        'status' => $status,
+        'message' => $status_info['message'],
+        'color' => $status_info['color']
+    ]);
+
+    // Send to student with HTML format
+    $headers = array('Content-Type: text/html; charset=UTF-8');
+    wp_mail($user_info->user_email, $subject, $student_html, $headers);
+
+    // Send to supervisor if exists
+    if (!empty($user_info->supervisor_email)) {
+        $supervisor_html = $this->get_email_template([
+            'recipient_name' => $user_info->supervisor_name,
+            'student_name' => $user_info->student_name,
+            'competition_name' => $user_info->competition_name,
+            'status' => $status,
+            'message' => $status_info['message'],
+            'color' => $status_info['color'],
+            'is_supervisor' => true
+        ]);
+
+        wp_mail($user_info->supervisor_email, $subject, $supervisor_html, $headers);
+    }
+}
+
+
+private function get_status_message_and_color($status) {
+    switch ($status) {
+        case 'VIDEO_INACCESSIBLE':
+            return [
+                'message' => "Your video link is broken or inaccessible. Please update your video link.",
+                'color' => '#dc3545' // red
+            ];
+        case 'IRRELEVANT_CONTENT':
+            return [
+                'message' => "Your video content does not match with the competition topic. Please submit a relevant video.",
+                'color' => '#ffc107' // yellow
+            ];
+        case 'APPLICATION_REJECTED':
+            return [
+                'message' => "Your application has been rejected. Please check the competition rules and update your video.",
+                'color' => '#dc3545' // red
+            ];
+        case 'PENDING_REVIEW':
+            return [
+                'message' => "Your application is under review and will be finalized as soon as possible.",
+                'color' => '#fd7e14' // orange
+            ];
+        case 'APPLICATION_ACCEPTED':
+            return [
+                'message' => "Congratulations, your application has been accepted. After the deadline, your video will be evaluated by our esteemed judges, and the results will be announced.",
+                'color' => '#28a745' // green
+            ];
+        default:
+            return [
+                'message' => "Your application status has been updated.",
+                'color' => '#6c757d' // gray
+            ];
+    }
+}
+
+
+
+private function get_email_template($data) {
+    $wevoi_logo_url = 'https://www.wevoi.org/wp-content/uploads/2018/08/WeVoi_Logo_XS-e1533120407306.png';
+    $status_badge = $this->get_status_badge($data['status'], $data['color']);
+
+    // Build the message based on whether it's for supervisor or student
+    $message_intro = $data['is_supervisor'] ?? false
+        ? "The application status of your student {$data['student_name']}"
+        : "Your application status";
+
+    return '
+    <!DOCTYPE html>
+    <html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <style>
+            body { font-family: Arial, sans-serif; line-height: 1.6; margin: 0; padding: 0; }
+            .email-container { max-width: 600px; margin: 0 auto; }
+             .header { background-color: #EFE8E8; color: white; padding: 20px; text-align: center; }
+            .header img { max-width: 200px; height: auto; }
+            .content { padding: 30px; background-color: #ffffff; }
+            .footer { background-color: #f8f9fa; padding: 20px; text-align: center; font-size: 12px; color: #666; }
+            .status-badge {
+                display: inline-block;
+                padding: 8px 15px;
+                border-radius: 20px;
+                font-size: 14px;
+                font-weight: bold;
+                color: white;
+                margin: 15px 0;
+            }
+            .message-box {
+                background-color: #f8f9fa;
+                border-left: 4px solid ' . $data['color'] . ';
+                padding: 15px;
+                margin: 20px 0;
+            }
+            .button {
+                display: inline-block;
+                padding: 10px 20px;
+                background-color: #EFE8E8;
+                color: white;
+                text-decoration: none;
+                border-radius: 5px;
+                margin-top: 20px;
+            }
+            @media only screen and (max-width: 600px) {
+                .content { padding: 15px; }
+            }
+        </style>
+    </head>
+    <body>
+        <div class="email-container">
+            <div class="header">
+                <img src="' . $wevoi_logo_url . '" alt="WeVoi Logo">
+            </div>
+            <div class="content">
+                <h2>Dear ' . $data['recipient_name'] . ',</h2>
+                <p>' . $message_intro . ' for the competition "' . $data['competition_name'] . '" has been updated.</p>
+
+                ' . $status_badge . '
+
+                <div class="message-box">
+                    ' . $data['message'] . '
+                </div>
+                <a href="https://www.wevoi.org/submissions/" class="button" style="color: black !important; text-decoration: none;">View My Submissions</a>
+            </div>
+            <div class="footer">
+                <p>This is an automated message from WeVoi Competition System. Please do not reply to this email.</p>
+                <p>&copy; ' . date('Y') . ' WeVoi. All rights reserved.</p>
+            </div>
+        </div>
+    </body>
+    </html>';
+}
+
+private function get_status_badge($status, $color) {
+    $status_display = str_replace('_', ' ', $status);
+    return '<div class="status-badge" style="background-color: ' . $color . ';">' .
+           ucwords(strtolower($status_display)) .
+           '</div>';
+}
+
+
+// Admin video update notification'ı için yeni HTML template
+public function send_admin_video_update_notification($user_info, $video_link) {
+    $subject = "WeVoi Competition - Video Link Updated";
+    $headers = array('Content-Type: text/html; charset=UTF-8');
+
+    $html = '
+    <!DOCTYPE html>
+    <html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <style>
+            body { font-family: Arial, sans-serif; line-height: 1.6; margin: 0; padding: 0; }
+            .email-container { max-width: 600px; margin: 0 auto; }
+            .header { background-color: #EFE8E8; color: white; padding: 20px; text-align: center; }
+            .header img { max-width: 200px; height: auto; }
+            .content { padding: 30px; background-color: #ffffff; }
+            .info-box {
+                background-color: #f8f9fa;
+                border: 1px solid #dee2e6;
+                border-radius: 5px;
+                padding: 15px;
+                margin: 20px 0;
+            }
+            .info-row {
+                margin-bottom: 10px;
+                border-bottom: 1px solid #eee;
+                padding-bottom: 10px;
+            }
+            .info-label {
+                font-weight: bold;
+                color: #495057;
+            }
+            .video-link {
+                color: ##EFE8E8;
+                text-decoration: none;
+            }
+            .button {
+                display: inline-block;
+                padding: 10px 20px;
+                background-color: ##EFE8E8;
+                color: white;
+                text-decoration: none;
+                border-radius: 5px;
+                margin-top: 20px;
+            }
+            .footer {
+                background-color: #f8f9fa;
+                padding: 20px;
+                text-align: center;
+                font-size: 12px;
+                color: #666;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="email-container">
+            <div class="header">
+                <img src="https://www.wevoi.org/wp-content/uploads/2018/08/WeVoi_Logo_XS-e1533120407306.png" alt="WeVoi Logo">
+            </div>
+            <div class="content">
+                <h2>Video Link Update Notification</h2>
+                <p>A student has updated their video submission.</p>
+
+                <div class="info-box">
+                    <div class="info-row">
+                        <span class="info-label">Student:</span>
+                        <span>' . $user_info->student_name . '</span>
+                    </div>
+                    <div class="info-row">
+                        <span class="info-label">Competition:</span>
+                        <span>' . $user_info->competition_name . '</span>
+                    </div>
+                    <div class="info-row">
+                        <span class="info-label">New Video Link:</span>
+                        <a href="' . $video_link . '" class="video-link" target="_blank">' . $video_link . '</a>
+                    </div>
+                </div>
+
+                <p>Please review the updated video submission at your earliest convenience.</p>
+
+                <a href="https://www.wevoi.org/submissions" class="button">Review Submissions</a>
+            </div>
+            <div class="footer">
+                <p>This is an automated message from WeVoi Competition System.</p>
+                <p>&copy; ' . date('Y') . ' WeVoi. All rights reserved.</p>
+            </div>
+        </div>
+    </body>
+    </html>';
+
+    wp_mail('admin@wevoi.org', $subject, $html, $headers);
+}
+
+
+    private function enqueue_assets() {
+        // Main style file
+        wp_enqueue_style(
+            'wevoi-register-style',
+            WEVOI_REGISTER_PLUGIN_URL . 'public/css/form-styles.css',
+            array(),
+            WEVOI_REGISTER_VERSION
+        );
+
+        // Stripe required script
+        wp_enqueue_script(
+            'stripe-js',
+            'https://js.stripe.com/v3/',
+            array(),
+            null,
+            true
+        );
+
+        // Get current user email
+        $current_user = wp_get_current_user();
+        $userEmail = $current_user->user_email;
+
+        // Form handler script
+        wp_enqueue_script(
+            'wevoi-register-script',
+            WEVOI_REGISTER_PLUGIN_URL . 'public/js/form-handler.js',
+            array('jquery', 'stripe-js'),
+            WEVOI_REGISTER_VERSION,
+            true
+        );
+
+        // Localize script with PHP variables
+        wp_localize_script(
+            'wevoi-register-script',
+            'wevoiRegister',
+            array(
+                'ajaxUrl' => admin_url('admin-ajax.php'),
+                'nonce' => wp_create_nonce('wevoi_register_nonce'),
+                'stripeKey' => $this->stripe_handler->get_publishable_key(),
+                'userEmail' => $userEmail // Pass user email to JavaScript
+            )
+        );
+    }
+
+private function enqueue_my_competitions_assets() {
+    if (!wp_style_is('wevoi-my-competitions-style', 'enqueued')) {
+        // Style file
+        wp_enqueue_style(
+            'wevoi-my-competitions-style',
+            WEVOI_REGISTER_PLUGIN_URL . 'public/css/my-competitions.css',
+            array(),
+            WEVOI_REGISTER_VERSION
+        );
+
+        // JavaScript'i tüm kullanıcılar için yükle
+        wp_enqueue_script(
+            'wevoi-my-competitions',  // admin kelimesini kaldırdık
+            WEVOI_REGISTER_PLUGIN_URL . 'public/js/my-competitions-admin.js',
+            array('jquery'),
+            WEVOI_REGISTER_VERSION,
+            true
+        );
+
+        // JavaScript'e gerekli değişkenleri aktar
+        wp_localize_script(
+            'wevoi-my-competitions',  // burayı da güncelledik
+            'wevoiRegister',
+            array(
+                'ajaxUrl' => admin_url('admin-ajax.php'),
+                'nonce' => wp_create_nonce('wevoi_register_nonce')
+            )
+        );
+    }
+}
+
+    public function render_my_competitions() {
+    if (!is_user_logged_in()) {
+        return '<div style="text-align: center; margin-top: 20px;">
+                <p style="font-weight: bold;">Please <a href="https://www.wevoi.org/wp-login.php"
+                style="text-decoration: none; color: blue;">log in</a> to view your submissions.</p>
+                </div>';
+    }
+
+    // Stilleri yükle
+    $this->enqueue_my_competitions_assets();
+
+    // Admin kontrolü
+    $user = wp_get_current_user();
+    $is_admin = in_array('administrator', (array) $user->roles);
+
+    if ($is_admin) {
+        $registrations = $this->get_all_registrations();
+
+        // Admin için sadece ON AIR durumunda olanları filtrele
+        $filtered_registrations = [];
+        foreach ($registrations as $registration) {
+            if ($registration->competition_status === 'ON AIR') {
+                $filtered_registrations[] = $registration;
+            }
+        }
+        $registrations = $filtered_registrations;
+    } else {
+        $registrations = $this->get_user_registrations(get_current_user_id());
+    }
+
+    if (empty($registrations)) {
+        // Yarışma durumlarını veritabanından al
+        $competition_statuses = $this->db->get_results(
+            "SELECT competition_status FROM {$this->db->prefix}wevoi_competitions"
+        );
+
+        $has_onair = false;
+        $has_closed = false;
+        $has_completed = false;
+        $all_not_yet = true;
+
+        foreach ($competition_statuses as $status) {
+            if ($status->competition_status === 'ON AIR') {
+                $has_onair = true;
+                $all_not_yet = false;
+            } elseif ($status->competition_status === 'CLOSED') {
+                $has_closed = true;
+                $all_not_yet = false;
+            } elseif ($status->competition_status === 'COMPLETED') {
+                $has_completed = true;
+                $all_not_yet = false;
+            } elseif ($status->competition_status !== 'NOT YET') {
+                $all_not_yet = false;
+            }
+        }
+
+        // Öncelik sırasına göre mesajları göster
+        if ($has_onair) {
+            // Eğer aktif yarışma varsa, öğrenciye video yüklemesini söyle
+            return '<div class="wevoi-no-competitions">
+                <p>No video submission found. Be part of WeVoi by <a href="https://www.wevoi.org/register/"><strong> uploading your video</strong></a> now!</p>
+                </div>';
+        } elseif ($has_closed) {
+            // Eğer aktif yarışma yoksa ama kapalı yarışma varsa
+            return '<div class="wevoi-no-competitions">
+                <p>The competition registration period has ended. Our valued judges are currently evaluating the submitted videos. Video submissions are no longer possible. If you have any questions, please contact <a href="mailto:info@wevoi.org">info@wevoi.org</a>.</p>
+                </div>';
+        } elseif ($has_completed && !$has_onair && !$has_closed) {
+            // Eğer tüm yarışmalar tamamlanmışsa
+            return '<div class="wevoi-no-competitions">
+                <p>The competitions for this season have been completed. Please check back later for new competitions.</p>
+                </div>';
+        } elseif ($all_not_yet) {
+            // Eğer tüm yarışmalar henüz başlamamışsa
+            return '<div class="wevoi-no-competitions">
+                <p>Competitions will start soon. Please check back later to submit your videos.</p>
+                </div>';
+        } else {
+            // Diğer durumlar için genel bir mesaj
+            return '<div class="wevoi-no-competitions">
+                <p>There are currently no active competitions available for video submission. Please check back later.</p>
+                </div>';
+        }
+    }
+
+    ob_start();
+    include WEVOI_REGISTER_PLUGIN_DIR . 'public/templates/my-competitions.php';
+    return ob_get_clean();
+}
+
+private function get_all_registrations() {
+    return $this->db->get_results(
+        "SELECT r.*,
+                c.competition_name,
+                c.competition_date,
+                c.competition_status, /* Bu satırı ekledik */
+                COALESCE(r.refund_amount, 0) as refund_amount,
+                COALESCE(r.refund_date, '') as refund_date,
+                u.display_name as user_display_name,
+                u.user_email as user_email,
+                um_first.meta_value as first_name,
+                um_last.meta_value as last_name,
+                um_age.meta_value as age_category,
+                um_country.meta_value as user_countryid,
+                co.countryname,
+                t.topic
+         FROM {$this->db->prefix}wevoi_registrations r
+         JOIN {$this->db->prefix}wevoi_competitions c ON r.competition_code = c.competition_code
+         JOIN {$this->db->prefix}users u ON r.user_id = u.ID
+         LEFT JOIN {$this->db->prefix}usermeta um_first ON r.user_id = um_first.user_id AND um_first.meta_key = 'first_name'
+         LEFT JOIN {$this->db->prefix}usermeta um_last ON r.user_id = um_last.user_id AND um_last.meta_key = 'last_name'
+         LEFT JOIN {$this->db->prefix}usermeta um_age ON r.user_id = um_age.user_id AND um_age.meta_key = 'wevoi_age_category'
+         LEFT JOIN {$this->db->prefix}usermeta um_country ON r.user_id = um_country.user_id AND um_country.meta_key = 'countryid'
+         LEFT JOIN {$this->db->prefix}wevoi_countries co ON um_country.meta_value = co.countryid
+         LEFT JOIN {$this->db->prefix}wevoi_topics t ON c.competition_code = t.competition_code AND um_age.meta_value = t.wevoi_age_category
+         WHERE r.paid_status IN ('PAID', 'FREE')
+         ORDER BY r.registration_date DESC"
+    );
+}
+
+// Mevcut kullanıcı kaydı getiren method
+
+private function get_user_registrations($user_id) {
+    $user = wp_get_current_user();
+    $is_supervisor = in_array('supervisor', (array) $user->roles);
+
+    if ($is_supervisor) {
+        // Supervisor için tüm öğrencilerinin kayıtlarını getir
+        $supervisor_email = $user->user_email;
+
+        return $this->db->get_results($this->db->prepare(
+            "SELECT r.*,
+                    c.competition_name,
+                    c.competition_date,
+                    c.competition_status,
+                    c.award_ceremony_completed,
+                    COALESCE(r.refund_amount, 0) as refund_amount,
+                    COALESCE(r.refund_date, '') as refund_date,
+                    COALESCE(r.claimed_prize_amount, 0) as claimed_prize_amount,
+                    r.claimed_prize_paid_status,
+                    um_first.meta_value as first_name,
+                    um_last.meta_value as last_name,
+                    um_age.meta_value as age_category,
+                    um_country.meta_value as user_countryid,
+                    co.countryname,
+                    t.topic,
+                    u.user_email,
+                    u.display_name
+             FROM {$this->db->prefix}wevoi_registrations r
+             JOIN {$this->db->prefix}wevoi_competitions c ON r.competition_code = c.competition_code
+             JOIN {$this->db->prefix}users u ON r.user_id = u.ID
+             JOIN {$this->db->prefix}usermeta um_supervisor
+                ON u.ID = um_supervisor.user_id
+                AND um_supervisor.meta_key = 'supervisoremail'
+                AND um_supervisor.meta_value = %s
+             LEFT JOIN {$this->db->prefix}usermeta um_first
+                ON r.user_id = um_first.user_id
+                AND um_first.meta_key = 'first_name'
+             LEFT JOIN {$this->db->prefix}usermeta um_last
+                ON r.user_id = um_last.user_id
+                AND um_last.meta_key = 'last_name'
+             LEFT JOIN {$this->db->prefix}usermeta um_age
+                ON r.user_id = um_age.user_id
+                AND um_age.meta_key = 'wevoi_age_category'
+             LEFT JOIN {$this->db->prefix}usermeta um_country
+                ON r.user_id = um_country.user_id
+                AND um_country.meta_key = 'countryid'
+             LEFT JOIN {$this->db->prefix}wevoi_countries co
+                ON um_country.meta_value = co.countryid
+             LEFT JOIN {$this->db->prefix}wevoi_topics t
+                ON c.competition_code = t.competition_code
+                AND um_age.meta_value = t.wevoi_age_category
+             WHERE r.paid_status IN ('PAID', 'FREE')
+             AND (c.award_ceremony_completed = 1 OR c.competition_status != 'COMPLETED')
+             ORDER BY r.registration_date DESC",
+            $supervisor_email
+        ));
+    } else {
+        // Normal öğrenci için kendi kayıtlarını getir
+        return $this->db->get_results($this->db->prepare(
+            "SELECT r.*,
+                    c.competition_name,
+                    c.competition_date,
+                    c.competition_status,
+                    c.award_ceremony_completed,
+                    COALESCE(r.refund_amount, 0) as refund_amount,
+                    COALESCE(r.refund_date, '') as refund_date,
+                    COALESCE(r.claimed_prize_amount, 0) as claimed_prize_amount,
+                    r.claimed_prize_paid_status,
+                    um_first.meta_value as first_name,
+                    um_last.meta_value as last_name,
+                    um_age.meta_value as age_category,
+                    um_country.meta_value as user_countryid,
+                    co.countryname,
+                    t.topic
+             FROM {$this->db->prefix}wevoi_registrations r
+             JOIN {$this->db->prefix}wevoi_competitions c
+                ON r.competition_code = c.competition_code
+             LEFT JOIN {$this->db->prefix}usermeta um_first
+                ON r.user_id = um_first.user_id
+                AND um_first.meta_key = 'first_name'
+             LEFT JOIN {$this->db->prefix}usermeta um_last
+                ON r.user_id = um_last.user_id
+                AND um_last.meta_key = 'last_name'
+             LEFT JOIN {$this->db->prefix}usermeta um_age
+                ON r.user_id = um_age.user_id
+                AND um_age.meta_key = 'wevoi_age_category'
+             LEFT JOIN {$this->db->prefix}usermeta um_country
+                ON r.user_id = um_country.user_id
+                AND um_country.meta_key = 'countryid'
+             LEFT JOIN {$this->db->prefix}wevoi_countries co
+                ON um_country.meta_value = co.countryid
+             LEFT JOIN {$this->db->prefix}wevoi_topics t
+                ON c.competition_code = t.competition_code
+                AND um_age.meta_value = t.wevoi_age_category
+             WHERE r.user_id = %d
+             AND r.paid_status IN ('PAID', 'FREE')
+             AND (c.award_ceremony_completed = 1 OR c.competition_status != 'COMPLETED')
+             ORDER BY r.registration_date DESC",
+            $user_id
+        ));
+    }
+
+    /**
+     * Get topics for a specific competition
+     */
+    public function get_topics() {
+        if (!is_user_logged_in()) {
+            wp_send_json_error('User not logged in');
+            return;
+        }
+
+        $competition_code = isset($_POST['competition_code']) ? intval($_POST['competition_code']) : 0;
+
+        if (!$competition_code) {
+            wp_send_json_error('Invalid competition code');
+            return;
+        }
+
+        // Get user's age category
+        $user_id = get_current_user_id();
+        $age_category = get_user_meta($user_id, 'wevoi_age_category', true);
+
+        if (!$age_category) {
+            wp_send_json_error('User age category not set');
+            return;
+        }
+
+        // Get topics for this competition and age category
+        $topics = $this->db->get_results($this->db->prepare(
+            "SELECT topic FROM {$this->db->prefix}wevoi_topics
+             WHERE competition_code = %d AND wevoi_age_category = %s",
+            $competition_code,
+            $age_category
+        ));
+
+        wp_send_json_success($topics);
+    }
+}
+?>

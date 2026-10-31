@@ -1,0 +1,3 @@
+This directory contains flag images for countries.
+Flag images should be named with the country ID (e.g., 1.png, 2.png, etc.)
+You can copy flag images from the wevoi-results plugin or use your own flag images.

@@ -1,0 +1,1418 @@
+/**
+ * Supervisor Profile Styles
+ *
+ * @package WPIE_Supervisor_Profile
+ */
+
+.wpie-supervisor-profile-wrapper {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 30px 20px;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+}
+
+.wpie-supervisor-profile-header {
+    margin-bottom: 40px;
+    padding-bottom: 20px;
+    border-bottom: 2px solid #e5e5e5;
+}
+
+.wpie-profile-title {
+    font-size: 32px;
+    font-weight: 600;
+    color: #1a1a1a;
+    margin: 0;
+}
+
+/* Section Styles */
+.wpie-profile-section {
+    background: #ffffff;
+    border: 1px solid #e5e5e5;
+    border-radius: 8px;
+    padding: 30px;
+    margin-bottom: 30px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.wpie-section-title {
+    font-size: 24px;
+    font-weight: 600;
+    color: #1a1a1a;
+    margin: 0 0 25px 0;
+    padding-bottom: 15px;
+    border-bottom: 2px solid #f0f0f0;
+}
+
+.wpie-subsection-title {
+    font-size: 18px;
+    font-weight: 600;
+    color: #333;
+    margin: 25px 0 15px 0;
+}
+
+/* Personal Information */
+.wpie-info-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+}
+
+.wpie-info-column {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.wpie-info-item {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.wpie-info-label {
+    font-weight: 600;
+    color: #666;
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.wpie-info-value {
+    font-size: 16px;
+    color: #1a1a1a;
+    font-weight: 500;
+    word-wrap: break-word;
+    word-break: break-word;
+}
+
+.wpie-email-value {
+    word-break: break-all;
+}
+
+/* Statistics Grid */
+.wpie-stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+    margin-bottom: 30px;
+}
+
+.wpie-stat-card {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    border-radius: 12px;
+    padding: 25px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.wpie-stat-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+.wpie-stat-card:nth-child(1) {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+
+.wpie-stat-card:nth-child(2) {
+    background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+}
+
+.wpie-stat-card:nth-child(3) {
+    background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+}
+
+.wpie-stat-card:nth-child(4) {
+    background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);
+}
+
+.wpie-stat-card:nth-child(5) {
+    background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);
+}
+
+.wpie-stat-card:nth-child(6) {
+    background: linear-gradient(135deg, #30cfd0 0%, #330867 100%);
+}
+
+.wpie-stat-card:nth-child(7) {
+    background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);
+    color: #333;
+}
+
+.wpie-stat-icon {
+    font-size: 40px;
+    line-height: 1;
+}
+
+.wpie-stat-content {
+    flex: 1;
+}
+
+.wpie-stat-value {
+    font-size: 32px;
+    font-weight: 700;
+    color: #ffffff;
+    line-height: 1.2;
+    margin-bottom: 5px;
+}
+
+.wpie-stat-card:nth-child(7) .wpie-stat-value {
+    color: #333;
+}
+
+.wpie-stat-label {
+    font-size: 14px;
+    color: rgba(255, 255, 255, 0.9);
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.wpie-stat-card:nth-child(7) .wpie-stat-label {
+    color: #666;
+}
+
+/* Medal Statistics */
+.wpie-medal-stats {
+    margin-top: 30px;
+}
+
+.wpie-medal-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 15px;
+}
+
+.wpie-medal-item {
+    background: #f8f9fa;
+    border-radius: 8px;
+    padding: 20px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    border: 2px solid transparent;
+    transition: border-color 0.2s;
+}
+
+.wpie-medal-item:hover {
+    border-color: #e5e5e5;
+}
+
+.wpie-medal-gold {
+    background: linear-gradient(135deg, #f6d365 0%, #fda085 100%);
+}
+
+.wpie-medal-silver {
+    background: linear-gradient(135deg, #c9d6ff 0%, #e2e2e2 100%);
+}
+
+.wpie-medal-bronze {
+    background: linear-gradient(135deg, #d299c2 0%, #fef9d7 100%);
+}
+
+.wpie-medal-success {
+    background: linear-gradient(135deg, #89f7fe 0%, #66a6ff 100%);
+}
+
+.wpie-medal-icon {
+    font-size: 32px;
+    line-height: 1;
+}
+
+.wpie-medal-count {
+    font-size: 24px;
+    font-weight: 700;
+    color: #1a1a1a;
+}
+
+.wpie-medal-label {
+    font-size: 14px;
+    font-weight: 600;
+    color: #666;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+/* Qualification / Final / Accepted / Forum — one grid so pairs (e.g. Qualification + Accepted) sit side by side */
+.wpie-secondary-stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 20px;
+    margin-top: 30px;
+    align-items: stretch;
+}
+
+.wpie-secondary-stats-grid > .wpie-stat-item,
+.wpie-secondary-stats-grid > .wpie-accepted-forum-card {
+    min-height: 100%;
+}
+
+/* Kept for any legacy markup; secondary grid replaces typical use */
+.wpie-main-stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    margin-top: 30px;
+}
+
+.wpie-stat-item {
+    background: #f8f9fa;
+    border-radius: 8px;
+    padding: 15px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* Competition Type Statistics */
+.wpie-competition-type-stats {
+    margin-top: 0;
+}
+
+.wpie-comp-type-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 15px;
+}
+
+.wpie-comp-type-item {
+    background: #f8f9fa;
+    border-radius: 8px;
+    padding: 15px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.wpie-comp-type-label {
+    font-weight: 600;
+    color: #666;
+}
+
+.wpie-comp-type-value {
+    font-size: 20px;
+    font-weight: 700;
+    color: #1a1a1a;
+}
+
+/* Application Status Statistics */
+.wpie-application-status-stats {
+    margin-top: 0;
+}
+
+.wpie-app-status-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 15px;
+}
+
+.wpie-other-stats-section {
+    margin-top: 30px;
+}
+
+/* Accepted / Forum cards when used inside .wpie-secondary-stats-grid inherit cell width */
+.wpie-accepted-forum-cards-wrapper {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+}
+
+.wpie-accepted-forum-card {
+    background: #f8f9fa;
+    border-radius: 12px;
+    padding: 25px;
+    display: flex;
+    align-items: center;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s, box-shadow 0.2s;
+    border-left: 4px solid #ccc;
+}
+
+.wpie-accepted-forum-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+.wpie-status-accepted-card {
+    border-left-color: #28a745;
+    background: linear-gradient(135deg, #d4edda 0%, #c3e6cb 100%);
+}
+
+.wpie-forum-stat-card {
+    border-left-color: #667eea;
+    background: linear-gradient(135deg, #e7e3ff 0%, #d6d0ff 100%);
+}
+
+.wpie-accepted-forum-card-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+.wpie-accepted-forum-label {
+    font-weight: 600;
+    color: #666;
+    font-size: 16px;
+}
+
+.wpie-status-accepted-card .wpie-accepted-forum-label {
+    color: #155724;
+}
+
+.wpie-forum-stat-card .wpie-accepted-forum-label {
+    color: #4a5568;
+}
+
+.wpie-accepted-forum-value {
+    font-size: 32px;
+    font-weight: 700;
+    color: #1a1a1a;
+    line-height: 1.2;
+}
+
+.wpie-status-accepted-card .wpie-accepted-forum-value {
+    color: #155724;
+}
+
+.wpie-forum-stat-card .wpie-accepted-forum-value {
+    color: #4a5568;
+}
+
+/* Mobile: Stack vertically */
+@media (max-width: 768px) {
+    .wpie-accepted-forum-cards-wrapper {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+}
+
+/* Side by Side Stats Wrapper */
+.wpie-stats-side-by-side-wrapper {
+    display: flex;
+    gap: 30px;
+    align-items: flex-start;
+}
+
+.wpie-stats-side-by-side-item {
+    flex: 1;
+    margin-top: 0;
+}
+
+/* Mobile: Stack vertically */
+@media (max-width: 768px) {
+    .wpie-stats-side-by-side-wrapper {
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .wpie-stats-side-by-side-item {
+        width: 100%;
+    }
+}
+
+.wpie-app-status-item {
+    background: #f8f9fa;
+    border-radius: 8px;
+    padding: 15px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-left: 4px solid #ccc;
+}
+
+.wpie-status-accepted {
+    border-left-color: #28a745;
+    background: #f0f9f4;
+}
+
+.wpie-status-pending {
+    border-left-color: #ffc107;
+    background: #fffbf0;
+}
+
+.wpie-status-inaccessible,
+.wpie-status-irrelevant,
+.wpie-status-rejected {
+    border-left-color: #dc3545;
+    background: #fef0f0;
+}
+
+.wpie-status-label {
+    font-weight: 600;
+    color: #666;
+}
+
+.wpie-status-value {
+    font-size: 20px;
+    font-weight: 700;
+    color: #1a1a1a;
+}
+
+/* Certificates Table */
+.wpie-certificates-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+.wpie-certificates-table thead {
+    background: #f8f9fa;
+}
+
+.wpie-certificates-table th {
+    padding: 15px;
+    text-align: left;
+    font-weight: 600;
+    color: #333;
+    border-bottom: 2px solid #e5e5e5;
+}
+
+.wpie-certificates-table td {
+    padding: 15px;
+    border-bottom: 1px solid #f0f0f0;
+}
+
+.wpie-certificates-table tbody tr:hover {
+    background: #f8f9fa;
+}
+
+.wpie-cert-link {
+    color: #667eea;
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.2s;
+}
+
+.wpie-cert-link:hover {
+    color: #764ba2;
+    text-decoration: underline;
+}
+
+/* My Students — competition filter */
+.wpie-students-filter-bar {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 12px 16px;
+    margin: 0 0 18px;
+    padding: 14px 16px;
+    background: #f8f9fc;
+    border: 1px solid #e8eaf6;
+    border-radius: 8px;
+}
+
+.wpie-students-filter-label {
+    font-weight: 600;
+    font-size: 14px;
+    color: #333;
+    margin: 0;
+}
+
+.wpie-students-competition-select {
+    min-width: 220px;
+    max-width: 100%;
+    flex: 1 1 240px;
+    padding: 10px 14px;
+    font-size: 14px;
+    border: 1px solid #cfd4e6;
+    border-radius: 6px;
+    background: #fff;
+    color: #1a1a1a;
+    cursor: pointer;
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.wpie-students-competition-select:hover,
+.wpie-students-competition-select:focus {
+    border-color: #667eea;
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.2);
+}
+
+.wpie-students-filter-empty {
+    margin: 0 0 16px;
+    padding: 12px 16px;
+    background: #fff8e6;
+    border: 1px solid #f0d78c;
+    border-radius: 8px;
+    color: #5c4a00;
+    font-size: 14px;
+}
+
+.wpie-students-filter-empty[hidden] {
+    display: none !important;
+}
+
+/* Students Section - Desktop Table View */
+.wpie-students-table-view {
+    display: block;
+}
+
+.wpie-students-card-view {
+    display: none;
+}
+
+.wpie-students-table {
+    width: 100%;
+    border-collapse: collapse;
+    background: #ffffff;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.wpie-students-table thead {
+    background: #667eea;
+}
+
+.wpie-students-table th {
+    padding: 15px 12px;
+    text-align: left;
+    font-weight: 600;
+    color: #ffffff;
+    font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    white-space: nowrap;
+}
+
+.wpie-students-table th.wpie-col-number {
+    width: 50px;
+    text-align: center;
+}
+
+.wpie-students-table td {
+    padding: 15px 12px;
+    border-bottom: 1px solid #f0f0f0;
+    color: #333;
+    font-size: 14px;
+}
+
+.wpie-students-table td.wpie-col-number {
+    text-align: center;
+    font-weight: 600;
+    color: #666;
+    width: 50px;
+}
+
+.wpie-students-table tbody tr:hover {
+    background: #f8f9fa;
+}
+
+.wpie-students-table tbody tr:last-child td {
+    border-bottom: none;
+}
+
+.wpie-student-name-cell {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.wpie-student-name-cell strong {
+    color: #1a1a1a;
+    font-weight: 600;
+}
+
+.wpie-student-email-cell {
+    font-size: 12px;
+    color: #666;
+}
+
+.wpie-competition-cell {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.wpie-competition-cell strong {
+    color: #1a1a1a;
+    font-weight: 600;
+}
+
+.wpie-competition-date {
+    font-size: 12px;
+    color: #666;
+}
+
+.wpie-video-cell {
+    text-align: center;
+}
+
+.wpie-video-icon {
+    font-size: 20px;
+    text-decoration: none;
+    display: inline-block;
+    transition: transform 0.2s;
+    cursor: pointer;
+}
+
+.wpie-video-icon:hover {
+    transform: scale(1.2);
+}
+
+.wpie-no-video {
+    color: #ccc;
+}
+
+/* Students Section - Mobile Card View */
+.wpie-student-registration-card {
+    background: #ffffff;
+    border: 1px solid #e5e5e5;
+    border-radius: 8px;
+    padding: 20px;
+    margin-bottom: 15px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    position: relative;
+}
+
+.wpie-card-number {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background: #667eea;
+    color: #ffffff;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 14px;
+}
+
+.wpie-card-header {
+    margin-bottom: 15px;
+    padding-bottom: 15px;
+    border-bottom: 2px solid #f0f0f0;
+}
+
+.wpie-card-student-info {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.wpie-card-student-name {
+    font-size: 18px;
+    font-weight: 600;
+    color: #1a1a1a;
+    display: block;
+}
+
+.wpie-card-student-email {
+    font-size: 14px;
+    color: #666;
+    display: block;
+}
+
+.wpie-card-age-category {
+    display: inline-block;
+    background: #f0f0f0;
+    padding: 4px 10px;
+    border-radius: 12px;
+    font-size: 12px;
+    font-weight: 600;
+    color: #666;
+    margin-top: 4px;
+}
+
+.wpie-card-body {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.wpie-card-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 15px;
+    padding: 8px 0;
+    border-bottom: 1px solid #f5f5f5;
+}
+
+.wpie-card-row:last-child {
+    border-bottom: none;
+}
+
+.wpie-card-label {
+    font-weight: 600;
+    color: #666;
+    font-size: 14px;
+    min-width: 100px;
+    flex-shrink: 0;
+}
+
+.wpie-card-value {
+    color: #1a1a1a;
+    font-size: 14px;
+    text-align: right;
+    flex: 1;
+}
+
+.wpie-card-competition-info {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    align-items: flex-end;
+}
+
+.wpie-card-competition-info strong {
+    font-weight: 600;
+    color: #1a1a1a;
+}
+
+.wpie-card-competition-date {
+    font-size: 12px;
+    color: #666;
+}
+
+.wpie-medal-badge {
+    display: inline-block;
+    padding: 4px 12px;
+    border-radius: 12px;
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.wpie-medal-badge.wpie-medal-gold {
+    background: #f6d365;
+    color: #8b6914;
+}
+
+.wpie-medal-badge.wpie-medal-silver {
+    background: #c9d6ff;
+    color: #4a5568;
+}
+
+.wpie-medal-badge.wpie-medal-bronze {
+    background: #d299c2;
+    color: #553c5e;
+}
+
+.wpie-medal-badge.wpie-medal-success {
+    background: #89f7fe;
+    color: #1a365d;
+}
+
+.wpie-medal-container {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.wpie-summit-coupon-info {
+    font-size: 12px;
+    padding: 6px 10px;
+    background: #e8f5e9;
+    border-left: 3px solid #4caf50;
+    border-radius: 3px;
+    margin-top: 4px;
+}
+
+.wpie-summit-coupon-info strong {
+    color: #2e7d32;
+    margin-right: 6px;
+}
+
+/* Prize information */
+.wpie-prize-info {
+    margin-top: 8px;
+    padding: 8px 10px;
+    background-color: #f0f8ff;
+    border: 1px solid #b3d9ff;
+    border-radius: 4px;
+    font-size: 13px;
+}
+
+.wpie-prize-amount {
+    font-weight: 600;
+    color: #0066cc;
+    margin-bottom: 4px;
+}
+
+.wpie-prize-payment-status {
+    margin-top: 4px;
+}
+
+.wpie-payment-status-badge {
+    display: inline-block;
+    padding: 4px 12px;
+    border-radius: 15px;
+    font-size: 11px;
+    font-weight: 500;
+    min-width: 70px;
+    text-align: center;
+}
+
+.wpie-payment-status-badge.wpie-status-paid {
+    background-color: #28a745;
+    color: #fff;
+}
+
+.wpie-payment-status-badge.wpie-status-not-paid {
+    background-color: #ffc107;
+    color: #000;
+}
+
+.wpie-card-medal-container {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    align-items: flex-end;
+}
+
+/* No Data Message */
+.wpie-no-data {
+    color: #999;
+    font-style: italic;
+    padding: 20px;
+    text-align: center;
+}
+
+/* Access Denied / Login Required */
+.wpie-supervisor-profile-login-required,
+.wpie-supervisor-profile-access-denied,
+.wpie-supervisor-profile-error {
+    background: #fff3cd;
+    border: 1px solid #ffc107;
+    border-radius: 8px;
+    padding: 30px;
+    text-align: center;
+    margin: 30px 0;
+}
+
+.wpie-supervisor-profile-login-required h3,
+.wpie-supervisor-profile-access-denied h3,
+.wpie-supervisor-profile-error h3 {
+    color: #856404;
+    margin: 0 0 15px 0;
+}
+
+.wpie-supervisor-profile-login-required p,
+.wpie-supervisor-profile-access-denied p,
+.wpie-supervisor-profile-error p {
+    color: #856404;
+    margin: 10px 0;
+}
+
+.wpie-supervisor-profile-login-required .button {
+    display: inline-block;
+    padding: 12px 24px;
+    background: #ffc107;
+    color: #000;
+    text-decoration: none;
+    border-radius: 4px;
+    font-weight: 600;
+    transition: background 0.2s;
+}
+
+.wpie-supervisor-profile-login-required .button:hover {
+    background: #e0a800;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .wpie-supervisor-profile-wrapper {
+        padding: 20px 15px;
+    }
+
+    .wpie-profile-section {
+        padding: 20px;
+    }
+
+    .wpie-profile-title {
+        font-size: 24px;
+    }
+
+    .wpie-section-title {
+        font-size: 20px;
+    }
+
+    .wpie-stats-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .wpie-info-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+
+    .wpie-info-column {
+        gap: 20px;
+    }
+
+    .wpie-certificates-table {
+        font-size: 14px;
+    }
+
+    .wpie-certificates-table th,
+    .wpie-certificates-table td {
+        padding: 10px 8px;
+    }
+
+    /* Stack stats columns on mobile */
+    .wpie-main-stats-grid,
+    .wpie-secondary-stats-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+
+    /* Hide desktop table, show mobile card view */
+    .wpie-students-table-view {
+        display: none;
+    }
+
+    .wpie-students-card-view {
+        display: block;
+    }
+}
+
+/* Forum Registrations Styles */
+.wpie-forum-registrations-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 20px;
+    margin-top: 20px;
+}
+
+.wpie-forum-card {
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.wpie-forum-card-header {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    padding: 15px;
+    border-radius: 8px 8px 0 0;
+    margin: -20px -20px 20px -20px;
+}
+
+.wpie-forum-card-header h3 {
+    margin: 0;
+    color: white;
+    font-size: 18px;
+    font-weight: 600;
+}
+
+.wpie-forum-card-content {
+    display: flex;
+    flex-direction: column;
+}
+
+.wpie-forum-info-section {
+    margin-bottom: 15px;
+}
+
+/* Forum Cards Container - Desktop: 3 columns, Mobile: 1 column */
+.wpie-forum-cards-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    margin-top: 10px;
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+}
+
+.wpie-forum-event-details,
+.wpie-forum-payment-info,
+.wpie-forum-visa-status {
+    padding: 20px;
+    border-radius: 8px;
+    min-height: 180px;
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+    width: 100%;
+    flex: 1;
+}
+
+.wpie-forum-event-details {
+    background: #f5f5f5;
+}
+
+.wpie-forum-payment-info {
+    background: #e7f3ff;
+}
+
+.wpie-forum-visa-status {
+    background: #fff3cd;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    text-align: left;
+}
+
+/* Unified title style for all forum cards */
+.wpie-forum-card-title {
+    display: block !important;
+    font-weight: 600 !important;
+    margin-bottom: 10px !important;
+    font-size: 14px !important;
+    color: #333 !important;
+    text-align: left !important;
+    width: 100% !important;
+    margin-top: 0 !important;
+}
+
+.wpie-visa-status-radio-wrapper {
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+}
+
+.wpie-visa-radio-group {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    width: 100%;
+    align-items: flex-start;
+}
+
+.wpie-visa-radio-label {
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+    padding: 5px 8px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+    font-size: 13px;
+    color: #333;
+    width: 100%;
+    text-align: left;
+}
+
+.wpie-visa-radio-label:hover {
+    background-color: rgba(0, 0, 0, 0.05);
+}
+
+.wpie-visa-status-radio {
+    margin: 0;
+    cursor: pointer;
+    flex-shrink: 0;
+    margin-top: 2px;
+}
+
+.wpie-visa-radio-label span {
+    flex: 1;
+    line-height: 1.4;
+    text-align: left;
+}
+
+/* Flight Information Styles */
+.wpie-forum-flight-info {
+    background: #f0f8ff;
+    padding: 20px;
+    border-radius: 8px;
+    min-height: 180px;
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+    width: 100%;
+    flex: 1;
+    grid-column: 1 / -1; /* Span all columns */
+    margin-top: 20px;
+}
+
+.wpie-flight-info-form {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+.wpie-flight-section {
+    margin-bottom: 0;
+    padding: 15px;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    border-radius: 4px;
+    background: #fafafa;
+}
+
+.wpie-flight-section:last-of-type {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    margin-bottom: 0;
+}
+
+.wpie-flight-section-title {
+    font-size: 13px;
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 12px;
+    margin-top: 0;
+}
+
+.wpie-flight-form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+    margin-bottom: 12px;
+}
+
+.wpie-flight-form-group {
+    display: flex;
+    flex-direction: column;
+}
+
+.wpie-flight-form-group label {
+    font-size: 12px;
+    font-weight: 500;
+    color: #555;
+    margin-bottom: 5px;
+}
+
+.wpie-flight-input {
+    padding: 8px 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 13px;
+    font-family: inherit;
+    transition: border-color 0.2s ease, background-color 0.2s ease;
+    width: 100%;
+    box-sizing: border-box;
+    background-color: white;
+}
+
+.wpie-flight-input:focus {
+    outline: none;
+    border-color: #4facfe;
+    box-shadow: 0 0 0 2px rgba(79, 172, 254, 0.1);
+}
+
+/* Filled input fields - when they have a value */
+.wpie-flight-input.filled,
+.wpie-flight-input:not(:placeholder-shown):not([value=""]),
+select.wpie-flight-input.filled {
+    background-color: #e8f5e9;
+    border-color: #4caf50;
+}
+
+.wpie-flight-input select,
+select.wpie-flight-input {
+    background-color: white;
+    cursor: pointer;
+}
+
+select.wpie-flight-input.filled {
+    background-color: #e8f5e9;
+    border-color: #4caf50;
+}
+
+.wpie-flight-form-actions {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-top: 15px;
+    padding-top: 15px;
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+    grid-column: 1 / -1; /* Span both columns */
+}
+
+.wpie-flight-save-btn {
+    padding: 10px 20px;
+    background: #4facfe;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    font-size: 13px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.wpie-flight-save-btn:hover:not(:disabled) {
+    background: #3d8bfe;
+}
+
+.wpie-flight-save-btn:disabled {
+    background: #ccc;
+    cursor: not-allowed;
+}
+
+.wpie-flight-save-message {
+    font-size: 12px;
+    padding: 8px 12px;
+    border-radius: 4px;
+}
+
+.wpie-flight-save-message.success {
+    background: #d4edda;
+    color: #155724;
+}
+
+.wpie-flight-save-message.error {
+    background: #f8d7da;
+    color: #721c24;
+}
+
+/* Responsive: Mobile */
+@media screen and (max-width: 768px) {
+    .wpie-flight-info-form {
+        grid-template-columns: 1fr;
+        gap: 15px;
+    }
+
+    .wpie-flight-section {
+        margin-bottom: 0;
+    }
+
+    .wpie-flight-form-row {
+        grid-template-columns: 1fr;
+        gap: 12px;
+    }
+
+    .wpie-flight-form-actions {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .wpie-flight-save-btn {
+        width: 100%;
+    }
+}
+
+.wpie-status-badge {
+    display: inline-block;
+    padding: 4px 12px;
+    border-radius: 15px;
+    font-size: 12px;
+    font-weight: 500;
+    text-align: center;
+}
+
+.wpie-status-free {
+    background-color: #e8f5e9;
+    color: #1b5e20;
+}
+
+.wpie-status-pending {
+    background-color: #fff3e0;
+    color: #e65100;
+}
+
+.wpie-status-paid {
+    background-color: #e8f5e9;
+    color: #1b5e20;
+}
+
+.wpie-status-pre_registered {
+    background-color: #f3e5f5;
+    color: #6a1b9a;
+}
+
+/* Responsive: Mobile - Stack cards vertically */
+@media screen and (max-width: 768px) {
+    .wpie-forum-cards-container {
+        grid-template-columns: 1fr;
+        gap: 15px;
+    }
+
+    .forum-banner-content {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .forum-icon {
+        font-size: 36px;
+    }
+
+    .forum-message h3 {
+        font-size: 18px;
+    }
+
+    .forum-message p {
+        font-size: 14px;
+    }
+}
+
+/* WeVoi Forum 2026 Banner */
+.forum-2026-banner {
+    background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+    border-radius: 12px;
+    padding: 25px;
+    margin-bottom: 30px;
+    box-shadow: 0 4px 15px rgba(79, 172, 254, 0.3);
+    animation: slideInDown 0.5s ease;
+}
+
+.forum-banner-content {
+    display: flex;
+    align-items: flex-start;
+    gap: 20px;
+}
+
+.forum-icon {
+    font-size: 48px;
+    flex-shrink: 0;
+}
+
+.forum-message {
+    flex: 1;
+    color: #fff;
+}
+
+.forum-message h3 {
+    margin: 0 0 10px 0;
+    font-size: 22px;
+    color: #fff;
+    font-weight: 700;
+}
+
+.forum-message p {
+    margin: 8px 0;
+    font-size: 15px;
+    line-height: 1.6;
+    color: #fff;
+}
+
+.forum-action {
+    margin-top: 20px;
+}
+
+.forum-register-button {
+    display: inline-block;
+    padding: 12px 24px;
+    background: #fff;
+    color: #4facfe;
+    text-decoration: none;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 16px;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+.forum-register-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    color: #4facfe;
+}
+
+@keyframes slideInDown {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}

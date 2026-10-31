@@ -1,0 +1,566 @@
+
+
+
+
+/* İyileştirilmiş yükleme durumu */
+.wevoi-button.loading {
+    position: relative;
+    color: transparent;
+    pointer-events: none;
+}
+
+.wevoi-button.loading::after {
+    content: "";
+    position: absolute;
+    width: 24px;
+    height: 24px;
+    top: 50%;
+    left: 50%;
+    margin: -12px 0 0 -12px;
+    border: 3px solid rgba(255, 255, 255, 0.3);
+    border-top-color: var(--white);
+    border-radius: 50%;
+    animation: button-loading-spinner 1s ease-in-out infinite;
+}
+
+@keyframes button-loading-spinner {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+/* Daha belirgin total kısmı */
+.wevoi-total-section {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 25px;
+    padding: 15px 20px;
+    background: rgba(26, 115, 232, 0.05);
+    border-radius: var(--radius);
+    border-left: 4px solid var(--primary-color);
+}
+
+.wevoi-total-label {
+    font-size: 16px;
+    font-weight: 500;
+    color: var(--text-color);
+}
+
+.wevoi-total-amount {
+    font-size: 28px;
+    font-weight: 700;
+    color: var(--primary-color);
+    text-shadow: 0 1px 1px rgba(0,0,0,0.1);
+}
+/* Gradyan buton */
+.wevoi-button-primary {
+    background: linear-gradient(135deg, #1a73e8 0%, #0d62d1 100%);
+    color: var(--white);
+    width: 100%;
+    border-radius: 50px; /* Daha yuvarlak buton */
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    padding: 14px 28px;
+    box-shadow: 0 4px 10px rgba(26, 115, 232, 0.3);
+    transition: all 0.3s ease;
+}
+
+.wevoi-button-primary:hover {
+    background: linear-gradient(135deg, #0d62d1 0%, #0952b3 100%);
+    box-shadow: 0 6px 15px rgba(26, 115, 232, 0.4);
+    transform: translateY(-2px);
+}
+
+.wevoi-button-primary:active {
+    transform: translateY(1px);
+    box-shadow: 0 2px 6px rgba(26, 115, 232, 0.4);
+}
+/* İkonlar için stiller */
+.wevoi-form-group {
+    position: relative;
+}
+
+.icon-input {
+    padding-left: 40px !important;
+}
+
+.input-icon {
+    position: absolute;
+    left: 14px;
+    top: 38px; /* label'ın altında */
+    color: var(--light-text);
+    pointer-events: none;
+}
+
+/* SVG ikonları için */
+.icon-email svg,
+.icon-name svg,
+.icon-country svg,
+.icon-purpose svg,
+.icon-competition svg,
+.icon-quantity svg,
+.icon-amount svg {
+    width: 18px;
+    height: 18px;
+    stroke: currentColor;
+    stroke-width: 2;
+    fill: none;
+}
+/* Modern form elemanları */
+.wevoi-form-group input[type="text"],
+.wevoi-form-group input[type="email"],
+.wevoi-form-group input[type="number"],
+.wevoi-form-group select {
+    width: 100%;
+    padding: 14px 16px;
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius);
+    font-size: 15px;
+    transition: all 0.3s ease;
+    box-sizing: border-box;
+    appearance: none;
+    -webkit-appearance: none;
+    background-color: var(--white);
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05) inset;
+}
+
+/* Select ok işareti */
+.wevoi-form-group select {
+    background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%235f6368' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+    background-repeat: no-repeat;
+    background-position: right 12px center;
+    background-size: 16px;
+    padding-right: 40px;
+}
+
+/* Giriş alanı odaklandığında efekt */
+.wevoi-form-group input:focus,
+.wevoi-form-group select:focus {
+    border-color: var(--primary-color);
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(26, 115, 232, 0.2);
+    transform: translateY(-1px);
+}
+
+/* Stripe elementi için aynı stil */
+.wevoi-stripe-element {
+    padding: 14px 16px;
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius);
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05) inset;
+    transition: all 0.3s ease;
+}
+
+.wevoi-stripe-element.StripeElement--focus {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(26, 115, 232, 0.2);
+    transform: translateY(-1px);
+}
+/* Animasyonlar için ek stiller */
+.wevoi-card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.wevoi-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+.wevoi-button {
+    position: relative;
+    overflow: hidden;
+}
+
+.wevoi-button:after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 10px;
+    height: 10px;
+    background: rgba(255,255,255,0.3);
+    opacity: 0;
+    border-radius: 100%;
+    transform: scale(1, 1) translate(-50%);
+    transform-origin: 50% 50%;
+}
+
+.wevoi-button:focus:not(:active)::after {
+    animation: ripple 1s ease-out;
+}
+
+@keyframes ripple {
+    0% {
+        transform: scale(0, 0);
+        opacity: 0.5;
+    }
+    20% {
+        transform: scale(25, 25);
+        opacity: 0.3;
+    }
+    100% {
+        opacity: 0;
+        transform: scale(40, 40);
+    }
+}
+/* Seçili sekmeye yeşil arkaplan için stil ekle */
+.wevoi-option-tab.selected {
+    background-color: rgba(52, 168, 83, 0.1); /* Açık yeşil arkaplan */
+    border-color: #34a853; /* Yeşil kenarlık */
+}
+
+.wevoi-option-tab.selected .wevoi-tab-label {
+    color: #34a853;
+    font-weight: 600;
+}
+
+.wevoi-option-tab.selected input[type="radio"]:checked + .wevoi-tab-label {
+    background-color: rgba(52, 168, 83, 0.05);
+}
+
+/* Base Styles and Variables */
+:root {
+    --primary-color: #1a73e8;
+    --primary-hover: #0d62d1;
+    --success-color: #34a853;
+    --error-color: #ea4335;
+    --text-color: #3c4043;
+    --light-text: #5f6368;
+    --border-color: #dadce0;
+    --light-bg: #f8f9fa;
+    --white: #ffffff;
+    --shadow: 0 1px 3px rgba(0,0,0,0.1);
+    --radius: 8px;
+    --transition: all 0.3s ease;
+}
+
+/* Main Container */
+.wevoi-form-container {
+    max-width: 700px;
+    margin: 30px auto;
+    font-family: 'Google Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+    color: var(--text-color);
+}
+
+/* Card Container */
+.wevoi-card {
+    background: var(--white);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    padding: 30px;
+    margin-bottom: 20px;
+    border: 1px solid var(--border-color);
+    transition: var(--transition);
+}
+
+.wevoi-card.primary-card {
+    border-top: 4px solid var(--primary-color);
+}
+
+/* Headings */
+.wevoi-card h3 {
+    margin: 0 0 15px 0;
+    color: var(--text-color);
+    font-size: 20px;
+    font-weight: 500;
+    text-align: center;
+}
+
+.wevoi-form-subtitle {
+    text-align: center;
+    color: var(--light-text);
+    margin-bottom: 25px;
+    font-size: 15px;
+    line-height: 1.5;
+}
+
+/* Option Tabs */
+.wevoi-options-container {
+    margin-bottom: 25px;
+}
+
+.wevoi-option-tab {
+    margin-bottom: 15px;
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius);
+    overflow: hidden;
+}
+
+.wevoi-tab-label {
+    display: block;
+    padding: 15px;
+    cursor: pointer;
+    font-weight: 500;
+    background-color: var(--light-bg);
+    border-bottom: 1px solid transparent;
+    transition: var(--transition);
+}
+
+.wevoi-option-tab input[type="radio"] {
+    display: none;
+}
+
+.wevoi-option-tab input[type="radio"]:checked + .wevoi-tab-label {
+    background-color: var(--white);
+    color: var(--primary-color);
+    border-bottom: 1px solid var(--border-color);
+}
+
+.wevoi-tab-content {
+    padding: 20px;
+    display: none;
+}
+
+.wevoi-option-tab input[type="radio"]:checked ~ .wevoi-tab-content {
+    display: block;
+}
+
+/* Flex Layout */
+.wevoi-flex-row {
+    display: flex;
+    gap: 15px;
+}
+
+.flex-grow-2 {
+    flex: 2;
+}
+
+/* Form Controls */
+.wevoi-form-group {
+    margin-bottom: 20px;
+    flex: 1;
+}
+
+.wevoi-form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 500;
+    font-size: 14px;
+    color: var(--text-color);
+}
+
+.wevoi-form-group input[type="text"],
+.wevoi-form-group input[type="email"],
+.wevoi-form-group input[type="number"],
+.wevoi-form-group select {
+    width: 100%;
+    padding: 12px 15px;
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius);
+    font-size: 15px;
+    transition: var(--transition);
+    box-sizing: border-box;
+}
+
+.wevoi-form-group input:focus,
+.wevoi-form-group select:focus {
+    border-color: var(--primary-color);
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(26, 115, 232, 0.2);
+}
+
+.wevoi-amount-input {
+    position: relative;
+}
+
+.currency-symbol {
+    position: absolute;
+    left: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--light-text);
+}
+
+.wevoi-amount-input input {
+    padding-left: 25px !important;
+}
+
+/* Total Amount Display */
+.wevoi-total-section {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 25px;
+    padding-top: 20px;
+    border-top: 1px solid var(--border-color);
+}
+
+.wevoi-total-label {
+    font-size: 16px;
+    font-weight: 500;
+    color: var(--text-color);
+}
+
+.wevoi-total-amount {
+    font-size: 26px;
+    font-weight: 700;
+    color: var(--primary-color);
+}
+
+/* Stripe Elements */
+.wevoi-stripe-element {
+    width: 100%;
+    padding: 12px 15px;
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius);
+    background-color: var(--white);
+    transition: var(--transition);
+}
+
+#card-element {
+    min-height: 24px;
+}
+
+#card-errors {
+    margin-top: 8px;
+    color: var(--error-color);
+    font-size: 13px;
+}
+
+/* Consent Checkbox */
+.wevoi-consent-container {
+    margin: 20px 0;
+}
+
+.wevoi-consent-label {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    font-size: 13px;
+    color: var(--light-text);
+    line-height: 1.5;
+}
+
+.wevoi-consent-label input[type="checkbox"] {
+    margin-top: 3px;
+}
+
+.wevoi-consent-label a {
+    color: var(--primary-color);
+    text-decoration: none;
+}
+
+.wevoi-consent-label a:hover {
+    text-decoration: underline;
+}
+
+/* Button */
+.wevoi-button {
+    padding: 12px 24px;
+    border: none;
+    border-radius: var(--radius);
+    font-size: 15px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.wevoi-button-primary {
+    background-color: var(--primary-color);
+    color: var(--white);
+    width: 100%;
+}
+
+.wevoi-button-primary:hover {
+    background-color: var(--primary-hover);
+}
+
+.wevoi-button:disabled {
+    background-color: var(--border-color);
+    color: var(--light-text);
+    cursor: not-allowed;
+}
+
+/* Notification */
+.wevoi-notification {
+    padding: 15px;
+    border-radius: var(--radius);
+    margin-bottom: 20px;
+    font-size: 14px;
+    animation: fadeInUp 0.3s ease;
+}
+
+.wevoi-notification.success {
+    background-color: rgba(52, 168, 83, 0.1);
+    color: var(--success-color);
+    border: 1px solid rgba(52, 168, 83, 0.3);
+}
+
+.wevoi-notification.error {
+    background-color: rgba(234, 67, 53, 0.1);
+    color: var(--error-color);
+    border: 1px solid rgba(234, 67, 53, 0.3);
+}
+
+/* Loading State */
+.wevoi-button.loading {
+    position: relative;
+    color: transparent;
+    pointer-events: none;
+}
+
+.wevoi-button.loading::after {
+    content: "";
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    top: 50%;
+    left: 50%;
+    margin: -10px 0 0 -10px;
+    border: 2px solid rgba(255, 255, 255, 0.25);
+    border-top-color: var(--white);
+    border-radius: 50%;
+    animation: button-loading-spinner 1s linear infinite;
+}
+
+@keyframes button-loading-spinner {
+    from {
+        transform: rotate(0turn);
+    }
+    to {
+        transform: rotate(1turn);
+    }
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .wevoi-card {
+        padding: 20px;
+    }
+
+    .wevoi-flex-row {
+        flex-direction: column;
+        gap: 0;
+    }
+    
+    .wevoi-form-group {
+        margin-bottom: 15px;
+    }
+    
+    .wevoi-total-amount {
+        font-size: 22px;
+    }
+}
+
+/* Styling Disabled Elements */
+select:disabled,
+input:disabled {
+    background-color: var(--light-bg) !important;
+    color: var(--light-text) !important;
+    cursor: not-allowed !important;
+}

@@ -1,0 +1,1972 @@
+.wevoi-app{
+  --navy:#101b3d;
+  --navy2:#172a5c;
+  --pink:#f22978;
+  --pink2:#ff5b9b;
+  --blue:#1688e8;
+  --cyan:#63c6f4;
+  --purple:#6e45d8;
+  --gold:#f3b52d;
+  --green:#1eb980;
+  --ink:#212941;
+  --muted:#69738f;
+  --line:#e7eaf2;
+  --bg:#f7f8fc;
+  --white:#fff;
+  --shadow:0 18px 50px rgba(26,38,78,.10);
+  --shadow2:0 10px 28px rgba(26,38,78,.08);
+  --r:24px;
+}
+.wevoi-app, .wevoi-app *{box-sizing:border-box}
+.wevoi-app{scroll-behavior:smooth}
+.wevoi-app{margin:0;font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif;color:var(--ink);background:#fff;line-height:1.6}
+.wevoi-app.wv-menu-open{overflow:hidden}
+:where(.wevoi-app) a{color:inherit;text-decoration:none}
+:where(.wevoi-app) img{max-width:100%;display:block}
+:where(.wevoi-app) button,:where(.wevoi-app) input{font:inherit}
+.wevoi-app .wv-container{width:min(1180px,calc(100% - 40px));margin:auto}
+.wevoi-app .wv-eyebrow{text-transform:uppercase;letter-spacing:.14em;font-size:12px;font-weight:900;color:var(--pink);margin-bottom:10px}
+:where(.wevoi-app) h1,:where(.wevoi-app) h2,:where(.wevoi-app) h3,:where(.wevoi-app) h4{color:var(--navy);line-height:1.08;margin-top:0}
+:where(.wevoi-app) h1{font-size:clamp(44px,6vw,82px);letter-spacing:-.04em}
+:where(.wevoi-app) h2{font-size:clamp(31px,4vw,52px);letter-spacing:-.03em}
+:where(.wevoi-app) h3{font-size:22px}
+:where(.wevoi-app) p{margin-top:0}
+.wevoi-app .wv-lead{font-size:clamp(18px,2vw,22px);color:#45516f;max-width:760px}
+.wevoi-app .wv-muted{color:var(--muted)}
+.wevoi-app .wv-small{font-size:13px}
+.wevoi-app .wv-center{text-align:center}
+.wevoi-app .wv-pill{display:inline-flex;align-items:center;gap:8px;border-radius:999px;padding:8px 13px;background:#fff;border:1px solid var(--line);font-size:13px;font-weight:800;color:var(--navy)}
+.wevoi-app .wv-pill.wv-pink{background:#fff0f6;border-color:#ffd4e5;color:#b81658}
+.wevoi-app .wv-pill.wv-blue{background:#eef7ff;border-color:#cfeaff;color:#116bb7}
+.wevoi-app .wv-pill.wv-purple{background:#f3efff;border-color:#e2d7ff;color:#5d3cb0}
+.wevoi-app .wv-btn{display:inline-flex;align-items:center;justify-content:center;gap:9px;border:none;border-radius:14px;padding:14px 20px;font-weight:900;cursor:pointer;transition:.25s ease}
+.wevoi-app .wv-btn:hover{transform:translateY(-2px)}
+.wevoi-app .wv-btn.wv-primary{background:linear-gradient(135deg,var(--pink),#ff4d94);color:#fff;box-shadow:0 10px 26px rgba(242,41,120,.25)}
+.wevoi-app .wv-btn.wv-secondary{background:var(--navy);color:#fff}
+.wevoi-app .wv-btn.wv-ghost{background:#fff;border:1px solid var(--line);color:var(--navy)}
+.wevoi-app .wv-btn.wv-blue{background:linear-gradient(135deg,var(--blue),#36a9f1);color:#fff}
+.wevoi-app .wv-btn-row{display:flex;flex-wrap:wrap;gap:10px;margin-top:24px}
+.wevoi-app .wv-card{background:#fff;border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--shadow2);padding:26px}
+.wevoi-app .wv-section{padding:82px 0;position:relative}
+.wevoi-app .wv-section.wv-soft{background:linear-gradient(180deg,#fbfcff,#f6f8fd)}
+.wevoi-app .wv-section.wv-bluewash{background:linear-gradient(135deg,#f0f8ff 0%,#fbfdff 52%,#fff4f8 100%)}
+.wevoi-app .wv-section.wv-dark{background:radial-gradient(circle at 15% 0%,#263d82 0,#16255a 36%,#0d1738 100%);color:#fff}
+.wevoi-app .wv-section.wv-dark h2,.wevoi-app .wv-section.wv-dark h3,.wevoi-app .wv-section.wv-dark .wv-lead{color:#fff}
+.wevoi-app .wv-section.wv-dark .wv-muted{color:#c7d0ea}
+.wevoi-app .wv-section-head{display:flex;justify-content:space-between;gap:24px;align-items:end;margin-bottom:34px}
+.wevoi-app .wv-section-head>div{max-width:780px}
+.wevoi-app .wv-grid{display:grid;gap:22px}
+.wevoi-app .wv-grid-2{grid-template-columns:repeat(2,minmax(0,1fr))}
+.wevoi-app .wv-grid-3{grid-template-columns:repeat(3,minmax(0,1fr))}
+.wevoi-app .wv-grid-4{grid-template-columns:repeat(4,minmax(0,1fr))}
+.wevoi-app .wv-grid-5{grid-template-columns:repeat(5,minmax(0,1fr))}
+.wevoi-app .wv-site-header{position:sticky;top:0;z-index:1000;background:rgba(255,255,255,.90);backdrop-filter:blur(18px);border-bottom:1px solid rgba(231,234,242,.8)}
+.wevoi-app .wv-navbar{height:76px;display:flex;align-items:center;gap:18px}
+.wevoi-app .wv-brand{font-weight:950;font-size:28px;letter-spacing:-.04em;color:var(--navy);margin-right:auto}
+.wevoi-app .wv-brand span{color:var(--pink)}
+.wevoi-app .wv-navlinks{display:flex;align-items:center;gap:6px}
+.wevoi-app .wv-navitem{position:relative}
+.wevoi-app .wv-navlink,.wevoi-app .wv-dropbtn{padding:12px 11px;border-radius:11px;font-size:14px;font-weight:800;color:#35405f;display:flex;align-items:center;gap:5px}
+.wevoi-app .wv-navlink:hover,.wevoi-app .wv-dropbtn:hover{background:#f5f7fb;color:var(--navy)}
+.wevoi-app .wv-dropdown{display:none;position:absolute;top:100%;left:0;width:250px;padding:10px;background:#fff;border:1px solid var(--line);border-radius:18px;box-shadow:var(--shadow)}
+.wevoi-app .wv-dropdown a{display:block;padding:12px 13px;border-radius:12px;font-size:14px;font-weight:750;color:#394461}
+.wevoi-app .wv-dropdown a:hover{background:#f5f8ff;color:var(--blue)}
+.wevoi-app .wv-navitem:hover .wv-dropdown,.wevoi-app .wv-navitem:focus-within .wv-dropdown{display:block}
+.wevoi-app .wv-nav-actions{display:flex;align-items:center;gap:10px}
+.wevoi-app .wv-menu-toggle{display:none;border:0;background:#f3f5f9;width:44px;height:44px;border-radius:12px;font-size:21px;color:var(--navy)}
+.wevoi-app .wv-hero{position:relative;overflow:hidden;padding:56px 0 22px;background:
+radial-gradient(circle at 8% 10%,rgba(99,198,244,.28),transparent 30%),
+radial-gradient(circle at 90% 5%,rgba(242,41,120,.18),transparent 24%),
+linear-gradient(180deg,#fff,#f9fbff)}
+.wevoi-app .wv-hero-inner{display:grid;grid-template-columns:1fr 1.12fr;align-items:center;gap:36px}
+.wevoi-app .wv-hero-copy{padding:34px 0 54px}
+.wevoi-app .wv-hero h1 span{color:var(--pink)}
+.wevoi-app .wv-hero-visual{border-radius:30px;overflow:hidden;box-shadow:0 28px 70px rgba(17,35,84,.18);position:relative}
+.wevoi-app .wv-hero-visual img{width:100%;height:auto}
+.wevoi-app .wv-float-badge{position:absolute;background:rgba(255,255,255,.94);backdrop-filter:blur(12px);border:1px solid rgba(255,255,255,.9);padding:12px 15px;border-radius:16px;box-shadow:var(--shadow2);font-size:13px;font-weight:850;color:var(--navy)}
+.wevoi-app .wv-float-badge.wv-one{left:18px;bottom:18px}
+.wevoi-app .wv-float-badge.wv-two{right:18px;top:18px}
+.wevoi-app .wv-stat-row{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:26px}
+.wevoi-app .wv-stat{padding:16px;border-radius:18px;background:#fff;border:1px solid var(--line);box-shadow:var(--shadow2)}
+.wevoi-app .wv-stat strong{display:block;font-size:26px;color:var(--navy);line-height:1}
+.wevoi-app .wv-stat span{font-size:12px;color:var(--muted);font-weight:750}
+.wevoi-app .wv-round-card{position:relative;overflow:hidden;min-height:315px;padding:28px;border-radius:26px;color:#fff;box-shadow:var(--shadow);transition:.3s ease}
+.wevoi-app .wv-round-card:hover{transform:translateY(-7px)}
+.wevoi-app .wv-round-card h3,.wevoi-app .wv-round-card p{color:#fff}
+.wevoi-app .wv-round-card .wv-icon{font-size:48px;margin-bottom:44px}
+.wevoi-app .wv-round-card.wv-spark{background:linear-gradient(145deg,#ff558f,#ed2e73)}
+.wevoi-app .wv-round-card.wv-reload{background:linear-gradient(145deg,#2aa6ee,#216ecc)}
+.wevoi-app .wv-round-card.wv-summit{background:linear-gradient(145deg,#8457e8,#5532b4)}
+.wevoi-app .wv-round-card:after{content:"";position:absolute;width:170px;height:170px;border-radius:50%;background:rgba(255,255,255,.11);right:-40px;top:-45px}
+.wevoi-app .wv-round-deadline{margin-top:28px;padding-top:16px;border-top:1px solid rgba(255,255,255,.28);font-weight:850;font-size:13px}
+.wevoi-app .wv-map-shell{background:#fff;border:1px solid var(--line);border-radius:30px;padding:18px;box-shadow:var(--shadow)}
+.wevoi-app .wv-map-shell svg{width:100%;height:auto}
+.wevoi-app .wv-map-legend{display:flex;flex-wrap:wrap;gap:12px;margin-top:14px}
+.wevoi-app .wv-map-dot{display:inline-flex;align-items:center;gap:7px;font-size:12px;color:var(--muted);font-weight:800}
+.wevoi-app .wv-map-dot:before{content:"";width:9px;height:9px;border-radius:50%;background:var(--pink);box-shadow:0 0 0 5px rgba(242,41,120,.10)}
+.wevoi-app .wv-benefit{padding:24px;border-radius:24px;background:#fff;border:1px solid var(--line);transition:.25s}
+.wevoi-app .wv-benefit:hover{transform:translateY(-4px);box-shadow:var(--shadow2)}
+.wevoi-app .wv-benefit .wv-ico{font-size:32px;margin-bottom:16px}
+.wevoi-app .wv-advisor{padding:20px;border-radius:24px;background:#fff;border:1px solid var(--line);text-align:center;transition:.25s}
+.wevoi-app .wv-advisor:hover{transform:translateY(-5px);box-shadow:var(--shadow2)}
+.wevoi-app .wv-avatar{width:92px;height:92px;margin:0 auto 16px;border-radius:50%;display:grid;place-items:center;font-weight:950;font-size:28px;color:#fff;background:linear-gradient(135deg,var(--blue),var(--purple));position:relative}
+.wevoi-app .wv-avatar:after{content:"";position:absolute;inset:-5px;border:1px solid #dbe6ff;border-radius:50%}
+.wevoi-app .wv-advisor:nth-child(2n) .wv-avatar{background:linear-gradient(135deg,var(--pink),#ff8dba)}
+.wevoi-app .wv-advisor:nth-child(3n) .wv-avatar{background:linear-gradient(135deg,#18a879,#64d7ad)}
+.wevoi-app .wv-advisor p{font-size:13px;color:var(--muted)}
+.wevoi-app .wv-winner{position:relative;border-radius:26px;padding:26px;background:linear-gradient(180deg,#fff,#fffaf0);border:1px solid #f3e3b3;box-shadow:var(--shadow2);overflow:hidden}
+.wevoi-app .wv-winner:before{content:"★";position:absolute;right:18px;top:10px;font-size:80px;color:rgba(243,181,45,.12)}
+.wevoi-app .wv-medal{font-size:42px}
+.wevoi-app .wv-country{font-size:13px;font-weight:850;color:var(--muted)}
+.wevoi-app .wv-cta{padding:46px;border-radius:32px;background:linear-gradient(135deg,#14204a,#1b3678 55%,#7a42ce);color:#fff;display:flex;align-items:center;justify-content:space-between;gap:30px;overflow:hidden;position:relative}
+.wevoi-app .wv-cta h2,.wevoi-app .wv-cta p{color:#fff;margin-bottom:10px}
+.wevoi-app .wv-cta:after{content:"";position:absolute;width:260px;height:260px;border-radius:50%;background:rgba(255,255,255,.08);right:-70px;top:-100px}
+.wevoi-app .wv-page-hero{padding:72px 0;background:
+radial-gradient(circle at 10% 0%,rgba(99,198,244,.22),transparent 30%),
+radial-gradient(circle at 92% 0%,rgba(242,41,120,.16),transparent 25%),
+linear-gradient(180deg,#fff,#f8faff)}
+.wevoi-app .wv-page-hero .wv-container{display:grid;grid-template-columns:1.15fr .85fr;gap:28px;align-items:center}
+.wevoi-app .wv-hero-art{min-height:310px;border-radius:30px;padding:28px;color:#fff;display:flex;align-items:end;background:linear-gradient(145deg,#1b3c87,#6c43cf 62%,#ef3d7c);box-shadow:var(--shadow);position:relative;overflow:hidden}
+.wevoi-app .wv-hero-art .wv-big-icon{position:absolute;font-size:160px;right:24px;top:15px;opacity:.18}
+.wevoi-app .wv-hero-art h3,.wevoi-app .wv-hero-art p{color:#fff}
+.wevoi-app .wv-hero-art:after{content:"";position:absolute;width:220px;height:220px;border-radius:50%;border:28px solid rgba(255,255,255,.08);left:-60px;top:-70px}
+.wevoi-app .wv-timeline{display:grid;grid-template-columns:repeat(5,1fr);gap:14px;counter-reset:step}
+.wevoi-app .wv-step{border:1px solid var(--line);background:#fff;border-radius:22px;padding:22px;position:relative}
+.wevoi-app .wv-step .wv-n{width:38px;height:38px;border-radius:50%;display:grid;place-items:center;background:var(--pink);color:#fff;font-weight:950;margin-bottom:14px}
+.wevoi-app .wv-age-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.wevoi-app .wv-age-card{padding:26px;border-radius:25px;color:#fff;min-height:210px;position:relative;overflow:hidden}
+.wevoi-app .wv-age-card h3,.wevoi-app .wv-age-card p{color:#fff}
+.wevoi-app .wv-age-card:nth-child(1){background:linear-gradient(145deg,#ff5c98,#df2e70)}
+.wevoi-app .wv-age-card:nth-child(2){background:linear-gradient(145deg,#38a8ef,#1c74c8)}
+.wevoi-app .wv-age-card:nth-child(3){background:linear-gradient(145deg,#835ae4,#5637b5)}
+.wevoi-app .wv-age-card:nth-child(4){background:linear-gradient(145deg,#23356d,#111c3f)}
+.wevoi-app .wv-age-card .wv-num{font-size:48px;font-weight:950;opacity:.16;position:absolute;right:16px;top:5px}
+.wevoi-app .wv-rubric{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.wevoi-app .wv-rubric-card{border-radius:24px;padding:24px;border:1px solid var(--line);background:#fff;border-top:5px solid var(--pink)}
+.wevoi-app .wv-rubric-card:nth-child(2){border-top-color:var(--blue)}
+.wevoi-app .wv-rubric-card:nth-child(3){border-top-color:var(--purple)}
+.wevoi-app .wv-rubric-card:nth-child(4){border-top-color:var(--gold)}
+.wevoi-app .wv-rubric-score{font-size:36px;font-weight:950;color:var(--navy)}
+.wevoi-app .wv-guideline{display:grid;grid-template-columns:56px 1fr;gap:16px;align-items:start;padding:18px 0;border-bottom:1px solid var(--line)}
+.wevoi-app .wv-guideline .wv-gi{width:52px;height:52px;border-radius:16px;background:#f3f7ff;display:grid;place-items:center;font-size:25px}
+.wevoi-app .wv-countdown{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;max-width:560px;margin:24px 0}
+.wevoi-app .wv-timebox{background:#fff;border:1px solid rgba(255,255,255,.5);border-radius:18px;padding:16px;text-align:center;color:var(--navy);box-shadow:var(--shadow2)}
+.wevoi-app .wv-timebox strong{display:block;font-size:30px;line-height:1}
+.wevoi-app .wv-timebox span{font-size:11px;text-transform:uppercase;letter-spacing:.12em;color:var(--muted);font-weight:900}
+.wevoi-app .wv-month-tabs{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:28px}
+.wevoi-app .wv-month-tab{border:1px solid var(--line);background:#fff;padding:11px 16px;border-radius:999px;font-weight:850;color:#53607e;cursor:pointer}
+.wevoi-app .wv-month-tab.wv-active{background:var(--navy);color:#fff;border-color:var(--navy)}
+.wevoi-app .wv-month-panel{display:none}
+.wevoi-app .wv-month-panel.wv-active{display:grid}
+.wevoi-app .wv-workshop{display:grid;grid-template-columns:74px 1fr auto;gap:18px;align-items:center;padding:22px;border:1px solid var(--line);border-radius:22px;background:#fff;margin-bottom:14px}
+.wevoi-app .wv-date-box{width:70px;height:70px;border-radius:18px;background:#eef7ff;color:var(--blue);display:grid;place-items:center;text-align:center;font-weight:950;line-height:1}
+.wevoi-app .wv-date-box span{font-size:11px;text-transform:uppercase}
+.wevoi-app .wv-workshop-type{font-size:11px;text-transform:uppercase;letter-spacing:.1em;color:var(--pink);font-weight:900}
+.wevoi-app .wv-article-card{border-radius:26px;overflow:hidden;border:1px solid var(--line);background:#fff;box-shadow:var(--shadow2)}
+.wevoi-app .wv-article-visual{height:190px;display:flex;align-items:end;padding:22px;color:#fff;background:linear-gradient(135deg,#1a4d9c,#6e48cd 70%,#ed397b);font-size:48px}
+.wevoi-app .wv-article-card .wv-body{padding:22px}
+.wevoi-app .wv-result-row{display:grid;grid-template-columns:150px 1fr auto;gap:20px;align-items:center;padding:22px;border-bottom:1px solid var(--line)}
+.wevoi-app .wv-result-row:last-child{border-bottom:0}
+.wevoi-app .wv-forum-hero{border-radius:30px;padding:34px;min-height:350px;background:linear-gradient(135deg,#10204a,#2057a4 48%,#783ec4);color:#fff;position:relative;overflow:hidden;display:flex;align-items:end}
+.wevoi-app .wv-forum-hero h2,.wevoi-app .wv-forum-hero p{color:#fff}
+.wevoi-app .wv-forum-hero:before{content:"✦";position:absolute;font-size:230px;right:40px;top:20px;color:rgba(255,255,255,.08)}
+.wevoi-app .wv-feature-list{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.wevoi-app .wv-feature{padding:22px;border-radius:22px;border:1px solid var(--line);background:#fff}
+.wevoi-app .wv-feature .wv-ico{font-size:30px}
+.wevoi-app .wv-footer{background:#0c1533;color:#d3dbf0;padding:56px 0 24px}
+.wevoi-app .wv-footer h4{color:#fff;margin-bottom:14px}
+.wevoi-app .wv-footer-grid{display:grid;grid-template-columns:1.4fr repeat(3,1fr);gap:38px}
+.wevoi-app .wv-footer a{display:block;color:#bcc7e4;padding:5px 0;font-size:14px}
+.wevoi-app .wv-footer a:hover{color:#fff}
+.wevoi-app .wv-footer-bottom{margin-top:36px;padding-top:20px;border-top:1px solid rgba(255,255,255,.12);display:flex;justify-content:space-between;gap:20px;font-size:12px;color:#8f9bb9}
+.wevoi-app .wv-reveal{opacity:0;transform:translateY(20px);transition:opacity .7s ease,transform .7s ease}
+.wevoi-app .wv-reveal.wv-visible{opacity:1;transform:none}
+@media(prefers-reduced-motion:reduce){.wevoi-app, .wevoi-app *{scroll-behavior:auto!important;transition:none!important}
+.wevoi-app .wv-reveal{opacity:1;transform:none}}
+@media(max-width:1020px){.wevoi-app .wv-navlinks,.wevoi-app .wv-nav-actions .wv-btn{display:none}
+.wevoi-app .wv-menu-toggle{display:block}
+.wevoi-app .wv-navlinks.wv-open{display:flex;position:fixed;left:18px;right:18px;top:84px;flex-direction:column;align-items:stretch;padding:14px;background:#fff;border:1px solid var(--line);border-radius:22px;box-shadow:var(--shadow)}
+.wevoi-app .wv-navlinks.wv-open .wv-navitem{width:100%}
+.wevoi-app .wv-navlinks.wv-open .wv-navlink,.wevoi-app .wv-navlinks.wv-open .wv-dropbtn{width:100%;justify-content:space-between}
+.wevoi-app .wv-navlinks.wv-open .wv-dropdown{position:static;display:block;width:auto;box-shadow:none;border:0;padding:0 0 4px 12px}
+.wevoi-app .wv-hero-inner,.wevoi-app .wv-page-hero .wv-container{grid-template-columns:1fr}
+.wevoi-app .wv-hero-copy{padding-bottom:10px}
+.wevoi-app .wv-grid-4,.wevoi-app .wv-age-grid,.wevoi-app .wv-rubric{grid-template-columns:repeat(2,1fr)}
+.wevoi-app .wv-grid-5{grid-template-columns:repeat(3,1fr)}
+.wevoi-app .wv-timeline{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:720px){.wevoi-app .wv-container{width:min(100% - 26px,1180px)}
+.wevoi-app .wv-section{padding:62px 0}
+.wevoi-app .wv-grid-2,.wevoi-app .wv-grid-3,.wevoi-app .wv-grid-4,.wevoi-app .wv-grid-5,.wevoi-app .wv-age-grid,.wevoi-app .wv-rubric,.wevoi-app .wv-feature-list{grid-template-columns:1fr}
+.wevoi-app .wv-stat-row{grid-template-columns:1fr 1fr}
+.wevoi-app .wv-stat-row .wv-stat:last-child{grid-column:1/-1}
+.wevoi-app .wv-section-head{align-items:start;flex-direction:column}
+.wevoi-app .wv-timeline{grid-template-columns:1fr}
+.wevoi-app .wv-workshop{grid-template-columns:64px 1fr}
+.wevoi-app .wv-workshop .wv-btn{grid-column:1/-1}
+.wevoi-app .wv-countdown{grid-template-columns:repeat(2,1fr)}
+.wevoi-app .wv-result-row{grid-template-columns:1fr}
+.wevoi-app .wv-cta{padding:30px;align-items:flex-start;flex-direction:column}
+.wevoi-app .wv-footer-grid{grid-template-columns:1fr 1fr}
+.wevoi-app .wv-footer-bottom{flex-direction:column}}
+.wevoi-app .wv-navitem.wv-has-dropdown{padding-bottom:0}
+.wevoi-app .wv-navitem.wv-has-dropdown::after{
+  content:"";
+  position:absolute;
+  left:0;right:0;top:100%;
+  height:12px;
+}
+.wevoi-app .wv-navitem.wv-open .wv-dropdown{display:block}
+.wevoi-app .wv-dropdown{margin-top:0}
+.wevoi-app .wv-dropdown a{cursor:pointer}
+.wevoi-app .wv-global-visual{
+  position:relative;
+  min-height:420px;
+  border-radius:32px;
+  overflow:hidden;
+  background:
+    radial-gradient(circle at 70% 30%,rgba(242,41,120,.18),transparent 22%),
+    radial-gradient(circle at 30% 70%,rgba(22,136,232,.20),transparent 25%),
+    linear-gradient(145deg,#0f1d49,#173a7c 52%,#5e39bd);
+  box-shadow:0 24px 60px rgba(16,27,61,.18);
+}
+.wevoi-app .wv-global-visual:before{
+  content:"";
+  position:absolute;
+  inset:24px;
+  border-radius:50%;
+  border:1px solid rgba(255,255,255,.18);
+}
+.wevoi-app .wv-global-orbit{
+  position:absolute;
+  inset:50%;
+  width:270px;height:270px;
+  margin:-135px;
+  border-radius:50%;
+  border:1px solid rgba(255,255,255,.22);
+}
+.wevoi-app .wv-global-orbit:before,.wevoi-app .wv-global-orbit:after{
+  content:"";
+  position:absolute;
+  left:50%;top:50%;
+  transform:translate(-50%,-50%);
+  border:1px solid rgba(255,255,255,.16);
+  border-radius:50%;
+}
+.wevoi-app .wv-global-orbit:before{width:190px;height:270px}
+.wevoi-app .wv-global-orbit:after{width:270px;height:120px}
+.wevoi-app .wv-globe-line{
+  position:absolute;
+  left:50%;top:50%;
+  width:220px;height:1px;
+  background:linear-gradient(90deg,transparent,rgba(255,255,255,.55),transparent);
+  transform-origin:center;
+}
+.wevoi-app .wv-globe-line.wv-l1{transform:translate(-50%,-50%) rotate(28deg)}
+.wevoi-app .wv-globe-line.wv-l2{transform:translate(-50%,-50%) rotate(-38deg)}
+.wevoi-app .wv-globe-line.wv-l3{transform:translate(-50%,-50%) rotate(82deg)}
+.wevoi-app .wv-global-node{
+  position:absolute;
+  width:14px;height:14px;border-radius:50%;
+  background:#ff4c92;
+  box-shadow:0 0 0 8px rgba(255,76,146,.12),0 0 22px rgba(255,76,146,.55);
+}
+.wevoi-app .wv-global-node.wv-n1{left:26%;top:32%}
+.wevoi-app .wv-global-node.wv-n2{left:61%;top:27%}
+.wevoi-app .wv-global-node.wv-n3{left:72%;top:58%}
+.wevoi-app .wv-global-node.wv-n4{left:39%;top:68%}
+.wevoi-app .wv-global-node.wv-n5{left:52%;top:44%}
+.wevoi-app .wv-global-label{
+  position:absolute;
+  left:28px;bottom:26px;right:28px;
+  color:#fff;
+}
+.wevoi-app .wv-global-label h3{color:#fff;font-size:28px;margin-bottom:8px}
+.wevoi-app .wv-global-label p{color:#dbe7ff;margin:0;max-width:520px}
+.wevoi-app .wv-hero-wide-visual{
+  min-height:420px;
+  border-radius:34px;
+  overflow:hidden;
+  box-shadow:0 28px 70px rgba(17,35,84,.18);
+  position:relative;
+  background:
+    linear-gradient(90deg,rgba(11,19,49,.40) 0%, rgba(11,19,49,.08) 35%, rgba(11,19,49,.18) 100%),
+    linear-gradient(135deg,#1a4fa1,#7b4ee9 56%,#ef4a83);
+}
+.wevoi-app .wv-hero-wide-visual img{
+  width:100%;
+  height:100%;
+  min-height:420px;
+  object-fit:cover;
+  object-position:center;
+  display:block;
+  transform:scale(1.03);
+}
+.wevoi-app .wv-hero-caption{
+  position:absolute;
+  left:28px;
+  bottom:26px;
+  padding:16px 18px;
+  border-radius:18px;
+  background:rgba(255,255,255,.92);
+  box-shadow:var(--shadow2);
+  color:var(--navy);
+  font-weight:900;
+}
+.wevoi-app .wv-hero-top-badge{
+  position:absolute;
+  right:24px;
+  top:22px;
+  padding:12px 16px;
+  border-radius:999px;
+  background:rgba(255,255,255,.94);
+  color:var(--navy);
+  font-weight:850;
+  box-shadow:var(--shadow2);
+}
+.wevoi-app .wv-dropdown{
+  min-width:290px;
+  padding:12px;
+  border-radius:20px;
+}
+.wevoi-app .wv-dropdown a{
+  padding:14px 14px;
+  border-radius:14px;
+  line-height:1.35;
+}
+.wevoi-app .wv-dropdown a strong{
+  display:block;
+  color:var(--navy);
+  font-size:15px;
+}
+.wevoi-app .wv-dropdown a small{
+  display:block;
+  color:var(--muted);
+  font-size:12px;
+  font-weight:700;
+  margin-top:3px;
+}
+.wevoi-app .wv-dropdown a:hover small{color:#51607f}
+.wevoi-app .wv-map-card{
+  background:linear-gradient(145deg,#ffffff,#f7faff);
+  border:1px solid var(--line);
+  border-radius:34px;
+  box-shadow:var(--shadow);
+  padding:18px;
+}
+.wevoi-app .wv-map-card svg{
+  width:100%;
+  height:auto;
+  display:block;
+}
+.wevoi-app .wv-map-card .wv-map-note{
+  padding:14px 6px 4px;
+  color:var(--muted);
+  font-size:13px;
+  font-weight:750;
+}
+.wevoi-app .wv-round-card.wv-forum{
+  background:linear-gradient(145deg,#19a57d,#138763 60%,#0f6c50);
+}
+.wevoi-app .wv-round-card .wv-tag{
+  display:inline-flex;
+  margin-bottom:12px;
+  padding:7px 11px;
+  border-radius:999px;
+  font-size:11px;
+  letter-spacing:.08em;
+  text-transform:uppercase;
+  background:rgba(255,255,255,.16);
+  border:1px solid rgba(255,255,255,.18);
+  font-weight:900;
+}
+.wevoi-app .wv-info-banner{
+  display:grid;
+  grid-template-columns:1.1fr .9fr;
+  gap:22px;
+  align-items:stretch;
+}
+.wevoi-app .wv-info-banner .wv-card{
+  height:100%;
+}
+.wevoi-app .wv-info-list{
+  display:grid;
+  gap:14px;
+}
+.wevoi-app .wv-info-list .wv-item{
+  display:grid;
+  grid-template-columns:42px 1fr;
+  gap:14px;
+  align-items:start;
+}
+.wevoi-app .wv-info-list .wv-icon{
+  width:42px;height:42px;border-radius:14px;
+  display:grid;place-items:center;
+  background:#eef6ff;color:var(--blue);font-size:21px;
+}
+@media(max-width:900px){.wevoi-app .wv-info-banner{grid-template-columns:1fr}}
+.wevoi-app{
+  --navy:#0d1735;
+  --navy2:#172a5c;
+  --pink:#ef2f78;
+  --pink2:#ff5f9d;
+  --blue:#167fd8;
+  --cyan:#70c9f4;
+  --purple:#6948d3;
+  --gold:#f2b540;
+  --green:#1ba978;
+  --ink:#222941;
+  --muted:#6f7890;
+  --line:#e7eaf2;
+  --bg:#f8f9fc;
+  --white:#fff;
+  --shadow:0 18px 50px rgba(26,38,78,.09);
+  --shadow2:0 10px 26px rgba(26,38,78,.07);
+  --shadow3:0 28px 80px rgba(18,31,72,.13);
+  --r:26px;
+  --r-sm:18px;
+  --section-space:96px;
+}
+.wevoi-app{
+  font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif;
+  font-size:16px;
+  line-height:1.68;
+  letter-spacing:-.006em;
+  color:var(--ink);
+  background:#fff;
+  text-rendering:optimizeLegibility;
+  -webkit-font-smoothing:antialiased;
+}
+:where(.wevoi-app) h1,:where(.wevoi-app) h2,:where(.wevoi-app) h3,:where(.wevoi-app) h4{
+  letter-spacing:-.035em;
+  text-wrap:balance;
+}
+:where(.wevoi-app) h1{
+  font-size:clamp(46px,6vw,84px);
+  line-height:.98;
+  font-weight:900;
+}
+:where(.wevoi-app) h2{
+  font-size:clamp(34px,4vw,54px);
+  line-height:1.03;
+  font-weight:880;
+}
+:where(.wevoi-app) h3{
+  font-size:22px;
+  line-height:1.16;
+  font-weight:840;
+}
+:where(.wevoi-app) p{margin-bottom:1.05em}
+.wevoi-app .wv-lead{
+  font-size:clamp(18px,2vw,22px);
+  line-height:1.55;
+  color:#495674;
+  max-width:760px;
+}
+.wevoi-app .wv-eyebrow{
+  font-size:11px;
+  letter-spacing:.16em;
+  font-weight:900;
+  margin-bottom:14px;
+}
+.wevoi-app .wv-container{width:min(1200px,calc(100% - 48px))}
+.wevoi-app .wv-section{
+  padding:var(--section-space) 0;
+  isolation:isolate;
+}
+.wevoi-app .wv-section + .wv-section{
+  border-top:1px solid rgba(231,234,242,.58);
+}
+.wevoi-app .wv-section.wv-soft{
+  background:
+    linear-gradient(180deg,rgba(249,250,253,.92),rgba(245,247,252,.96));
+}
+.wevoi-app .wv-section.wv-bluewash{
+  background:
+    radial-gradient(circle at 6% 4%,rgba(112,201,244,.13),transparent 26%),
+    radial-gradient(circle at 95% 0%,rgba(239,47,120,.08),transparent 22%),
+    linear-gradient(180deg,#fbfdff,#f7f9fd);
+}
+.wevoi-app .wv-section.wv-dark{
+  background:
+    radial-gradient(circle at 15% 0%,#293d80 0,#16265a 36%,#0d1738 100%);
+}
+.wevoi-app .wv-section-head{
+  margin-bottom:42px;
+  gap:34px;
+}
+.wevoi-app .wv-section-head>div{max-width:820px}
+.wevoi-app .wv-site-header{
+  background:rgba(255,255,255,.86);
+  backdrop-filter:blur(22px) saturate(1.2);
+  border-bottom:1px solid rgba(223,228,238,.75);
+  box-shadow:0 6px 30px rgba(16,27,61,.035);
+}
+.wevoi-app .wv-navbar{height:80px;gap:20px}
+.wevoi-app .wv-brand{
+  font-size:29px;
+  font-weight:950;
+}
+.wevoi-app .wv-navlink,.wevoi-app .wv-dropbtn{
+  padding:11px 13px;
+  border-radius:12px;
+  font-size:14px;
+  font-weight:820;
+  transition:background .18s ease,color .18s ease,transform .18s ease;
+}
+.wevoi-app .wv-navlink:hover,.wevoi-app .wv-dropbtn:hover{
+  background:#f4f6fa;
+  transform:translateY(-1px);
+}
+.wevoi-app .wv-dropdown{
+  top:100%;
+  margin-top:10px;
+  border:1px solid #e7eaf2;
+  box-shadow:0 20px 55px rgba(20,31,73,.13);
+  border-radius:20px;
+  padding:10px;
+}
+.wevoi-app .wv-navitem.wv-has-dropdown::after{height:16px}
+.wevoi-app .wv-dropdown a{
+  padding:13px 14px;
+  transition:background .18s ease,transform .18s ease;
+}
+.wevoi-app .wv-dropdown a:hover{
+  background:#f5f8ff;
+  transform:translateX(2px);
+}
+.wevoi-app .wv-btn{
+  min-height:48px;
+  border-radius:15px;
+  padding:14px 21px;
+  font-weight:880;
+  letter-spacing:-.01em;
+  box-shadow:none;
+  transition:
+    transform .2s ease,
+    box-shadow .2s ease,
+    background .2s ease,
+    border-color .2s ease;
+}
+.wevoi-app .wv-btn:hover{
+  transform:translateY(-2px);
+}
+.wevoi-app .wv-btn:active{transform:translateY(0)}
+.wevoi-app .wv-btn.wv-primary{
+  background:linear-gradient(135deg,#ef2f78,#ff5f9d);
+  box-shadow:0 10px 28px rgba(239,47,120,.23);
+}
+.wevoi-app .wv-btn.wv-primary:hover{
+  box-shadow:0 15px 34px rgba(239,47,120,.30);
+}
+.wevoi-app .wv-btn.wv-secondary{
+  background:linear-gradient(135deg,#101b3d,#1d2d62);
+  box-shadow:0 10px 24px rgba(16,27,61,.14);
+}
+.wevoi-app .wv-btn.wv-blue{
+  background:linear-gradient(135deg,#167fd8,#40a9ea);
+  box-shadow:0 10px 26px rgba(22,127,216,.19);
+}
+.wevoi-app .wv-btn.wv-ghost{
+  background:rgba(255,255,255,.92);
+  border:1px solid #dfe4ed;
+  box-shadow:0 6px 18px rgba(20,31,73,.04);
+}
+.wevoi-app .wv-btn.wv-ghost:hover{
+  border-color:#cad3e4;
+  box-shadow:0 9px 24px rgba(20,31,73,.07);
+}
+.wevoi-app .wv-btn-row{gap:12px;margin-top:28px}
+.wevoi-app .wv-card,.wevoi-app .wv-benefit,.wevoi-app .wv-advisor,.wevoi-app .wv-article-card,.wevoi-app .wv-map-card,.wevoi-app .wv-map-shell,.wevoi-app .wv-workshop,.wevoi-app .wv-step,.wevoi-app .wv-rubric-card{
+  border-color:#e6eaf2;
+}
+.wevoi-app .wv-card,.wevoi-app .wv-benefit,.wevoi-app .wv-advisor,.wevoi-app .wv-article-card,.wevoi-app .wv-workshop,.wevoi-app .wv-step,.wevoi-app .wv-rubric-card{
+  box-shadow:0 8px 24px rgba(18,31,72,.045);
+}
+.wevoi-app .wv-card,.wevoi-app .wv-benefit,.wevoi-app .wv-advisor,.wevoi-app .wv-article-card{
+  transition:transform .25s ease,box-shadow .25s ease,border-color .25s ease;
+}
+.wevoi-app .wv-card:hover,.wevoi-app .wv-benefit:hover,.wevoi-app .wv-advisor:hover,.wevoi-app .wv-article-card:hover{
+  transform:translateY(-4px);
+  box-shadow:0 18px 44px rgba(18,31,72,.09);
+  border-color:#dfe5f0;
+}
+.wevoi-app .wv-card{padding:30px}
+.wevoi-app .wv-benefit{padding:27px}
+.wevoi-app .wv-article-card .wv-body{padding:25px}
+.wevoi-app .wv-winner{padding:28px}
+.wevoi-app .wv-hero{
+  padding:68px 0 36px;
+  background:
+    radial-gradient(circle at 8% 10%,rgba(112,201,244,.22),transparent 30%),
+    radial-gradient(circle at 91% 5%,rgba(239,47,120,.13),transparent 25%),
+    linear-gradient(180deg,#fff,#fafbfe);
+}
+.wevoi-app .wv-hero-inner{gap:44px}
+.wevoi-app .wv-hero-copy{padding:40px 0 56px}
+.wevoi-app .wv-hero-wide-visual{
+  min-height:470px;
+  border-radius:36px;
+  box-shadow:var(--shadow3);
+}
+.wevoi-app .wv-hero-wide-visual img{min-height:470px}
+.wevoi-app .wv-hero-caption,.wevoi-app .wv-hero-top-badge{
+  border:1px solid rgba(255,255,255,.75);
+  backdrop-filter:blur(12px);
+}
+.wevoi-app .wv-page-hero{
+  padding:84px 0 76px;
+}
+.wevoi-app .wv-page-hero .wv-container{gap:38px}
+.wevoi-app .wv-hero-art{
+  border-radius:32px;
+  min-height:330px;
+  box-shadow:0 24px 65px rgba(19,35,81,.14);
+}
+.wevoi-app .wv-round-card{
+  border-radius:28px;
+  min-height:330px;
+  padding:30px;
+  box-shadow:0 18px 46px rgba(20,31,73,.13);
+}
+.wevoi-app .wv-round-card:hover{
+  transform:translateY(-6px) scale(1.005);
+  box-shadow:0 24px 58px rgba(20,31,73,.17);
+}
+.wevoi-app .wv-round-card .wv-icon{margin-bottom:38px}
+.wevoi-app .wv-map-card{
+  border-radius:32px;
+  padding:20px;
+  box-shadow:0 18px 45px rgba(20,31,73,.08);
+}
+.wevoi-app .wv-map-card svg{
+  border-radius:24px;
+}
+.wevoi-app .wv-info-banner{gap:26px}
+.wevoi-app .wv-info-banner .wv-card{
+  padding:32px;
+  border-radius:28px;
+}
+.wevoi-app .wv-age-grid{gap:18px}
+.wevoi-app .wv-age-card{
+  min-height:220px;
+  border-radius:28px;
+  padding:28px;
+  box-shadow:0 16px 38px rgba(18,31,72,.10);
+}
+.wevoi-app .wv-age-card:hover{
+  transform:translateY(-5px);
+  box-shadow:0 22px 52px rgba(18,31,72,.14);
+}
+.wevoi-app .wv-rubric{gap:18px}
+.wevoi-app .wv-rubric-card{
+  border-radius:24px;
+  padding:26px;
+  background:linear-gradient(180deg,#fff,#fbfcff);
+}
+.wevoi-app .wv-timeline{gap:16px}
+.wevoi-app .wv-step{
+  border-radius:24px;
+  padding:24px;
+  background:linear-gradient(180deg,#fff,#fbfcff);
+}
+.wevoi-app .wv-step .wv-n{
+  width:40px;height:40px;
+  box-shadow:0 8px 18px rgba(239,47,120,.18);
+}
+.wevoi-app .wv-month-tabs{gap:11px;margin-bottom:32px}
+.wevoi-app .wv-month-tab{
+  padding:12px 17px;
+  border-radius:999px;
+  transition:.2s ease;
+}
+.wevoi-app .wv-month-tab:hover{transform:translateY(-1px)}
+.wevoi-app .wv-workshop{
+  padding:24px;
+  border-radius:24px;
+  box-shadow:0 8px 24px rgba(18,31,72,.045);
+}
+.wevoi-app .wv-cta{
+  padding:52px;
+  border-radius:34px;
+  box-shadow:0 26px 70px rgba(14,24,58,.16);
+}
+.wevoi-app .wv-cta h2{max-width:720px}
+.wevoi-app .wv-footer{
+  padding:64px 0 28px;
+  background:
+    radial-gradient(circle at 8% 0%,rgba(65,86,165,.25),transparent 24%),
+    #0b1430;
+}
+.wevoi-app .wv-footer-grid{gap:44px}
+.wevoi-app .wv-footer a{padding:6px 0}
+.wevoi-app .wv-footer-bottom{margin-top:42px}
+.wevoi-app .wv-section.wv-soft::before,.wevoi-app .wv-section.wv-bluewash::before{
+  content:"";
+  position:absolute;
+  top:0;
+  left:50%;
+  width:min(1140px,calc(100% - 56px));
+  height:1px;
+  transform:translateX(-50%);
+  background:linear-gradient(90deg,transparent,#e6eaf2 12%,#e6eaf2 88%,transparent);
+}
+.wevoi-app .wv-section.wv-bluewash::after{
+  content:"";
+  position:absolute;
+  width:220px;height:220px;
+  border-radius:50%;
+  background:rgba(112,201,244,.08);
+  right:5%;
+  bottom:10%;
+  z-index:-1;
+  filter:blur(2px);
+}
+.wevoi-app ul,.wevoi-app ol{padding-left:1.2rem}
+.wevoi-app li{margin:.5em 0}
+.wevoi-app .wv-guideline{padding:21px 0}
+.wevoi-app .wv-guideline .wv-gi{width:54px;height:54px;border-radius:17px}
+.wevoi-app .wv-reveal{
+  opacity:0;
+  transform:translateY(24px) scale(.995);
+  transition:
+    opacity .72s cubic-bezier(.2,.7,.2,1),
+    transform .72s cubic-bezier(.2,.7,.2,1);
+}
+.wevoi-app .wv-reveal.wv-visible{
+  opacity:1;
+  transform:none;
+}
+@media(max-width:1020px){.wevoi-app{--section-space:78px}
+.wevoi-app .wv-container{width:min(100% - 32px,1200px)}
+.wevoi-app .wv-hero-wide-visual,.wevoi-app .wv-hero-wide-visual img{min-height:390px}}
+@media(max-width:720px){.wevoi-app{--section-space:64px}
+.wevoi-app .wv-navbar{height:72px}
+.wevoi-app .wv-brand{font-size:26px}
+.wevoi-app .wv-container{width:min(100% - 24px,1200px)}
+.wevoi-app .wv-hero{padding-top:48px}
+.wevoi-app .wv-hero-wide-visual,.wevoi-app .wv-hero-wide-visual img{min-height:320px}
+.wevoi-app .wv-hero-caption{left:16px;bottom:16px}
+.wevoi-app .wv-hero-top-badge{right:14px;top:14px}
+.wevoi-app .wv-card{padding:24px}
+.wevoi-app .wv-cta{padding:32px 26px}}
+.wevoi-app .wv-global-reach{
+  display:grid;
+  grid-template-columns:1.35fr .65fr;
+  gap:28px;
+  align-items:center;
+}
+.wevoi-app .wv-global-map-wrap{
+  background:linear-gradient(180deg,#ffffff,#fbfdff);
+  border:1px solid #e6eaf2;
+  border-radius:30px;
+  padding:18px;
+  box-shadow:0 16px 40px rgba(18,31,72,.06);
+}
+.wevoi-app .wv-global-map-wrap svg{
+  width:100%;
+  height:auto;
+  display:block;
+  border-radius:22px;
+}
+.wevoi-app .wv-global-stats{
+  background:linear-gradient(180deg,#f7fbff,#ffffff);
+  border:1px solid #e6eaf2;
+  border-radius:28px;
+  padding:26px 24px;
+  box-shadow:0 16px 40px rgba(18,31,72,.06);
+}
+.wevoi-app .wv-global-stat{
+  display:grid;
+  grid-template-columns:58px 1fr;
+  gap:16px;
+  align-items:center;
+  padding:16px 0;
+  border-bottom:1px solid #ebeff6;
+}
+.wevoi-app .wv-global-stat:last-child{border-bottom:0}
+.wevoi-app .wv-global-stat-icon{
+  width:58px;height:58px;border-radius:18px;
+  display:grid;place-items:center;
+  background:#edf5ff;
+  color:#167fd8;
+  font-size:28px;
+}
+.wevoi-app .wv-global-stat strong{
+  display:block;
+  font-size:34px;
+  line-height:1;
+  color:var(--navy);
+  letter-spacing:-.03em;
+}
+.wevoi-app .wv-global-stat span{
+  display:block;
+  color:#4f5b79;
+  font-size:14px;
+  font-weight:800;
+  margin-top:3px;
+}
+.wevoi-app .wv-global-cta{
+  margin-top:18px;
+}
+@media(max-width:980px){.wevoi-app .wv-global-reach{grid-template-columns:1fr}}
+.wevoi-app .wv-global-map-wrap{
+  background:#fff;
+  border:1px solid #e6eaf2;
+  border-radius:30px;
+  padding:20px 22px;
+  box-shadow:0 16px 40px rgba(18,31,72,.06);
+  overflow:hidden;
+}
+.wevoi-app .wv-global-map-img{
+  width:100%;
+  height:auto;
+  display:block;
+  object-fit:contain;
+}
+.wevoi-app .wv-global-stats{
+  align-self:stretch;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+}
+.wevoi-app .wv-hero-v13{
+  background:
+    radial-gradient(circle at 8% 12%,rgba(112,201,244,.18),transparent 28%),
+    radial-gradient(circle at 92% 8%,rgba(239,47,120,.10),transparent 22%),
+    linear-gradient(180deg,#fff,#fafbff);
+  padding:72px 0 54px;
+}
+.wevoi-app .wv-hero-v13-grid{
+  display:grid;
+  grid-template-columns:1.03fr .97fr;
+  gap:46px;
+  align-items:center;
+}
+.wevoi-app .wv-hero-v13-copy h1{
+  font-size:clamp(52px,7vw,92px);
+  line-height:.95;
+}
+.wevoi-app .wv-hero-v13-copy .wv-hero-intro{
+  font-size:18px;
+  color:var(--navy);
+  margin:18px 0 8px;
+}
+.wevoi-app .wv-hero-line{
+  font-weight:900;
+  color:var(--purple);
+  font-size:20px;
+  margin-top:4px;
+}
+.wevoi-app .wv-school-link{
+  display:inline-block;
+  margin-top:16px;
+  font-weight:800;
+  color:var(--purple);
+}
+.wevoi-app .wv-hero-v13-visual{
+  position:relative;
+}
+.wevoi-app .wv-hero-v13-frame{
+  background:linear-gradient(145deg,#edf4ff,#fff2f8);
+  border-radius:40px;
+  padding:18px;
+  box-shadow:var(--shadow3);
+}
+.wevoi-app .wv-hero-v13-frame img{
+  width:100%;
+  display:block;
+  border-radius:28px;
+}
+.wevoi-app .wv-age-panel{
+  background:#fff;
+  border:1px solid #e6eaf2;
+  border-radius:34px;
+  padding:36px 36px 32px;
+  box-shadow:0 18px 48px rgba(18,31,72,.06);
+}
+.wevoi-app .wv-age-tabs{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:14px;
+  margin:28px 0 20px;
+}
+.wevoi-app .wv-age-tab{
+  border:1px solid #dcddef;
+  background:#f7f7fb;
+  border-radius:18px;
+  padding:18px 16px;
+  text-align:center;
+  font:inherit;
+  cursor:pointer;
+  transition:.2s ease;
+}
+.wevoi-app .wv-age-tab .wv-age-icon{
+  display:grid;
+  place-items:center;
+  width:42px;
+  height:42px;
+  margin:0 auto 10px;
+  border-radius:13px;
+  transition:.2s ease;
+}
+.wevoi-app .wv-age-tab .wv-age-icon svg{width:24px;height:24px}
+.wevoi-app .wv-age-tab[data-age="starter"] .wv-age-icon{background:#e6f7ee;color:#168858}
+.wevoi-app .wv-age-tab[data-age="youngster"] .wv-age-icon{background:#fff4db;color:#c78709}
+.wevoi-app .wv-age-tab[data-age="junior"] .wv-age-icon{background:#e7f4ff;color:#2583c7}
+.wevoi-app .wv-age-tab[data-age="teen"] .wv-age-icon{background:#f0eaff;color:#7650c7}
+.wevoi-app .wv-age-tab strong{display:block;color:var(--navy);font-size:16px}
+.wevoi-app .wv-age-tab span{display:block;margin-top:3px;color:#767d95;font-weight:800}
+.wevoi-app .wv-age-tab.wv-active{
+  background:#f1edff;
+  border-color:#a68ef5;
+  box-shadow:0 8px 24px rgba(105,72,211,.10);
+}
+.wevoi-app .wv-age-tab.wv-active .wv-age-icon{background:linear-gradient(135deg,var(--pink),var(--purple));color:#fff}
+.wevoi-app .wv-age-content{display:none}
+.wevoi-app .wv-age-content.wv-active{display:block}
+.wevoi-app .wv-age-meta-row{
+  display:grid;
+  grid-template-columns:1.1fr 1fr 1fr auto;
+  gap:18px;
+  align-items:center;
+  border:1px solid #e6eaf2;
+  background:#fcfcff;
+  border-radius:22px;
+  padding:18px 20px;
+}
+.wevoi-app .wv-age-meta-row .wv-meta-icon{font-size:22px;line-height:1;margin-bottom:9px}
+.wevoi-app .wv-age-meta-row label,.wevoi-app .wv-round-stats label{
+  display:block;
+  color:#8a8fa6;
+  text-transform:uppercase;
+  letter-spacing:.08em;
+  font-size:11px;
+  font-weight:800;
+  margin-bottom:5px;
+}
+.wevoi-app .wv-age-meta-row strong,.wevoi-app .wv-round-stats strong{display:block;color:var(--navy);font-size:22px}
+.wevoi-app .wv-age-meta-row strong.wv-open{color:#20a363;font-size:22px}
+.wevoi-app .wv-round-topic-links{
+  display:flex;
+  flex-wrap:wrap;
+  gap:12px;
+  margin-top:16px;
+}
+.wevoi-app .wv-round-topic-links a{
+  border:1px solid #d8ddef;
+  background:#fff;
+  color:var(--navy);
+  font-weight:800;
+  padding:10px 14px;
+  border-radius:999px;
+  transition:.2s ease;
+}
+.wevoi-app .wv-round-topic-links a:hover{
+  background:#f4f0ff;
+  border-color:#b9a7f5;
+}
+.wevoi-app .wv-open-round-card{
+  display:grid;
+  grid-template-columns:1.45fr .75fr;
+  border:1px solid #dddff0;
+  border-radius:34px;
+  overflow:hidden;
+  background:#fff;
+  box-shadow:0 18px 44px rgba(18,31,72,.06);
+}
+.wevoi-app .wv-open-round-copy{padding:32px}
+.wevoi-app .wv-pill.wv-green{
+  display:inline-flex;
+  background:#cfeecf;
+  color:#16734a;
+  font-size:12px;
+  font-weight:900;
+  text-transform:uppercase;
+  letter-spacing:.06em;
+  border-radius:999px;
+  padding:8px 12px;
+  margin-bottom:14px;
+}
+.wevoi-app .wv-round-stats{
+  display:grid;
+  grid-template-columns:repeat(5,1fr);
+  gap:12px;
+  margin:22px 0 22px;
+}
+.wevoi-app .wv-round-stats>div{
+  border:1px solid #dfe2ef;
+  background:#fcfcff;
+  border-radius:16px;
+  padding:14px 14px 12px;
+}
+.wevoi-app .wv-round-stats strong{font-size:18px}
+.wevoi-app .wv-round-link-inline{
+  display:inline-flex;
+  align-items:center;
+  font-weight:800;
+  color:var(--purple);
+}
+.wevoi-app .wv-open-round-art{
+  position:relative;
+  background:linear-gradient(145deg,#b69aec,#7e61e1 55%,#6f56d8);
+  min-height:100%;
+  overflow:hidden;
+}
+.wevoi-app .wv-open-round-art .wv-art-copy{
+  position:absolute;
+  top:54px;
+  left:42px;
+  color:white;
+  font-size:38px;
+  line-height:1.1;
+  font-weight:900;
+}
+.wevoi-app .wv-open-round-art .wv-blob{
+  position:absolute;
+  border-radius:50%;
+  filter:blur(.2px);
+}
+.wevoi-app .wv-open-round-art .wv-blob.wv-one{
+  width:180px;height:180px;
+  background:radial-gradient(circle,#fff,rgba(255,255,255,.15) 70%,transparent 71%);
+  right:40px;top:24px;
+}
+.wevoi-app .wv-open-round-art .wv-blob.wv-two{
+  width:170px;height:170px;
+  background:#e7bdbf;
+  right:25px;bottom:-30px;
+}
+.wevoi-app .wv-section-inline-link{
+  font-weight:800;
+  color:var(--purple);
+}
+.wevoi-app .wv-journey-steps{
+  display:grid;
+  grid-template-columns:repeat(6,1fr);
+  gap:18px;
+  margin-top:10px;
+}
+.wevoi-app .wv-journey-step{
+  position:relative;
+  padding-top:18px;
+}
+.wevoi-app .wv-journey-step::before{
+  content:"";
+  position:absolute;
+  top:22px;
+  left:0;
+  right:-12px;
+  height:2px;
+  background:#d9cff7;
+  z-index:0;
+}
+.wevoi-app .wv-journey-step:last-child::before{display:none}
+.wevoi-app .wv-journey-step .wv-num{
+  width:34px;height:34px;
+  border-radius:50%;
+  background:var(--purple);
+  color:#fff;
+  display:grid;place-items:center;
+  font-weight:900;
+  margin-bottom:14px;
+  position:relative;
+  z-index:2;
+}
+.wevoi-app .wv-journey-step h3{font-size:18px}
+.wevoi-app .wv-journey-step p{font-size:15px;color:#5b657f}
+.wevoi-app .wv-journey-cards{
+  display:grid;
+  grid-template-columns:repeat(5,1fr);
+  gap:14px;
+  margin-top:26px;
+}
+.wevoi-app .wv-mini-stage-card{
+  display:block;
+  border:1px solid #dddff0;
+  background:#fcfcff;
+  border-radius:20px;
+  padding:18px;
+  transition:.2s ease;
+}
+.wevoi-app .wv-mini-stage-card:hover{
+  transform:translateY(-4px);
+  box-shadow:0 14px 32px rgba(18,31,72,.07);
+}
+.wevoi-app .wv-mini-stage-card h4{color:var(--purple);font-size:20px;margin-bottom:8px}
+.wevoi-app .wv-mini-stage-card p{margin:0;color:#68728c;font-size:14px}
+.wevoi-app .wv-voicehub-promo{
+  display:grid;
+  grid-template-columns:1fr .92fr;
+  gap:28px;
+  align-items:center;
+}
+.wevoi-app .wv-vh-window{
+  background:#fff;
+  border:1px solid #e4e7f2;
+  border-radius:28px;
+  padding:18px;
+  box-shadow:0 16px 40px rgba(18,31,72,.06);
+}
+.wevoi-app .wv-vh-top{
+  font-weight:900;
+  color:var(--navy);
+  margin-bottom:14px;
+}
+.wevoi-app .wv-vh-video-card{
+  display:grid;
+  grid-template-columns:.88fr 1.12fr;
+  gap:14px;
+  align-items:center;
+}
+.wevoi-app .wv-vh-thumb{
+  border-radius:18px;
+  overflow:hidden;
+  min-height:170px;
+  background:linear-gradient(145deg,#edf4ff,#fff1f7);
+}
+.wevoi-app .wv-vh-thumb img{width:100%;height:100%;display:block;object-fit:cover}
+.wevoi-app .wv-vh-meta strong{display:block;font-size:20px;color:var(--navy);margin-bottom:5px}
+.wevoi-app .wv-vh-meta span{display:block;color:#6a718b;margin-bottom:8px}
+.wevoi-app .wv-vh-actions{
+  display:inline-block;
+  padding:10px 12px;
+  border-radius:999px;
+  background:#f5f7fb;
+  font-weight:800;
+  color:#4c5675;
+}
+.wevoi-app .wv-vh-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:12px;
+  margin-top:14px;
+}
+.wevoi-app .wv-mini-feed{
+  background:#f7f8fd;
+  border:1px solid #e4e8f1;
+  border-radius:16px;
+  padding:14px;
+  font-weight:800;
+  color:var(--navy);
+}
+.wevoi-app .wv-mini-feed small{display:block;margin-top:6px;color:#6e7790;font-weight:700}
+.wevoi-app .wv-why-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:16px;
+}
+.wevoi-app .wv-why-card{
+  display:grid;
+  grid-template-columns:56px 1fr;
+  gap:14px;
+  align-items:flex-start;
+  border:1px solid #dfe2ef;
+  background:#fcfcff;
+  border-radius:20px;
+  padding:14px 18px;
+  transition:.2s ease;
+}
+.wevoi-app .wv-why-card:hover{
+  transform:translateY(-3px);
+  box-shadow:0 14px 30px rgba(18,31,72,.07);
+}
+.wevoi-app .wv-why-ico{
+  width:44px;height:44px;
+  border-radius:14px;
+  background:#efeaff;
+  color:var(--purple);
+  display:grid;place-items:center;
+  font-size:20px;
+  font-weight:900;
+}
+.wevoi-app .wv-feed-card{
+  border:1px solid #dfe2ef;
+  background:#fff;
+  border-radius:22px;
+  padding:18px;
+  box-shadow:0 8px 24px rgba(18,31,72,.045);
+}
+.wevoi-app .wv-feed-thumb{
+  height:130px;
+  border-radius:16px;
+  display:grid;
+  place-items:center;
+  font-size:46px;
+  background:linear-gradient(145deg,#eef4ff,#fff4f8);
+  margin-bottom:14px;
+}
+.wevoi-app .wv-feed-stats{
+  margin-top:12px;
+  display:inline-block;
+  background:#f5f7fb;
+  border-radius:999px;
+  padding:8px 12px;
+  font-weight:800;
+  color:#51607f;
+}
+.wevoi-app .wv-btn.wv-small{min-height:44px;padding:11px 16px;font-size:14px}
+@media(max-width:1100px){.wevoi-app .wv-hero-v13-grid,.wevoi-app .wv-voicehub-promo,.wevoi-app .wv-open-round-card{grid-template-columns:1fr}
+.wevoi-app .wv-open-round-art{min-height:240px}
+.wevoi-app .wv-journey-steps{grid-template-columns:repeat(3,1fr)}
+.wevoi-app .wv-journey-cards{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:900px){.wevoi-app .wv-age-tabs{grid-template-columns:repeat(2,1fr)}
+.wevoi-app .wv-age-meta-row{grid-template-columns:1fr 1fr}
+.wevoi-app .wv-round-stats{grid-template-columns:repeat(2,1fr)}
+.wevoi-app .wv-why-grid{grid-template-columns:1fr}}
+@media(max-width:720px){.wevoi-app .wv-journey-steps,.wevoi-app .wv-journey-cards,.wevoi-app .wv-round-stats,.wevoi-app .wv-age-tabs{grid-template-columns:1fr}
+.wevoi-app .wv-age-panel{padding:24px}
+.wevoi-app .wv-age-meta-row{grid-template-columns:1fr}
+.wevoi-app .wv-vh-video-card{grid-template-columns:1fr}
+.wevoi-app .wv-vh-grid{grid-template-columns:1fr}
+.wevoi-app .wv-open-round-copy{padding:24px}}
+.wevoi-app .wv-navlinks.wv-open{display:flex}
+@media(max-width:1020px){.wevoi-app .wv-navbar{position:relative}
+.wevoi-app .wv-navlinks{
+    display:none;
+    position:absolute;
+    top:74px;
+    left:16px;
+    right:16px;
+    background:#fff;
+    border:1px solid #e6eaf2;
+    border-radius:20px;
+    box-shadow:0 20px 55px rgba(20,31,73,.13);
+    padding:16px;
+    flex-direction:column;
+    gap:8px;
+    z-index:50;
+  }
+.wevoi-app .wv-dropdown{
+    position:static;
+    display:none;
+    box-shadow:none;
+    border:0;
+    padding:6px 0 0 12px;
+    margin-top:0;
+  }
+.wevoi-app .wv-navitem.wv-open .wv-dropdown{display:block}
+.wevoi-app .wv-menu-toggle{display:inline-flex}}
+@media(min-width:1021px){.wevoi-app .wv-menu-toggle{display:none}}
+.wevoi-app .wv-compact-head{margin-bottom:26px}
+.wevoi-app .wv-active-round-section{
+  background:
+    radial-gradient(circle at 92% 15%,rgba(111,86,216,.07),transparent 25%),
+    linear-gradient(180deg,#fff,#fbfaff);
+}
+.wevoi-app .wv-age-meta-v14{
+  grid-template-columns:1.35fr .8fr 1fr auto;
+}
+.wevoi-app .wv-age-meta-v14 > .wv-btn.wv-ghost{
+  background:linear-gradient(135deg,#fff,#f6f1ff);
+  border-color:#d9ccff;
+  color:#5d3cb0;
+  box-shadow:0 7px 20px rgba(105,72,211,.16);
+}
+.wevoi-app .wv-age-meta-v14 > .wv-btn.wv-ghost:hover{
+  border-color:#b9a4f4;
+  box-shadow:0 10px 25px rgba(105,72,211,.24);
+}
+.wevoi-app .wv-topic-route-title{
+  margin-top:18px;
+  margin-bottom:10px;
+  color:#7b8196;
+  font-size:12px;
+  text-transform:uppercase;
+  letter-spacing:.10em;
+  font-weight:900;
+}
+.wevoi-app .wv-round-topic-links a{
+  display:flex;
+  flex-direction:column;
+  gap:3px;
+  min-width:170px;
+  border-radius:16px;
+}
+.wevoi-app .wv-round-topic-links a span{
+  color:#7f67d9;
+  font-size:11px;
+  text-transform:uppercase;
+  letter-spacing:.08em;
+  font-weight:900;
+}
+.wevoi-app .wv-round-topic-links a strong{
+  color:var(--navy);
+  font-size:14px;
+}
+.wevoi-app .wv-journey-footer{
+  margin-top:28px;
+  padding:20px 22px;
+  border:1px solid #dedff0;
+  border-radius:20px;
+  background:#fafaff;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:20px;
+}
+.wevoi-app .wv-journey-footer p{
+  margin:0;
+  color:#5f6881;
+}
+.wevoi-app .wv-voicehub-home{
+  background:
+    radial-gradient(circle at 90% 10%,rgba(108,72,211,.10),transparent 24%),
+    linear-gradient(180deg,#fff,#faf9ff);
+}
+.wevoi-app .wv-voicehub-teaser{
+  display:grid;
+  grid-template-columns:1.05fr .95fr;
+  gap:34px;
+  align-items:center;
+  border:1px solid #e0e1ef;
+  border-radius:34px;
+  padding:34px;
+  background:#fff;
+  box-shadow:0 18px 48px rgba(18,31,72,.06);
+}
+.wevoi-app .wv-voicehub-teaser-copy .wv-lead{
+  max-width:680px;
+}
+.wevoi-app .wv-voicehub-feature-row{
+  display:flex;
+  flex-wrap:wrap;
+  gap:10px;
+  margin-top:18px;
+}
+.wevoi-app .wv-voicehub-feature-row span{
+  padding:10px 13px;
+  border-radius:999px;
+  background:#f5f2ff;
+  border:1px solid #e2dafc;
+  color:#55458b;
+  font-size:13px;
+  font-weight:850;
+}
+.wevoi-app .wv-compact-vh{
+  padding:16px;
+  background:linear-gradient(180deg,#fcfcff,#fff);
+}
+.wevoi-app .wv-compact-vh .wv-vh-top{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  margin-bottom:12px;
+}
+.wevoi-app .wv-compact-vh .wv-vh-top small{
+  color:#7c839a;
+  font-weight:700;
+}
+.wevoi-app .wv-compact-video{
+  grid-template-columns:.78fr 1.22fr;
+}
+.wevoi-app .wv-compact-video .wv-vh-thumb{
+  min-height:145px;
+}
+.wevoi-app .wv-vh-mini-strip{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:10px;
+  margin-top:12px;
+}
+.wevoi-app .wv-vh-mini-strip>span{
+  display:flex;
+  justify-content:space-between;
+  gap:8px;
+  padding:11px 12px;
+  border-radius:14px;
+  background:#f7f8fd;
+  border:1px solid #e5e8f2;
+  color:#44506d;
+  font-size:13px;
+  font-weight:800;
+}
+.wevoi-app .wv-vh-mini-strip small{
+  color:#8b739f;
+  white-space:nowrap;
+}
+@media(max-width:1000px){.wevoi-app .wv-voicehub-teaser{grid-template-columns:1fr}
+.wevoi-app .wv-age-meta-v14{grid-template-columns:1fr 1fr}}
+@media(max-width:720px){.wevoi-app .wv-journey-footer{align-items:flex-start;flex-direction:column}
+.wevoi-app .wv-voicehub-teaser{padding:24px}
+.wevoi-app .wv-age-meta-v14{grid-template-columns:1fr}
+.wevoi-app .wv-vh-mini-strip{grid-template-columns:1fr}}
+/* ---- WordPress integration ---- */
+.wevoi-app{display:block;position:relative;overflow-x:clip;text-align:left}
+.wevoi-app.wv-fullwidth{width:100vw;margin-left:calc(50% - 50vw);max-width:100vw}
+.admin-bar .wevoi-app .wv-site-header{top:32px}
+@media(max-width:782px){.admin-bar .wevoi-app .wv-site-header{top:46px}}
+:where(.wevoi-app) a{border-bottom:0;box-shadow:none}
+:where(.wevoi-app) img{height:auto;border:0;box-shadow:none}
+.wevoi-app :where(h1,h2,h3,h4,h5,h6,p,a,span,li,button,small,strong,div){font-family:inherit}
+.wevoi-app:not(.wv-js) .wv-reveal{opacity:1!important;transform:none!important}
+.wevoi-app :where(h1,h2,h3,h4,p,ul,ol){text-transform:none}
+.wevoi-app :where(button){-webkit-appearance:none;appearance:none}
+
+/* Topics by round: variant C (rounds path) */
+.wevoi-app .wv-round-topic-links{position:relative;display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:14px}
+.wevoi-app .wv-round-topic-links::before{content:"";position:absolute;left:12.5%;right:12.5%;top:30px;height:4px;border-radius:4px;background:linear-gradient(90deg,#e0307a,#6a45d8,#1f6fd1,#1f9d63)}
+.wevoi-app .wv-round-topic-links a{position:relative;z-index:1;display:flex;flex-direction:column;align-items:center;text-align:center;gap:6px;width:100%;min-width:0;padding:0;border:0;border-radius:0;background:none;box-shadow:none;text-decoration:none;transition:transform .2s}
+.wevoi-app .wv-round-topic-links a::before,.wevoi-app .wv-round-topic-links a::after{display:none}
+.wevoi-app .wv-round-topic-links a:hover{transform:translateY(-3px);box-shadow:none}
+.wevoi-app .wv-round-topic-links a span{display:flex;flex-direction:column;align-items:center;gap:8px;color:var(--c);font-size:13px;font-weight:900;letter-spacing:.12em;text-transform:uppercase}
+.wevoi-app .wv-round-topic-links a span::before{content:"";display:block;box-sizing:border-box;width:64px;height:64px;border:4px solid #fff;border-radius:50%;background-color:var(--c);background-repeat:no-repeat;background-position:center;background-size:28px 28px;box-shadow:0 8px 18px rgba(31,26,79,.18)}
+.wevoi-app .wv-round-topic-links a:nth-child(1) span::before{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23fff' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M13 2 3 14h9l-1 8 10-12h-9l1-8z'/%3E%3C/svg%3E")}
+.wevoi-app .wv-round-topic-links a:nth-child(2) span::before{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23fff'%3E%3Cpath d='M17.65 6.35A7.95 7.95 0 0 0 12 4a8 8 0 1 0 7.93 9h-2.02A6 6 0 1 1 12 6c1.66 0 3.14.69 4.22 1.78L13 11h7V4z'/%3E%3C/svg%3E")}
+.wevoi-app .wv-round-topic-links a:nth-child(3) span::before{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23fff' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m2 20 7-12 4 6 3-4 6 10H2z'/%3E%3C/svg%3E")}
+.wevoi-app .wv-round-topic-links a:nth-child(4) span::before{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23fff' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M16 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2'/%3E%3Ccircle cx='10' cy='7' r='4'/%3E%3Cpath d='M20 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75'/%3E%3C/svg%3E")}
+.wevoi-app .wv-round-topic-links a strong{font-size:17px;font-weight:800;line-height:1.3;color:#0f1538}
+.wevoi-app .wv-round-topic-links a:nth-child(1){--c:#e0307a}
+.wevoi-app .wv-round-topic-links a:nth-child(2){--c:#6a45d8}
+.wevoi-app .wv-round-topic-links a:nth-child(3){--c:#1f6fd1}
+.wevoi-app .wv-round-topic-links a:nth-child(4){--c:#1f9d63}
+@media(max-width:720px){
+.wevoi-app .wv-round-topic-links{grid-template-columns:repeat(2,1fr);row-gap:22px}
+.wevoi-app .wv-round-topic-links::before{display:none}
+}
+
+/* Open round: icon facts + countdown panel */
+.wevoi-app .wv-round-stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px}
+.wevoi-app .wv-round-stats>div{display:flex;flex-direction:column;align-items:flex-start;padding:14px 16px;min-height:0}
+.wevoi-app .wv-round-stats .wv-ico{margin:0 0 8px}
+.wevoi-app .wv-round-stats label{margin-bottom:4px;white-space:nowrap}
+.wevoi-app .wv-round-stats strong{font-size:18px;line-height:1.25}
+.wevoi-app .wv-open-round-art{position:relative;display:flex;flex-direction:column;justify-content:center;align-items:flex-start;gap:20px;padding:36px;min-height:320px;overflow:hidden;background:linear-gradient(145deg,#a98df0,#6a45d8 60%,#4e2fb8)}
+.wevoi-app .wv-open-round-art .wv-blob{display:none}
+.wevoi-app .wv-art-icon{display:grid;place-items:center;width:64px;height:64px;border-radius:20px;background:rgba(255,255,255,.2);border:1px solid rgba(255,255,255,.35);color:#fff}
+.wevoi-app .wv-art-icon .wv-svg{width:32px;height:32px}
+.wevoi-app .wv-open-round-art .wv-art-copy{position:static;font-size:34px;line-height:1.15;font-weight:800;color:#fff;max-width:none;text-shadow:none}
+.wevoi-app .wv-art-count span{display:block;margin-bottom:10px;font-size:12px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.85)}
+.wevoi-app .wv-count-boxes{display:flex;gap:10px}
+.wevoi-app .wv-count-boxes>div{min-width:62px;padding:10px 8px;text-align:center;border-radius:14px;background:rgba(255,255,255,.18);border:1px solid rgba(255,255,255,.3)}
+.wevoi-app .wv-count-boxes b{display:block;font-size:26px;line-height:1;color:#fff;font-variant-numeric:tabular-nums}
+.wevoi-app .wv-count-boxes small{display:block;margin-top:4px;font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:rgba(255,255,255,.8)}
+@media(max-width:1100px){.wevoi-app .wv-open-round-art{min-height:0;padding:28px}}
+
+/* Open round: 4 cards in one row + icon fixes */
+.wevoi-app .wv-round-stats{grid-template-columns:repeat(4,1fr)}
+.wevoi-app .wv-round-stats .wv-ico{display:grid;place-items:center;width:38px;height:38px;margin:0 0 10px;border-radius:12px;background:#f0e9ff;color:#6a45d8}
+.wevoi-app .wv-round-stats .wv-svg{display:block;width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.wevoi-app .wv-art-icon .wv-svg{display:block;width:32px;height:32px;fill:none;stroke:#fff;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.wevoi-app .wv-art-deadline{margin-top:14px;font-size:16px;color:rgba(255,255,255,.9)}
+.wevoi-app .wv-art-deadline b{color:#fff;font-weight:800}
+@media(max-width:900px){.wevoi-app .wv-round-stats{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:520px){.wevoi-app .wv-round-stats{grid-template-columns:1fr}}
+
+/* Open round: action row */
+.wevoi-app .wv-open-round-copy .wv-btn-row{display:flex;flex-wrap:wrap;align-items:center;gap:12px;margin-top:8px;padding-top:22px;border-top:1px solid #ece8f7}
+.wevoi-app .wv-open-round-copy .wv-btn-row .wv-btn.wv-primary{display:inline-flex;align-items:center;min-height:52px;padding:0 26px;border-radius:14px}
+.wevoi-app .wv-open-round-copy .wv-btn-row .wv-round-link-inline{display:inline-flex;align-items:center;min-height:52px;padding:0 22px;border-radius:14px;font-size:16px;font-weight:800;transition:.2s}
+.wevoi-app .wv-open-round-copy .wv-btn-row .wv-round-link-inline:nth-child(2){border:2px solid #d9cff6;background:#fff;color:#6a45d8}
+.wevoi-app .wv-open-round-copy .wv-btn-row .wv-round-link-inline:nth-child(2):hover{border-color:#6a45d8;background:#f6f1ff}
+.wevoi-app .wv-open-round-copy .wv-btn-row .wv-round-link-inline:nth-child(3){padding:0 8px;color:#6a45d8;text-decoration:underline;text-decoration-color:#d9cff6;text-underline-offset:6px}
+.wevoi-app .wv-open-round-copy .wv-btn-row .wv-round-link-inline:nth-child(3):hover{text-decoration-color:#6a45d8}
+@media(max-width:520px){.wevoi-app .wv-open-round-copy .wv-btn-row>a{width:100%;justify-content:center}}
+
+/* Open round panel: pink bolt on white tile */
+.wevoi-app .wv-art-icon{background:#fff;border:0;box-shadow:0 10px 22px rgba(31,26,79,.25)}
+.wevoi-app .wv-art-icon .wv-svg{stroke:#e0307a;fill:#e0307a;fill-opacity:.15}
+
+/* How it works: journey cards */
+.wevoi-app .wv-journey-steps{grid-template-columns:repeat(6,1fr);gap:22px;margin-top:28px}
+.wevoi-app .wv-journey-step{position:relative;padding:24px 20px 22px;background:#fff;border:1px solid #e7e2f6;border-radius:22px;box-shadow:0 10px 26px rgba(31,26,79,.06);overflow:visible;transition:transform .2s,box-shadow .2s}
+.wevoi-app .wv-journey-step::before{content:"";position:absolute;top:0;left:22px;right:22px;height:4px;border-radius:0 0 6px 6px;background:var(--c);z-index:0}
+.wevoi-app .wv-journey-step:last-child::before{display:block}
+.wevoi-app .wv-journey-step::after{content:"\2192";position:absolute;top:34px;right:-20px;z-index:2;width:30px;height:30px;display:grid;place-items:center;border-radius:50%;background:#fff;border:1px solid #e7e2f6;color:var(--c);font-size:15px;font-weight:900;box-shadow:0 4px 10px rgba(31,26,79,.08)}
+.wevoi-app .wv-journey-step:last-child::after{display:none}
+.wevoi-app .wv-journey-step:hover{transform:translateY(-4px);box-shadow:0 18px 36px rgba(31,26,79,.12)}
+.wevoi-app .wv-journey-step .wv-num{position:absolute;top:12px;right:16px;width:auto;height:auto;margin:0;background:none;border-radius:0;color:var(--c);opacity:.16;font-size:44px;line-height:1;font-weight:900;display:block}
+.wevoi-app .wv-step-ico{display:grid;place-items:center;width:56px;height:56px;margin:6px 0 16px;border-radius:18px;background:var(--c);color:#fff;box-shadow:0 10px 20px color-mix(in srgb,var(--c) 32%,transparent)}
+.wevoi-app .wv-step-ico .wv-svg{display:block;width:28px;height:28px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.wevoi-app .wv-journey-step h3{margin:0 0 8px;font-size:18px;line-height:1.25}
+.wevoi-app .wv-journey-step p{margin:0;font-size:15px;line-height:1.5;color:#5b657f}
+.wevoi-app .wv-journey-step:nth-child(1){--c:#e0307a}
+.wevoi-app .wv-journey-step:nth-child(2){--c:#c13bb0}
+.wevoi-app .wv-journey-step:nth-child(3){--c:#6a45d8}
+.wevoi-app .wv-journey-step:nth-child(4){--c:#3f67e0}
+.wevoi-app .wv-journey-step:nth-child(5){--c:#1f8fd1}
+.wevoi-app .wv-journey-step:nth-child(6){--c:#1f9d63}
+.wevoi-app .wv-journey-footer{margin-top:34px;padding:22px 26px;border:0;border-radius:22px;background:linear-gradient(135deg,#f3edff,#fff0f6)}
+.wevoi-app .wv-journey-footer p{font-size:16px;line-height:1.55;color:#4a4f72}
+.wevoi-app .wv-journey-footer .wv-btn{flex:none;white-space:nowrap;min-height:48px;padding:0 24px;border:0;border-radius:14px;background:#6a45d8;color:#fff;box-shadow:0 10px 22px rgba(106,69,216,.3)}
+@media(max-width:1100px){.wevoi-app .wv-journey-steps{grid-template-columns:repeat(3,1fr)}.wevoi-app .wv-journey-step::after{display:none}}
+@media(max-width:720px){.wevoi-app .wv-journey-steps{grid-template-columns:repeat(2,1fr);gap:16px}}
+@media(max-width:480px){.wevoi-app .wv-journey-steps{grid-template-columns:1fr}}
+
+/* VoiceHub homepage teaser */
+.wevoi-app .wv-voicehub-home{padding:72px 0;background:#fff}
+.wevoi-app .wv-voicehub-teaser{grid-template-columns:minmax(0,.45fr) minmax(0,.55fr);gap:64px;align-items:center;padding:0;border:0;border-radius:0;background:none;box-shadow:none}
+.wevoi-app .wv-voicehub-teaser-copy .wv-eyebrow{margin-bottom:14px}
+.wevoi-app .wv-voicehub-teaser-copy h2{max-width:560px;margin-bottom:20px;font-size:clamp(34px,3.5vw,48px);line-height:1.1;letter-spacing:-.03em}
+.wevoi-app .wv-voicehub-teaser-copy .wv-lead{max-width:500px;margin:0;font-size:18px;line-height:1.6}
+.wevoi-app .wv-voicehub-teaser-copy .wv-btn-row{margin-top:28px}
+.wevoi-app .wv-voicehub-teaser-copy .wv-btn:focus-visible{outline:3px solid #6e45d8;outline-offset:4px}
+.wevoi-app .wv-voicehub-visual{aspect-ratio:1.45;overflow:hidden;border-radius:18px;background:#f5f2ff;box-shadow:0 14px 34px rgba(18,31,72,.12)}
+.wevoi-app .wv-voicehub-visual img{display:block;width:100%;height:100%;object-fit:cover;object-position:80% center}
+@media(max-width:900px){
+.wevoi-app .wv-voicehub-teaser{grid-template-columns:1fr;gap:32px}
+.wevoi-app .wv-voicehub-visual{width:100%;max-width:720px}
+}
+@media(max-width:720px){
+.wevoi-app .wv-voicehub-home{padding:44px 0}
+.wevoi-app .wv-voicehub-teaser{gap:28px}
+.wevoi-app .wv-voicehub-teaser-copy h2{font-size:clamp(32px,8vw,42px)}
+.wevoi-app .wv-voicehub-teaser-copy .wv-btn-row{margin-top:24px}
+}
+
+/* VoiceHub homepage conceptual preview */
+.wevoi-app .wv-voicehub-home{padding:72px 0;background:linear-gradient(135deg,#fff 0%,#f8fbff 72%,#fff8fb 100%)}
+.wevoi-app .wv-voicehub-teaser{grid-template-columns:minmax(0,44fr) minmax(0,56fr);gap:56px;padding:0;border:0;border-radius:0;background:none;box-shadow:none}
+.wevoi-app .wv-voicehub-teaser-copy .wv-eyebrow{margin-bottom:14px}
+.wevoi-app .wv-voicehub-teaser-copy h2{max-width:530px;margin:0 0 18px;font-size:clamp(32px,3.5vw,46px);line-height:1.12;letter-spacing:-.035em}
+.wevoi-app .wv-voicehub-teaser-copy .wv-vh-highlight{color:var(--pink)}
+.wevoi-app .wv-voicehub-teaser-copy .wv-lead{max-width:520px;margin:0;color:#4b5672;font-size:17px;line-height:1.6}
+.wevoi-app .wv-vh-benefits{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px 18px;margin-top:24px}
+.wevoi-app .wv-vh-benefit{display:flex;align-items:center;gap:11px;min-width:0;color:var(--navy);font-size:14px;font-weight:800}
+.wevoi-app .wv-vh-benefit-icon{display:grid;place-items:center;flex:0 0 38px;width:38px;height:38px;border-radius:50%}
+.wevoi-app .wv-vh-benefit-icon .wv-svg{display:block;width:19px;height:19px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.wevoi-app .wv-vh-benefit-pink{background:#fff0f6;color:#d82770}
+.wevoi-app .wv-vh-benefit-blue{background:#edf6ff;color:#167fd8}
+.wevoi-app .wv-vh-benefit-amber{background:#fff7e7;color:#b97800}
+.wevoi-app .wv-vh-benefit-mint{background:#eaf8f1;color:#168a60}
+.wevoi-app .wv-voicehub-teaser-copy .wv-btn-row{margin-top:28px}
+.wevoi-app .wv-voicehub-teaser-copy .wv-btn:focus-visible{outline:3px solid #6e45d8;outline-offset:4px}
+.wevoi-app .wv-vh-preview{position:relative;min-width:0;padding-bottom:18px}
+.wevoi-app .wv-vh-preview-layout{display:grid;grid-template-columns:minmax(0,1fr) 112px;gap:12px;align-items:stretch}
+.wevoi-app .wv-vh-preview-main{position:relative;aspect-ratio:16/10;overflow:hidden;border:1px solid rgba(16,27,61,.08);border-radius:18px;background:#eaf1fb;box-shadow:0 18px 40px rgba(18,31,72,.16)}
+.wevoi-app .wv-vh-preview-main::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(16,27,61,.22),transparent 30%,transparent 68%,rgba(16,27,61,.12));pointer-events:none}
+.wevoi-app .wv-vh-preview-main>img{display:block;width:100%;height:100%;object-fit:cover;object-position:76% center}
+.wevoi-app .wv-vh-preview-label{position:absolute;top:16px;left:16px;z-index:1;padding:7px 11px;border:1px solid rgba(255,255,255,.6);border-radius:999px;background:rgba(255,255,255,.94);color:var(--navy);font-size:11px;font-weight:900;letter-spacing:.08em;text-transform:uppercase}
+.wevoi-app .wv-vh-preview-play{position:absolute;top:50%;left:50%;z-index:1;display:grid;place-items:center;width:58px;height:58px;transform:translate(-50%,-50%);border:1px solid rgba(255,255,255,.75);border-radius:50%;background:rgba(255,255,255,.92);color:var(--pink);box-shadow:0 8px 24px rgba(16,27,61,.2)}
+.wevoi-app .wv-vh-preview-play .wv-svg{display:block;width:24px;height:24px;margin-left:3px;fill:currentColor}
+.wevoi-app .wv-vh-preview-thumbs{display:grid;grid-template-columns:1fr;gap:10px;margin:0}
+.wevoi-app .wv-vh-preview-thumb{aspect-ratio:4/3;overflow:hidden;border:1px solid #e4eaf4;border-radius:14px;background:#edf4ff}
+.wevoi-app .wv-vh-preview-thumb img{display:block;width:100%;height:100%;object-fit:cover}
+.wevoi-app .wv-vh-preview-thumb-one img{object-position:16% center}
+.wevoi-app .wv-vh-preview-thumb-two img{object-position:56% center}
+.wevoi-app .wv-vh-preview-thumb-three img{object-position:88% center}
+.wevoi-app .wv-vh-preview-bubble{position:absolute;right:10px;bottom:0;z-index:2;display:flex;align-items:center;gap:9px;max-width:calc(100% - 20px);padding:11px 15px;border:1px solid #e3dafc;border-radius:16px;background:#fff;color:#4f3b91;font-size:13px;font-weight:800;box-shadow:0 8px 24px rgba(31,26,79,.12)}
+.wevoi-app .wv-vh-preview-bubble .wv-svg{display:block;flex:0 0 19px;width:19px;height:19px;fill:none;stroke:#6e45d8;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+@media(max-width:1000px){
+.wevoi-app .wv-voicehub-home{padding:56px 0}
+.wevoi-app .wv-voicehub-teaser{grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:32px}
+.wevoi-app .wv-voicehub-teaser-copy h2{font-size:clamp(30px,4vw,40px)}
+.wevoi-app .wv-vh-benefits{gap:12px}
+.wevoi-app .wv-vh-preview-layout{grid-template-columns:minmax(0,1fr);gap:12px}
+.wevoi-app .wv-vh-preview-thumbs{grid-template-columns:repeat(3,minmax(0,1fr))}
+.wevoi-app .wv-vh-preview-thumb{aspect-ratio:16/9}
+}
+@media(max-width:720px){
+.wevoi-app .wv-voicehub-home{padding:44px 0}
+.wevoi-app .wv-voicehub-teaser{grid-template-columns:minmax(0,1fr);gap:30px}
+.wevoi-app .wv-vh-benefits{grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.wevoi-app .wv-vh-preview{width:100%}
+.wevoi-app .wv-vh-preview-bubble{font-size:12px}
+}
+@media(prefers-reduced-motion:reduce){
+.wevoi-app .wv-voicehub-teaser-copy .wv-btn,.wevoi-app .wv-voicehub-teaser-copy .wv-btn:hover{transition:none;transform:none}
+}
+
+/* VoiceHub block: app-style post card */
+.wevoi-app .wv-vhapp{position:relative;width:100%;max-width:480px;height:390px;margin:0 auto}
+.wevoi-app .wv-vhapp-stack{position:absolute;left:50%;top:26px;width:min(310px,80%);height:310px;border-radius:24px;border:1px solid #e7e2f6;box-shadow:0 14px 30px rgba(31,26,79,.12)}
+.wevoi-app .wv-vhapp-stack-1{background:#f0e9ff;transform:translateX(-50%) translateX(78px) rotate(5deg);z-index:2}
+.wevoi-app .wv-vhapp-stack-2{top:38px;background:#ffe8f1;transform:translateX(-50%) translateX(-86px) rotate(-6deg);z-index:1}
+.wevoi-app .wv-vhapp-phone{position:absolute;left:50%;top:0;z-index:3;width:min(340px,88%);padding:14px;background:#fff;border:1px solid #e7e2f6;border-radius:24px;box-shadow:0 24px 50px rgba(31,26,79,.22);transform:translateX(-50%);transition:transform .25s}
+.wevoi-app .wv-vhapp:hover .wv-vhapp-phone{transform:translateX(-50%) translateY(-6px)}
+.wevoi-app .wv-vhapp-top{display:flex;align-items:center;gap:10px;margin-bottom:10px}
+.wevoi-app .wv-vhapp-av{display:grid;place-items:center;flex:none;width:38px;height:38px;border-radius:50%;background:#e0307a;color:#fff;font-weight:800}
+.wevoi-app .wv-vhapp-top b{display:block;font-size:14px;color:#0f1538}
+.wevoi-app .wv-vhapp-top small{font-size:12px;color:#7b809c}
+.wevoi-app .wv-vhapp-follow{margin-left:auto;padding:6px 13px;border-radius:999px;background:#f0e9ff;color:#6a45d8;font-size:12px;font-weight:800}
+.wevoi-app .wv-vhapp-thumb{position:relative;height:180px;border-radius:16px;overflow:hidden}
+.wevoi-app .wv-vhapp-thumb img{display:block;width:100%;height:100%;object-fit:cover;object-position:center 60%}
+.wevoi-app .wv-vhapp-play{position:absolute;left:50%;top:50%;display:grid;place-items:center;width:52px;height:52px;border-radius:50%;background:#fff;box-shadow:0 8px 20px rgba(0,0,0,.25);transform:translate(-50%,-50%)}
+.wevoi-app .wv-vhapp-play svg{width:24px;height:24px;margin-left:3px;fill:#e0307a}
+.wevoi-app .wv-vhapp-title{margin:12px 2px 8px;font-size:16px;font-weight:800;color:#0f1538}
+.wevoi-app .wv-vhapp-act{display:flex;align-items:center;gap:14px;font-size:13px;font-weight:700;color:#58607f}
+.wevoi-app .wv-vhapp-act span{display:flex;align-items:center;gap:5px}
+.wevoi-app .wv-vhapp-act .wv-svg{width:18px;height:18px;stroke:#e0307a}
+.wevoi-app .wv-vhapp-watch{margin-left:auto;color:#6a45d8}
+.wevoi-app .wv-vhapp-watch .wv-svg{stroke:#6a45d8}
+@media(max-width:480px){.wevoi-app .wv-vhapp-stack-1{transform:translateX(-50%) translateX(40px) rotate(4deg)}.wevoi-app .wv-vhapp-stack-2{transform:translateX(-50%) translateX(-44px) rotate(-5deg)}}
+
+/* Why WeVoi: three-column cards with colored icons */
+.wevoi-app .wv-why-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:26px}
+.wevoi-app .wv-why-card{position:relative;display:block;overflow:hidden;padding:26px 24px 24px;background:#fff;border:1px solid #e7e2f6;border-radius:22px;box-shadow:0 10px 26px rgba(31,26,79,.06);transition:transform .2s,box-shadow .2s}
+.wevoi-app .wv-why-card::before{content:"";position:absolute;top:0;left:0;right:0;height:4px;background:var(--c)}
+.wevoi-app .wv-why-card:hover{transform:translateY(-4px);box-shadow:0 18px 36px rgba(31,26,79,.12)}
+.wevoi-app .wv-why-ico{display:grid;place-items:center;width:56px;height:56px;margin:0 0 16px;border-radius:18px;background:color-mix(in srgb,var(--c) 14%,#fff);color:var(--c);font-size:0}
+.wevoi-app .wv-why-ico .wv-svg{display:block;width:28px;height:28px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.wevoi-app .wv-why-card h3{margin:0 0 6px;font-size:19px;line-height:1.25}
+.wevoi-app .wv-why-card p{margin:0;font-size:15px;line-height:1.5;color:#5b657f}
+.wevoi-app .wv-why-card:nth-child(1){--c:#e0307a}
+.wevoi-app .wv-why-card:nth-child(2){--c:#6a45d8}
+.wevoi-app .wv-why-card:nth-child(3){--c:#3f67e0}
+.wevoi-app .wv-why-card:nth-child(4){--c:#1f8fd1}
+.wevoi-app .wv-why-card:nth-child(5){--c:#f08a24}
+.wevoi-app .wv-why-card:nth-child(6){--c:#1f9d63}
+@media(max-width:1000px){.wevoi-app .wv-why-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:640px){.wevoi-app .wv-why-grid{grid-template-columns:1fr}}
+
+/* Global community: light map and impact panel */
+.wevoi-app .wv-global-community-section{background:linear-gradient(180deg,#f7faff,#fff)}
+.wevoi-app .wv-global-reach{display:grid;grid-template-columns:minmax(0,1fr);gap:20px;padding:28px;background:linear-gradient(145deg,#fff,#fcfbff);border:1px solid #e5e9f4;border-radius:24px;box-shadow:0 16px 42px rgba(31,45,92,.08)}
+.wevoi-app .wv-global-head{display:flex;align-items:center;justify-content:space-between;gap:24px;padding:0 2px 18px;border-bottom:1px solid #e9edf6}
+.wevoi-app .wv-global-head-copy{min-width:0}
+.wevoi-app .wv-global-head .wv-eyebrow{margin:0 0 8px;font-size:11px}
+.wevoi-app .wv-global-head h2{max-width:680px;margin:0;font-size:clamp(24px,3vw,34px);line-height:1.16;letter-spacing:-.025em}
+.wevoi-app .wv-global-head .wv-global-cta{flex:none;min-height:46px;padding:0 20px;border-radius:13px;white-space:nowrap}
+.wevoi-app .wv-global-stats{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;padding:0 2px}
+.wevoi-app .wv-global-stat{display:flex;align-items:center;gap:12px;min-width:0;padding:0;border:0}
+.wevoi-app .wv-global-stat-icon{display:grid;place-items:center;flex:none;width:44px;height:44px;border-radius:50%;background:#fff0f6;color:#d82770}
+.wevoi-app .wv-global-stat-icon .wv-svg{display:block;width:21px;height:21px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.wevoi-app .wv-global-stat-pink{background:#fff0f6;color:#d82770}
+.wevoi-app .wv-global-stat-purple{background:#f1edff;color:#6845cf}
+.wevoi-app .wv-global-stat-blue{background:#edf6ff;color:#197bd0}
+.wevoi-app .wv-global-stat strong{display:block;color:var(--navy);font-size:clamp(21px,2.5vw,29px);line-height:1;letter-spacing:-.025em}
+.wevoi-app .wv-global-stat span{display:block;margin-top:4px;color:#66708a;font-size:12px;font-weight:700}
+.wevoi-app .wv-global-map-wrap{min-width:0;overflow:hidden;padding:10px;border:1px solid #e3dcf7;border-radius:18px;background:linear-gradient(145deg,#f3efff,#fff8fb);box-shadow:inset 0 1px 0 rgba(255,255,255,.9)}
+.wevoi-app .wv-global-map-wrap .wv-map{overflow:hidden;border-radius:12px;background:#fff}
+.wevoi-app .wv-global-map-img{display:block;width:100%;height:auto;object-fit:contain;border-radius:12px}
+@media(max-width:760px){
+.wevoi-app .wv-global-reach{gap:18px;padding:22px;border-radius:20px}
+.wevoi-app .wv-global-head{align-items:flex-start;flex-direction:column;gap:14px}
+.wevoi-app .wv-global-head h2{font-size:clamp(24px,5vw,30px)}
+.wevoi-app .wv-global-head .wv-global-cta{min-height:42px}
+.wevoi-app .wv-global-stats{gap:10px}
+.wevoi-app .wv-global-stat{gap:9px}
+.wevoi-app .wv-global-stat-icon{width:38px;height:38px}
+.wevoi-app .wv-global-stat-icon .wv-svg{width:18px;height:18px}
+.wevoi-app .wv-global-stat strong{font-size:20px}
+.wevoi-app .wv-global-stat span{font-size:11px}
+.wevoi-app .wv-global-map-wrap{padding:7px;border-radius:15px}
+}
+@media(max-width:440px){
+.wevoi-app .wv-global-reach{padding:18px}
+.wevoi-app .wv-global-stats{gap:7px}
+.wevoi-app .wv-global-stat{align-items:flex-start;flex-direction:column;gap:7px}
+.wevoi-app .wv-global-stat strong{font-size:19px}
+.wevoi-app .wv-global-stat span{font-size:10px}
+}
+
+/* Advisory Board: editorial people showcase */
+.wevoi-app .wv-advisory-section{background:linear-gradient(180deg,#fbfcff,#f7f8fc)}
+.wevoi-app .wv-advisory-section .wv-section-head{margin-bottom:30px}
+.wevoi-app .wv-advisory-section .wv-section-head>div{max-width:850px}
+.wevoi-app .wv-advisory-section .wv-section-head .wv-eyebrow{margin-bottom:12px}
+.wevoi-app .wv-advisory-section .wv-section-head h2{margin-bottom:12px}
+.wevoi-app .wv-advisory-section .wv-section-head .wv-lead{max-width:720px;margin:0;color:#66708a;font-size:16px;line-height:1.6}
+.wevoi-app .wv-advisory-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:22px 18px}
+.wevoi-app .wv-advisory-card{display:flex;flex-direction:column;min-width:0;height:100%;overflow:hidden;border:1px solid #e3e5f0;border-radius:22px;background:#fff;box-shadow:0 8px 24px rgba(18,31,72,.045);transition:transform .25s ease,box-shadow .25s ease,border-color .25s ease}
+.wevoi-app .wv-advisory-card:hover{transform:translateY(-4px);border-color:#d9d2ed;box-shadow:0 16px 34px rgba(18,31,72,.09)}
+.wevoi-app .wv-advisory-card:nth-child(5){grid-column-start:2}
+.wevoi-app .wv-advisory-portrait{position:relative;display:grid;place-items:center;aspect-ratio:4/5;overflow:hidden;margin:12px 12px 0;border-radius:16px;background:linear-gradient(145deg,#f1edff,#eaf5ff);isolation:isolate}
+.wevoi-app .wv-advisory-portrait::before,.wevoi-app .wv-advisory-portrait::after{content:"";position:absolute;z-index:0;border-radius:50%}
+.wevoi-app .wv-advisory-portrait::before{width:78%;aspect-ratio:1;right:-20%;top:-16%;background:rgba(255,255,255,.62)}
+.wevoi-app .wv-advisory-portrait::after{width:68%;aspect-ratio:1;left:-19%;bottom:-25%;background:rgba(106,69,216,.1)}
+.wevoi-app .wv-advisory-portrait>span{position:relative;z-index:1;color:#172a5c;font-size:clamp(38px,4vw,58px);font-weight:850;letter-spacing:-.06em}
+.wevoi-app .wv-advisory-card:nth-child(4n+2) .wv-advisory-portrait{background:linear-gradient(145deg,#fff0f6,#f4edff)}
+.wevoi-app .wv-advisory-card:nth-child(4n+3) .wv-advisory-portrait{background:linear-gradient(145deg,#eaf7ff,#eef0ff)}
+.wevoi-app .wv-advisory-card:nth-child(4n) .wv-advisory-portrait{background:linear-gradient(145deg,#eef8f2,#fff6eb)}
+.wevoi-app .wv-advisory-portrait::before{box-shadow:0 0 0 22px rgba(255,255,255,.14)}
+.wevoi-app .wv-advisory-copy{display:flex;flex:1;flex-direction:column;padding:18px 20px 22px}
+.wevoi-app .wv-advisory-copy h3{margin:0 0 8px;color:var(--navy);font-size:19px;line-height:1.25}
+.wevoi-app .wv-advisory-copy p{margin:0;color:#66708a;font-size:14px;line-height:1.55}
+@media(max-width:1000px){
+.wevoi-app .wv-advisory-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:20px}
+.wevoi-app .wv-advisory-card:nth-child(5){grid-column:auto}
+.wevoi-app .wv-advisory-portrait>span{font-size:clamp(42px,7vw,60px)}
+}
+@media(max-width:640px){
+.wevoi-app .wv-advisory-grid{grid-template-columns:minmax(0,1fr);gap:16px}
+.wevoi-app .wv-advisory-section .wv-section-head{margin-bottom:24px}
+.wevoi-app .wv-advisory-section .wv-section-head h2{font-size:clamp(28px,8vw,38px)}
+.wevoi-app .wv-advisory-card{display:flex;flex-direction:column;min-height:0}
+.wevoi-app .wv-advisory-card:nth-child(5){grid-column:auto}
+.wevoi-app .wv-advisory-portrait{width:auto;margin:10px 10px 0;aspect-ratio:4/5;border-radius:14px}
+.wevoi-app .wv-advisory-portrait>span{font-size:34px}
+.wevoi-app .wv-advisory-copy{padding:16px 18px 20px}
+}
+@media(prefers-reduced-motion:reduce){
+.wevoi-app .wv-advisory-card,.wevoi-app .wv-advisory-card:hover{transition:none;transform:none}
+}
+
+/* Advisory Board: balanced 3 + 4 desktop grid */
+.wevoi-app .wv-advisory-grid{grid-template-columns:repeat(12,minmax(0,1fr))}
+.wevoi-app .wv-advisory-grid>.wv-advisory-card{grid-column:span 3}
+.wevoi-app .wv-advisory-grid>.wv-advisory-card:nth-child(-n+3){grid-column:span 4}
+@media(max-width:1000px){
+.wevoi-app .wv-advisory-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+.wevoi-app .wv-advisory-grid>.wv-advisory-card,
+.wevoi-app .wv-advisory-grid>.wv-advisory-card:nth-child(-n+3){grid-column:auto}
+}
+@media(max-width:640px){
+.wevoi-app .wv-advisory-grid{grid-template-columns:minmax(0,1fr)}
+}
+
+/* Winners & Results: featured champions */
+.wevoi-app .wv-winners-section{overflow:hidden;background:linear-gradient(135deg,#fffdf8 0%,#fff 48%,#fff7fa 100%)}
+.wevoi-app .wv-winners-layout{display:grid;grid-template-columns:minmax(255px,.82fr) minmax(0,2fr);align-items:center;gap:38px}
+.wevoi-app .wv-winners-intro{min-width:0}
+.wevoi-app .wv-winners-intro .wv-eyebrow{margin-bottom:13px}
+.wevoi-app .wv-winners-intro h2{margin-bottom:14px;font-size:clamp(32px,3.4vw,44px);line-height:1.12}
+.wevoi-app .wv-winners-intro .wv-lead{margin:0 0 23px;color:#66708a;font-size:16px;line-height:1.55}
+.wevoi-app .wv-featured-winners{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));align-items:stretch;gap:14px;min-width:0}
+.wevoi-app .wv-featured-winner{min-width:0;overflow:hidden;border:1px solid #eee3ca;border-radius:22px;background:rgba(255,255,255,.96);box-shadow:0 10px 26px rgba(31,26,79,.07)}
+.wevoi-app .wv-winner-portrait{position:relative;display:grid;place-items:center;aspect-ratio:1.12;background:radial-gradient(circle at 75% 20%,rgba(255,255,255,.8) 0 8%,transparent 8.5%),linear-gradient(145deg,#fff3d6,#fff8e9 52%,#f7efff);isolation:isolate}
+.wevoi-app .wv-winner-portrait::before,.wevoi-app .wv-winner-portrait::after{position:absolute;z-index:0;content:"";border:1px solid rgba(207,157,53,.2);border-radius:50%}
+.wevoi-app .wv-winner-portrait::before{width:72%;aspect-ratio:1;left:-19%;bottom:-36%}
+.wevoi-app .wv-winner-portrait::after{width:48%;aspect-ratio:1;right:-15%;top:-20%}
+.wevoi-app .wv-winner-monogram{position:relative;z-index:1;color:#b0832d;font-size:clamp(36px,4vw,52px);font-weight:900;letter-spacing:-.07em}
+.wevoi-app .wv-winner-spark{position:absolute;z-index:1;right:14px;top:10px;color:#d1a13d;font-size:25px}
+.wevoi-app .wv-winner-content{display:flex;flex-direction:column;align-items:flex-start;min-height:207px;padding:16px 16px 18px}
+.wevoi-app .wv-winner-award{display:inline-flex;align-items:center;gap:6px;margin-bottom:11px;padding:5px 9px;border:1px solid #f0dfb5;border-radius:999px;background:#fff9e9;color:#8a651f;font-size:11px;font-weight:850;line-height:1.2}
+.wevoi-app .wv-winner-award span{color:#bd8b28;font-size:13px}
+.wevoi-app .wv-featured-winner h3{width:100%;margin:0 0 8px;color:var(--navy);font-size:17px;line-height:1.25;overflow-wrap:anywhere}
+.wevoi-app .wv-winner-country{display:flex;align-items:center;gap:6px;color:#5f6983;font-size:13px;font-weight:750;line-height:1.4}
+.wevoi-app .wv-winner-category{margin-top:9px;padding:4px 9px;border:1px solid #e4dcf8;border-radius:999px;background:#f7f4ff;color:#5e48a1;font-size:11px;font-weight:850;line-height:1.3}
+.wevoi-app .wv-winner-result{margin:auto 0 0;padding-top:12px;color:#4d5873;font-size:12px;font-weight:800;line-height:1.4}
+@media(max-width:1000px){
+.wevoi-app .wv-winners-layout{grid-template-columns:minmax(0,1fr);gap:30px}
+.wevoi-app .wv-winners-intro{max-width:760px}
+.wevoi-app .wv-winners-intro h2{max-width:700px}
+.wevoi-app .wv-winner-monogram{font-size:clamp(42px,6vw,58px)}
+}
+@media(max-width:760px){
+.wevoi-app .wv-featured-winners{grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+.wevoi-app .wv-featured-winner:last-child{width:calc(50% - 8px);grid-column:1/-1;justify-self:center}
+}
+@media(max-width:560px){
+.wevoi-app .wv-section.wv-winners-section{padding:60px 0}
+.wevoi-app .wv-winners-layout{gap:25px}
+.wevoi-app .wv-winners-intro h2{font-size:clamp(30px,9vw,38px)}
+.wevoi-app .wv-featured-winners{grid-template-columns:minmax(0,1fr);gap:14px}
+.wevoi-app .wv-featured-winner:last-child{width:auto;grid-column:auto}
+.wevoi-app .wv-winner-portrait{aspect-ratio:1.5}
+.wevoi-app .wv-winner-content{min-height:0}
+}
+
+/* Final CTA: refined gradient with microphone illustration */
+.wevoi-app .wv-final-cta-section{padding-top:64px;padding-bottom:64px;background:#fff}
+.wevoi-app .wv-final-cta-section::before,.wevoi-app .wv-final-cta-section::after{display:none}
+.wevoi-app .wv-final-cta-section .wv-cta{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(220px,.8fr);align-items:center;gap:30px;padding:42px 52px;border:1px solid rgba(255,255,255,.12);border-radius:28px;background:linear-gradient(120deg,#14204a 0%,#1b3678 54%,#7043bd 100%);box-shadow:0 18px 44px rgba(14,24,58,.14);isolation:isolate}
+.wevoi-app .wv-final-cta-section .wv-cta::before{position:absolute;z-index:-1;top:-130px;right:12%;width:260px;height:260px;border:1px solid rgba(209,180,255,.16);border-radius:50%;content:""}
+.wevoi-app .wv-final-cta-section .wv-cta::after{position:absolute;z-index:-1;right:-85px;bottom:-155px;width:300px;height:300px;border:1px solid rgba(255,255,255,.1);border-radius:50%;background:rgba(164,117,242,.08);content:""}
+.wevoi-app .wv-final-cta-copy{position:relative;z-index:1;max-width:650px}
+.wevoi-app .wv-final-cta-copy .wv-eyebrow{margin-bottom:12px;color:#ff9cc0}
+.wevoi-app .wv-final-cta-copy h2{max-width:650px;margin:0 0 14px;color:#fff;font-size:clamp(42px,4vw,48px);line-height:1.12}
+.wevoi-app .wv-final-cta-copy p{max-width:590px;margin:0 0 22px;color:#e0e6f6;font-size:16px;line-height:1.6}
+.wevoi-app .wv-final-cta-copy .wv-btn{min-height:50px;box-shadow:0 8px 20px rgba(242,41,120,.2)}
+.wevoi-app .wv-final-cta-art{position:relative;z-index:1;display:grid;place-items:center;min-width:0;min-height:250px}
+.wevoi-app .wv-microphone-art{display:block;width:min(100%,290px);height:auto;filter:drop-shadow(0 12px 18px rgba(6,13,39,.16))}
+.wevoi-app .wv-final-cta-section .wv-btn:focus-visible,.wevoi-app .wv-footer a:focus-visible{outline:3px solid #ffacd0;outline-offset:4px}
+
+/* Shared footer: enhanced dark navy layout */
+.wevoi-app .wv-footer{padding:54px 0 22px;border-top:1px solid rgba(255,255,255,.08);background:#0b1430;color:#c5cee3}
+.wevoi-app .wv-footer-grid{grid-template-columns:minmax(250px,1.45fr) repeat(3,minmax(0,1fr));align-items:start;gap:36px}
+.wevoi-app .wv-footer-column{min-width:0}
+.wevoi-app .wv-footer-brand{display:inline-block;margin:0 0 13px;padding:0;color:#fff;font-size:36px;font-weight:950;letter-spacing:-.045em;line-height:1.1}
+.wevoi-app .wv-footer-brand span{color:#f22978}
+.wevoi-app .wv-footer .wv-footer-description{max-width:340px;margin:0 0 16px;color:#d0d8e9;font-size:14px;line-height:1.65}
+.wevoi-app .wv-footer .wv-footer-contact{margin:0;color:#aebbd4;font-size:13px;line-height:1.75}
+.wevoi-app .wv-footer-column h4{margin:4px 0 12px;padding-bottom:12px;border-bottom:1px solid rgba(255,255,255,.13);color:#fff;font-size:15px;font-weight:850;letter-spacing:.025em}
+.wevoi-app .wv-footer .wv-footer-column>a:not(.wv-brand){display:block;width:fit-content;max-width:100%;padding:5px 0;color:#bdc8df;font-size:14px;line-height:1.45;text-decoration:none;transition:color .18s ease}
+.wevoi-app .wv-footer .wv-footer-column>a:not(.wv-brand):hover{color:#fff}
+.wevoi-app .wv-footer-bottom{margin-top:32px;padding-top:18px;border-top:1px solid rgba(255,255,255,.12);color:#9eabc5;line-height:1.6}
+@media(max-width:900px){
+.wevoi-app .wv-final-cta-section .wv-cta{grid-template-columns:minmax(0,1.15fr) minmax(190px,.85fr);gap:18px;padding:38px}
+.wevoi-app .wv-final-cta-copy h2{font-size:clamp(38px,5vw,44px)}
+.wevoi-app .wv-final-cta-art{min-height:210px}
+.wevoi-app .wv-microphone-art{width:min(100%,240px)}
+.wevoi-app .wv-footer-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:30px 34px}
+}
+@media(max-width:640px){
+.wevoi-app .wv-final-cta-section{padding-top:50px;padding-bottom:50px}
+.wevoi-app .wv-final-cta-section .wv-cta{grid-template-columns:minmax(0,1fr);gap:8px;padding:30px 24px;border-radius:24px}
+.wevoi-app .wv-final-cta-copy h2{font-size:clamp(34px,9vw,42px)}
+.wevoi-app .wv-final-cta-copy p{font-size:15px}
+.wevoi-app .wv-final-cta-art{min-height:150px;justify-content:start}
+.wevoi-app .wv-microphone-art{width:170px}
+.wevoi-app .wv-footer{padding-top:42px}
+.wevoi-app .wv-footer-grid{grid-template-columns:minmax(0,1fr);gap:24px}
+.wevoi-app .wv-footer-bottom{gap:9px;margin-top:26px}
+}
+
+/* Final CTA and footer: pastel color refinement */
+.wevoi-app .wv-final-cta-section .wv-cta{background:linear-gradient(120deg,#f7f5ff 0%,#edf5ff 54%,#f4eeff 100%);border-color:#e5e1f3;box-shadow:0 18px 44px rgba(41,45,92,.09)}
+.wevoi-app .wv-final-cta-section .wv-cta::before{border-color:rgba(112,70,232,.12)}
+.wevoi-app .wv-final-cta-section .wv-cta::after{border-color:rgba(112,70,232,.12);background:rgba(164,117,242,.045)}
+.wevoi-app .wv-final-cta-copy .wv-eyebrow{color:#c51f68}
+.wevoi-app .wv-final-cta-copy h2{color:#101a3d}
+.wevoi-app .wv-final-cta-copy p{color:#53617d}
+.wevoi-app .wv-microphone-art{filter:drop-shadow(0 8px 14px rgba(42,36,91,.1))}
+.wevoi-app .wv-microphone-art circle{stroke:rgba(112,70,232,.14)}
+.wevoi-app .wv-microphone-art circle:nth-of-type(2){fill:rgba(112,70,232,.035)}
+.wevoi-app .wv-microphone-art rect,.wevoi-app .wv-microphone-art path:nth-of-type(2){stroke:#7046e8}
+.wevoi-app .wv-microphone-art path:first-of-type,.wevoi-app .wv-microphone-art path:nth-of-type(3){stroke:#f83d8c}
+.wevoi-app .wv-microphone-art path:first-of-type{fill:#f83d8c}
+.wevoi-app .wv-footer-brand{font-size:30px}
+
+/* Sign Up page: native WordPress registration */
+.wevoi-app .wv-signup-page{padding:74px 0 88px}
+.wevoi-app .wv-signup-heading{max-width:780px;margin:0 auto 34px;text-align:center}
+.wevoi-app .wv-signup-heading h1{margin:0 0 16px;font-size:clamp(38px,5vw,62px)}
+.wevoi-app .wv-signup-heading .wv-lead{margin:0 auto}
+.wevoi-app .wv-signup-layout{display:grid;grid-template-columns:minmax(0,1.55fr) minmax(250px,.75fr);align-items:start;gap:24px;max-width:1080px;margin:0 auto}
+.wevoi-app .wv-signup-card,.wevoi-app .wv-signup-aside{min-width:0;border:1px solid var(--line);border-radius:26px;background:#fff;box-shadow:var(--shadow2)}
+.wevoi-app .wv-signup-card{padding:clamp(22px,4vw,38px)}
+.wevoi-app .wv-signup-card-head{margin-bottom:22px}
+.wevoi-app .wv-signup-card-head h2{margin:14px 0 8px;font-size:clamp(27px,3vw,34px)}
+.wevoi-app .wv-signup-card-head p{margin:0;font-size:14px}
+.wevoi-app .wv-signup-preview-note{margin-bottom:24px;padding:13px 16px;border:1px solid #cfeaff;border-radius:14px;background:#f0f8ff;color:#31516d;font-size:14px;line-height:1.55}
+.wevoi-app .wv-signup-preview-note strong{color:var(--navy)}
+.wevoi-app .wv-signup-fields{display:grid;gap:22px}
+.wevoi-app .wv-signup-role{min-width:0;margin:0;padding:0;border:0}
+.wevoi-app .wv-signup-role legend,.wevoi-app .wv-signup-conditional legend{margin-bottom:11px;color:var(--navy);font-size:15px;font-weight:850}
+.wevoi-app .wv-signup-role-options{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:9px}
+.wevoi-app .wv-signup-role-option{display:flex;min-height:46px;align-items:center;justify-content:center;gap:7px;padding:9px 10px;border:1px solid var(--line);border-radius:13px;background:#fff;color:#35405f;font-size:13px;font-weight:800;cursor:pointer;transition:border-color .2s,background .2s,box-shadow .2s}
+.wevoi-app .wv-signup-role-option:has(input:checked){border-color:#f5a1c2;background:#fff3f8;box-shadow:0 0 0 2px rgba(242,41,120,.08);color:#a91c55}
+.wevoi-app .wv-signup-role-option input{width:16px;height:16px;margin:0;accent-color:var(--pink)}
+.wevoi-app .wv-signup-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px 16px}
+.wevoi-app .wv-signup-field{min-width:0}
+.wevoi-app .wv-signup-field label{display:block;margin-bottom:7px;color:var(--navy);font-size:14px;font-weight:800}
+.wevoi-app .wv-signup-field input,.wevoi-app .wv-signup-field select{display:block;width:100%;min-height:48px;padding:11px 13px;border:1px solid #dce1ec;border-radius:12px;background:#fff;color:var(--ink);font-size:15px;line-height:1.4;transition:border-color .2s,box-shadow .2s}
+.wevoi-app .wv-signup-field input:focus,.wevoi-app .wv-signup-field select:focus,.wevoi-app .wv-signup-role-option input:focus-visible{border-color:var(--blue);outline:3px solid rgba(22,136,232,.18);outline-offset:1px}
+.wevoi-app .wv-signup-field input:disabled,.wevoi-app .wv-signup-field select:disabled{background:#f4f6fa;color:#7b8499;cursor:not-allowed}
+.wevoi-app .wv-signup-conditional{min-width:0;margin:0;padding:18px;border:1px solid #e5e8f2;border-radius:16px;background:#fafbfe}
+.wevoi-app .wv-signup-conditional[hidden]{display:none}
+.wevoi-app .wv-signup-conditional .wv-signup-grid{gap:14px}
+.wevoi-app .wv-signup-help{margin:7px 0 0;color:var(--muted);font-size:12px}
+.wevoi-app .wv-signup-actions{display:flex;flex-wrap:wrap;align-items:center;gap:12px;padding-top:4px}
+.wevoi-app .wv-signup-actions .wv-btn{min-width:145px}
+.wevoi-app .wv-signup-actions .wv-btn:disabled{transform:none;opacity:.56;cursor:not-allowed;box-shadow:none}
+.wevoi-app .wv-signup-disabled-note{color:var(--muted);font-size:13px}
+.wevoi-app .wv-signup-aside{position:sticky;top:104px;overflow:hidden;padding:30px;background:linear-gradient(155deg,#fff 0%,#f5f8ff 58%,#fff2f7 100%)}
+.wevoi-app .wv-signup-aside-icon{display:grid;width:54px;height:54px;place-items:center;margin-bottom:25px;border-radius:17px;background:linear-gradient(135deg,var(--pink),#ff6ba5);color:#fff;font-size:29px;box-shadow:0 12px 24px rgba(242,41,120,.2)}
+.wevoi-app .wv-signup-aside h2{margin:0 0 14px;font-size:clamp(25px,2.6vw,32px);line-height:1.12}
+.wevoi-app .wv-signup-aside>p{color:#5d6884;font-size:15px;line-height:1.65}
+.wevoi-app .wv-signup-aside ul{display:grid;gap:15px;margin:24px 0;padding:0;list-style:none}
+.wevoi-app .wv-signup-aside li{display:flex;align-items:center;gap:12px;color:#35405f;font-size:14px;font-weight:750}
+.wevoi-app .wv-signup-aside li span{display:grid;width:31px;height:31px;flex:none;place-items:center;border-radius:10px;background:#fff;border:1px solid var(--line);color:var(--pink);font-size:11px;font-weight:900}
+.wevoi-app .wv-signup-aside .wv-signup-aside-foot{margin:25px 0 0;padding-top:18px;border-top:1px solid rgba(231,234,242,.9);font-size:14px}
+.wevoi-app .wv-signup-aside-foot a{color:#bd1c60;font-weight:900;text-decoration:underline;text-underline-offset:3px}
+@media(max-width:900px){
+.wevoi-app .wv-signup-layout{grid-template-columns:minmax(0,1fr)}
+.wevoi-app .wv-signup-aside{position:static}
+}
+@media(max-width:640px){
+.wevoi-app .wv-signup-page{padding:54px 0 64px}
+.wevoi-app .wv-signup-heading{margin-bottom:24px;text-align:left}
+.wevoi-app .wv-signup-role-options{grid-template-columns:repeat(2,minmax(0,1fr))}
+.wevoi-app .wv-signup-role-option:last-child{grid-column:1/-1}
+.wevoi-app .wv-signup-grid{grid-template-columns:minmax(0,1fr);gap:14px}
+.wevoi-app .wv-signup-card{padding:22px 18px;border-radius:21px}
+.wevoi-app .wv-signup-actions{align-items:stretch;flex-direction:column}
+.wevoi-app .wv-signup-actions .wv-btn{width:100%}
+.wevoi-app .wv-signup-disabled-note{text-align:center}
+.wevoi-app .wv-signup-aside{padding:24px}
+}
+@media(prefers-reduced-motion:reduce){
+.wevoi-app .wv-signup-role-option,.wevoi-app .wv-signup-field input,.wevoi-app .wv-signup-field select{transition:none}
+}
+
+/* Log In page: visual-only authentication preview */
+.wevoi-app .wv-login-page{display:grid;min-height:calc(100vh - 150px);align-items:center;padding:76px 0;background:radial-gradient(circle at 12% 18%,rgba(99,198,244,.14),transparent 30%),radial-gradient(circle at 88% 82%,rgba(242,41,120,.10),transparent 28%),linear-gradient(180deg,#fbfcff,#f6f8fd)}
+.wevoi-app .wv-login-layout{display:grid;grid-template-columns:minmax(0,1fr) minmax(280px,.8fr);align-items:center;gap:clamp(30px,6vw,82px);max-width:1030px;margin:0 auto}
+.wevoi-app .wv-login-card{width:100%;max-width:510px;margin:0 auto;padding:clamp(26px,5vw,46px);border:1px solid rgba(231,234,242,.95);border-radius:28px;background:#fff;box-shadow:0 24px 70px rgba(26,38,78,.12)}
+.wevoi-app .wv-login-brand-mark{margin-bottom:26px;color:var(--navy);font-size:24px;font-weight:950;letter-spacing:-.05em}
+.wevoi-app .wv-login-brand-mark span{color:var(--pink)}
+.wevoi-app .wv-login-card .wv-eyebrow{margin-bottom:9px}
+.wevoi-app .wv-login-card h1{margin:0 0 12px;font-size:clamp(31px,4vw,43px);letter-spacing:-.04em}
+.wevoi-app .wv-login-intro{margin:0 0 23px;color:#5e6882;font-size:15px;line-height:1.6}
+.wevoi-app .wv-login-preview-note{margin-bottom:24px;padding:13px 15px;border:1px solid #cfeaff;border-radius:13px;background:#f0f8ff;color:#31516d;font-size:13px;line-height:1.55}
+.wevoi-app .wv-login-preview-note strong{color:var(--navy)}
+.wevoi-app .wv-login-fields{display:grid;gap:19px}
+.wevoi-app .wv-login-field{min-width:0}
+.wevoi-app .wv-login-field label{display:block;margin-bottom:8px;color:var(--navy);font-size:14px;font-weight:850}
+.wevoi-app .wv-login-field input{display:block;width:100%;min-height:51px;padding:12px 14px;border:1px solid #dce1ec;border-radius:13px;background:#fff;color:var(--ink);font-size:15px;line-height:1.4;transition:border-color .2s,box-shadow .2s}
+.wevoi-app .wv-login-field input::placeholder{color:#929bb0}
+.wevoi-app .wv-login-field input:focus{border-color:var(--blue);outline:3px solid rgba(22,136,232,.17);outline-offset:1px}
+.wevoi-app .wv-login-password-label{display:flex;align-items:center;justify-content:space-between;gap:10px}
+.wevoi-app .wv-login-password-label a,.wevoi-app .wv-login-signup a{color:#bd1c60;font-size:13px;font-weight:850;text-decoration:underline;text-underline-offset:3px}
+.wevoi-app .wv-login-password-wrap{position:relative}
+.wevoi-app .wv-login-password-wrap input{padding-right:54px}
+.wevoi-app .wv-login-password-toggle{position:absolute;top:50%;right:8px;display:grid;width:38px;height:38px;transform:translateY(-50%);place-items:center;border:0;border-radius:10px;background:transparent;color:#68738e;cursor:pointer}
+.wevoi-app .wv-login-password-toggle:hover{background:#f3f5fa;color:var(--navy)}
+.wevoi-app .wv-login-password-toggle:focus-visible{outline:3px solid rgba(22,136,232,.3);outline-offset:1px}
+.wevoi-app .wv-login-password-toggle svg{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.wevoi-app .wv-login-remember{display:flex;align-items:center;gap:9px;width:fit-content;color:#4f5a76;font-size:14px;font-weight:650;cursor:pointer}
+.wevoi-app .wv-login-remember input{width:17px;height:17px;margin:0;accent-color:var(--pink)}
+.wevoi-app .wv-login-submit{width:100%;min-height:51px}
+.wevoi-app .wv-login-submit:disabled{transform:none;opacity:.58;cursor:not-allowed;box-shadow:none}
+.wevoi-app .wv-login-signup{margin:0;text-align:center;color:#66708a;font-size:14px}
+.wevoi-app .wv-login-signup a{margin-left:4px}
+.wevoi-app .wv-login-aside{position:relative;overflow:hidden;padding:18px 0;color:#4f5b78}
+.wevoi-app .wv-login-aside .wv-eyebrow{margin:28px 0 12px}
+.wevoi-app .wv-login-aside h2{max-width:440px;margin:0 0 16px;font-size:clamp(34px,4.2vw,52px);letter-spacing:-.04em;line-height:1.08}
+.wevoi-app .wv-login-aside>p{max-width:420px;margin:0;color:#626d88;font-size:16px;line-height:1.7}
+.wevoi-app .wv-login-aside-orbit{position:relative;display:grid;width:106px;height:106px;place-items:center;border:1px solid rgba(110,69,216,.2);border-radius:50%;background:linear-gradient(145deg,#fff,#f3efff);box-shadow:0 15px 36px rgba(26,38,78,.09)}
+.wevoi-app .wv-login-aside-orbit::before,.wevoi-app .wv-login-aside-orbit::after{position:absolute;content:"";border:1px solid rgba(242,41,120,.18);border-radius:50%}
+.wevoi-app .wv-login-aside-orbit::before{inset:-13px}
+.wevoi-app .wv-login-aside-orbit::after{inset:14px}
+.wevoi-app .wv-login-aside-orbit span{position:relative;z-index:1;color:var(--pink);font-size:43px;font-weight:950;letter-spacing:-.08em}
+.wevoi-app .wv-login-aside-orbit i,.wevoi-app .wv-login-aside-orbit b{position:absolute;z-index:2;width:10px;height:10px;border-radius:50%;background:var(--blue)}
+.wevoi-app .wv-login-aside-orbit i{top:8px;right:5px}
+.wevoi-app .wv-login-aside-orbit b{bottom:1px;left:13px;background:var(--pink)}
+.wevoi-app .wv-login-aside-quote{display:flex;align-items:flex-start;gap:11px;margin-top:32px;padding:17px 19px;border:1px solid rgba(231,234,242,.95);border-radius:16px;background:rgba(255,255,255,.72)}
+.wevoi-app .wv-login-aside-quote>span{color:var(--pink);font-size:33px;font-weight:900;line-height:1}
+.wevoi-app .wv-login-aside-quote p{margin:4px 0 0;color:var(--navy);font-size:15px;font-weight:850}
+@media(max-width:820px){
+.wevoi-app .wv-login-page{min-height:0;padding:58px 0}
+.wevoi-app .wv-login-layout{grid-template-columns:minmax(0,1fr);gap:32px}
+.wevoi-app .wv-login-aside{max-width:510px;margin:0 auto;padding:0}
+.wevoi-app .wv-login-aside h2{font-size:clamp(32px,7vw,44px)}
+.wevoi-app .wv-login-aside-orbit{width:78px;height:78px}
+.wevoi-app .wv-login-aside-orbit span{font-size:34px}
+}
+@media(max-width:520px){
+.wevoi-app .wv-login-page{padding:38px 0 50px}
+.wevoi-app .wv-login-card{padding:25px 20px;border-radius:22px}
+.wevoi-app .wv-login-brand-mark{margin-bottom:21px}
+.wevoi-app .wv-login-aside-quote{margin-top:23px}
+}
+@media(prefers-reduced-motion:reduce){
+.wevoi-app .wv-login-field input{transition:none}
+}
+.wevoi-app .wv-signup-error,.wevoi-app .wv-signup-success{margin:0 0 22px;padding:15px 17px;border:1px solid;border-radius:14px;font-size:14px;line-height:1.55}
+.wevoi-app .wv-signup-error{border-color:#f2b6bd;background:#fff5f5;color:#85212a}
+.wevoi-app .wv-signup-success{border-color:#b9e3cc;background:#f2fbf5;color:#205b39}
+.wevoi-app .wv-signup-error strong,.wevoi-app .wv-signup-success strong{display:block;font-weight:850}
+.wevoi-app .wv-signup-error ul{display:grid;gap:5px;margin:8px 0 0;padding-left:20px}
+.wevoi-app .wv-signup-success p{margin:7px 0 0}
+.wevoi-app .wv-signup-success a{color:#176b3d;font-weight:850;text-decoration:underline;text-underline-offset:3px}
+.wevoi-app .wv-signup-preview-note{margin-bottom:24px}
+.wevoi-app .wv-signup-actions .wv-btn:disabled{transform:none;opacity:.56;cursor:not-allowed;box-shadow:none}
+.wevoi-app .wv-login-error{margin-bottom:2px;padding:12px 15px;border:1px solid #f3c5ce;border-left:4px solid #d63638;border-radius:12px;background:#fff5f6;color:#8a2027;font-size:14px;line-height:1.55}
+
+/* Dashboard routes embed independently styled plugin interfaces. */
+body.wevoi-redesign-page .wp-site-blocks > header.wp-block-template-part,
+body.wevoi-redesign-page #masthead,
+body.wevoi-redesign-page .site-header,
+body.wevoi-redesign-page .wp-block-post-title,
+body.wevoi-redesign-page .entry-title,
+body.wevoi-redesign-page .page-title{display:none!important}
+.wevoi-app .wv-dashboard-page{min-height:55vh}
+.wevoi-app .wv-dashboard-heading{max-width:850px;margin:0 auto 30px}
+.wevoi-app .wv-dashboard-heading h1{margin:0 0 14px;font-size:clamp(36px,5vw,58px);line-height:1.08}
+.wevoi-app .wv-dashboard-heading .wv-lead{margin:0}
+.wevoi-app .wv-dashboard-panel{min-width:0;padding:clamp(16px,3vw,32px);border:1px solid var(--line);border-radius:24px;background:#fff;box-shadow:var(--shadow2)}
+.wevoi-app .wv-shortcode-content{min-width:0}
+.wevoi-app .wv-dashboard-notice{max-width:720px;margin:0 auto;padding:clamp(22px,4vw,38px);border:1px solid var(--line);border-radius:20px;background:#f9faff;text-align:center}
+.wevoi-app .wv-dashboard-notice h2{margin:0 0 12px;font-size:clamp(25px,3vw,34px);line-height:1.15}
+.wevoi-app .wv-dashboard-notice p{margin:0 0 20px;color:var(--muted)}
+.wevoi-app .wv-dashboard-notice .wv-btn{margin-top:2px}
+.wevoi-app .wv-dashboard-panel .wpie-supervisor-profile-wrapper,
+.wevoi-app .wv-dashboard-panel .wpie-parent-profile-wrapper,
+.wevoi-app .wv-dashboard-panel .wevoi-student-dashboard{max-width:100%;min-width:0}
+.wevoi-app .wv-dashboard-panel table{max-width:100%}
+@media(max-width:720px){
+  .wevoi-app .wv-dashboard-page{padding:54px 0}
+  .wevoi-app .wv-dashboard-heading{margin-bottom:22px}
+  .wevoi-app .wv-dashboard-panel{padding:14px;border-radius:18px}
+}

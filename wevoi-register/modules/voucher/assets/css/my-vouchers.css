@@ -1,0 +1,180 @@
+.wevoi-voucher-used {
+    font-size: 12px;
+    background-color: #f8f9fa;
+    padding: 5px 10px;
+    border-radius: 4px;
+    color: #666;
+    margin-top: 10px;
+    display: inline-block;
+}
+
+/* Admin specific styles */
+.wevoi-admin-notice {
+    background-color: #f8f9fa;
+    border-left: 4px solid #0066cc;
+    padding: 10px 15px;
+    margin-bottom: 20px;
+    font-size: 14px;
+    color: #555;
+}
+
+.wevoi-voucher-user {
+    margin-top: 5px;
+    font-size: 14px;
+    color: #666;
+}
+
+.wevoi-voucher-user .email-label {
+    font-weight: 500;
+    margin-right: 5px;
+}
+
+.wevoi-voucher-user .user-email {
+    color: #0066cc;
+}
+/* My Vouchers Styles */
+.wevoi-my-vouchers {
+    max-width: 800px;
+    margin: 30px auto;
+    font-family: Arial, sans-serif;
+}
+
+.wevoi-my-vouchers h2 {
+    text-align: center;
+    color: #333;
+    margin-bottom: 30px;
+}
+
+.wevoi-voucher-card {
+    background: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    padding: 20px;
+    margin-bottom: 30px;
+    position: relative;
+}
+
+.wevoi-voucher-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 20px;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 15px;
+}
+
+.wevoi-voucher-title h3 {
+    margin: 0;
+    color: #333;
+    font-size: 24px;
+}
+
+.wevoi-voucher-status {
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.wevoi-voucher-status.paid {
+    background: #d4edda;
+    color: #155724;
+}
+
+.wevoi-voucher-status.refunded {
+    background: #f8d7da; 
+    color: #721c24;
+}
+
+.wevoi-voucher-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+}
+
+.wevoi-voucher-code-container,
+.wevoi-voucher-amount-container {
+    text-align: center;
+    padding: 20px;
+    background-color: #f8f9fa;
+    border-radius: 8px;
+    border: 2px dashed #6c757d;
+}
+
+.wevoi-voucher-code-container h4,
+.wevoi-voucher-amount-container h4 {
+    margin-top: 0;
+    color: #555;
+}
+
+.wevoi-voucher-code,
+.wevoi-voucher-amount {
+    font-size: 32px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    color: #0066cc;
+    margin: 15px 0;
+}
+
+.wevoi-voucher-usage,
+.wevoi-voucher-thanks {
+    font-size: 14px;
+    color: #6c757d;
+}
+
+.wevoi-voucher-details {
+    padding-right: 20px;
+}
+
+.wevoi-detail-row {
+    margin-bottom: 10px;
+    display: flex;
+}
+
+.wevoi-detail-row .label {
+    flex: 0 0 150px;
+    font-weight: bold;
+    color: #333;
+    font-size: 14px;
+}
+
+.wevoi-detail-row .value {
+    font-size: 14px;
+    color: #555;
+}
+
+.wevoi-no-vouchers {
+    text-align: center;
+    padding: 40px;
+    background: #f8f9fa;
+    border-radius: 8px;
+    color: #666;
+    font-size: 16px;
+}
+
+.wevoi-no-vouchers a {
+    color: #0066cc;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.wevoi-no-vouchers a:hover {
+    text-decoration: underline;
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+    .wevoi-voucher-content {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+    
+    .wevoi-voucher-details {
+        padding-right: 0;
+    }
+    
+    .wevoi-voucher-code,
+    .wevoi-voucher-amount {
+        font-size: 24px;
+    }
+}

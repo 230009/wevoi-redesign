@@ -1,0 +1,23 @@
+# macOS
+.DS_Store
+
+# Local WordPress environment
+wp-config.php
+.local/
+.local-*
+*.sql
+*.sql.gz
+
+# Logs
+*.log
+
+# IDE
+.vscode/
+
+# Dependencies
+node_modules/
+vendor/
+
+# Temporary files
+*.tmp
+*.bak

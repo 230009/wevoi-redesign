@@ -1,0 +1,284 @@
+body.login-action-register {
+	--wv-navy: #101b3d;
+	--wv-pink: #f22978;
+	--wv-blue: #1688e8;
+	--wv-ink: #212941;
+	--wv-muted: #69738f;
+	--wv-line: #e7eaf2;
+	--wv-shadow: 0 18px 50px rgba(26, 38, 78, .10);
+	min-height: 100vh;
+	background:
+		radial-gradient(circle at 8% 5%, rgba(99, 198, 244, .20), transparent 28%),
+		radial-gradient(circle at 92% 7%, rgba(242, 41, 120, .14), transparent 25%),
+		linear-gradient(180deg, #fff, #f7f8fc 65%);
+	color: var(--wv-ink);
+	font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+}
+
+body.login-action-register #login {
+	box-sizing: border-box;
+	width: min(100% - 32px, 760px);
+	max-width: 760px;
+	padding: 4vh 0 48px;
+}
+
+body.login-action-register #login h1 {
+	margin: 0 0 18px;
+}
+
+body.login-action-register .wevoi-signup-container {
+	margin: 14px 0 26px;
+	text-align: center;
+}
+
+body.login-action-register .wevoi-signup-title {
+	margin: 0;
+	color: var(--wv-navy);
+	font-size: clamp(32px, 5vw, 48px);
+	font-weight: 850;
+	letter-spacing: -.04em;
+	line-height: 1.1;
+}
+
+body.login-action-register #registerform {
+	box-sizing: border-box;
+	width: 100%;
+	max-width: none;
+	margin: 0;
+	padding: clamp(22px, 4vw, 38px);
+	border: 1px solid var(--wv-line);
+	border-radius: 26px;
+	background: #fff;
+	box-shadow: var(--wv-shadow);
+}
+
+body.login-action-register #registerform p {
+	box-sizing: border-box;
+	margin: 0 0 18px;
+	color: var(--wv-navy);
+}
+
+body.login-action-register #registerform label {
+	display: block;
+	margin: 0;
+	color: var(--wv-navy);
+	font-size: 14px;
+	font-weight: 800;
+	line-height: 1.5;
+}
+
+body.login-action-register #registerform input[type="text"],
+body.login-action-register #registerform input[type="email"],
+body.login-action-register #registerform input[type="date"],
+body.login-action-register #registerform select {
+	box-sizing: border-box;
+	display: block;
+	width: 100%;
+	min-height: 48px;
+	margin: 6px 0 0;
+	padding: 11px 13px;
+	border: 1px solid #dce1ec;
+	border-radius: 12px;
+	background-color: #fff;
+	color: var(--wv-ink);
+	font: inherit;
+	font-size: 15px;
+	line-height: 1.4;
+	box-shadow: none;
+	transition: border-color .2s, box-shadow .2s;
+}
+
+body.login-action-register #registerform input[type="text"]:focus,
+body.login-action-register #registerform input[type="email"]:focus,
+body.login-action-register #registerform input[type="date"]:focus,
+body.login-action-register #registerform select:focus {
+	border-color: var(--wv-blue);
+	outline: 3px solid rgba(22, 136, 232, .18);
+	outline-offset: 1px;
+	box-shadow: none;
+}
+
+body.login-action-register #registerform input[type="radio"] {
+	width: 17px;
+	height: 17px;
+	margin: 0 7px 0 0;
+	accent-color: var(--wv-pink);
+	vertical-align: middle;
+}
+
+body.login-action-register #registerform .role-selection {
+	margin: 0 0 8px;
+	font-size: 15px;
+	font-weight: 850;
+}
+
+body.login-action-register #registerform .role-options {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 9px;
+	margin: 10px 0 22px;
+}
+
+body.login-action-register #registerform .role-option {
+	display: inline-flex;
+	min-height: 46px;
+	align-items: center;
+	padding: 9px 13px;
+	border: 1px solid var(--wv-line);
+	border-radius: 13px;
+	background: #fff;
+	color: #35405f;
+	font-size: 13px;
+	font-weight: 800;
+	cursor: pointer;
+}
+
+body.login-action-register #registerform .signup-name-row {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 0 16px;
+	width: 100%;
+	margin: 0 0 10px;
+}
+
+body.login-action-register #registerform .signup-name-row .signup-row-half {
+	box-sizing: border-box;
+	flex: 1 1 calc(50% - 8px);
+	min-width: 0;
+	max-width: calc(50% - 8px);
+}
+
+body.login-action-register #registerform p.full-width,
+body.login-action-register #registerform .full-width {
+	width: 100%;
+}
+
+body.login-action-register #registerform #student-fields,
+body.login-action-register #registerform #new-school-container {
+	box-sizing: border-box;
+	margin: 8px 0 18px;
+	padding: 18px;
+	border: 1px solid #e5e8f2;
+	border-radius: 16px;
+	background: #fafbfe;
+}
+
+body.login-action-register #registerform .italic-option {
+	color: #176b3d;
+	font-style: italic;
+}
+
+body.login-action-register #registerform p.submit {
+	margin: 24px 0 0;
+	padding: 0;
+	text-align: left;
+}
+
+body.login-action-register #registerform .button,
+body.login-action-register #registerform input[type="submit"] {
+	float: none;
+	min-height: 48px;
+	margin: 0;
+	padding: 12px 28px;
+	border: 0;
+	border-radius: 14px;
+	background: linear-gradient(135deg, var(--wv-pink), #ff4d94);
+	color: #fff;
+	font-size: 15px;
+	font-weight: 850;
+	line-height: 1.4;
+	text-shadow: none;
+	box-shadow: 0 10px 26px rgba(242, 41, 120, .25);
+	cursor: pointer;
+	transition: transform .2s, box-shadow .2s;
+}
+
+body.login-action-register #registerform .button:hover,
+body.login-action-register #registerform input[type="submit"]:hover {
+	border: 0;
+	background: linear-gradient(135deg, #df1c68, #f23d84);
+	color: #fff;
+	transform: translateY(-1px);
+}
+
+body.login-action-register #login_error,
+body.login-action-register .message,
+body.login-action-register .notice {
+	box-sizing: border-box;
+	width: 100%;
+	margin: 0 0 18px;
+	padding: 13px 16px;
+	border: 1px solid #f3c5ce;
+	border-left: 4px solid #d63638;
+	border-radius: 12px;
+	background: #fff5f6;
+	color: #8a2027;
+	box-shadow: none;
+}
+
+body.login-action-register #reg_passmail {
+	margin: 0 0 18px;
+	padding: 13px 16px;
+	border: 1px solid #b8e2c7;
+	border-radius: 12px;
+	background: #f0faf3;
+	color: #176b3d;
+	font-size: 14px;
+	font-weight: 750;
+	text-align: left;
+}
+
+body.login-action-register #nav,
+body.login-action-register #backtoblog {
+	text-align: center;
+}
+
+body.login-action-register #nav a,
+body.login-action-register #backtoblog a {
+	color: #35405f;
+}
+
+@media (max-width: 600px) {
+	body.login-action-register #login {
+		width: min(100% - 24px, 500px);
+		padding-top: 20px;
+	}
+
+	body.login-action-register #registerform {
+		padding: 22px 18px;
+		border-radius: 21px;
+	}
+
+	body.login-action-register #registerform .signup-name-row {
+		gap: 0;
+	}
+
+	body.login-action-register #registerform .signup-name-row .signup-row-half {
+		flex-basis: 100%;
+		max-width: 100%;
+	}
+
+	body.login-action-register #registerform .role-options {
+		gap: 8px;
+	}
+
+	body.login-action-register #registerform .role-option {
+		flex: 1 1 calc(50% - 8px);
+		justify-content: flex-start;
+	}
+
+	body.login-action-register #registerform .button,
+	body.login-action-register #registerform input[type="submit"] {
+		width: 100%;
+	}
+}
+
+@media (prefers-reduced-motion: reduce) {
+	body.login-action-register #registerform input[type="text"],
+	body.login-action-register #registerform input[type="email"],
+	body.login-action-register #registerform input[type="date"],
+	body.login-action-register #registerform select,
+	body.login-action-register #registerform .button {
+		transition: none;
+	}
+}

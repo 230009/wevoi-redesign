@@ -1,0 +1,669 @@
+
+/* De���erlendirme yapmam��ŏ�� j���riler i���in stil */
+.assignment-count.not-evaluated {
+    color: #f44336; /* K���rm���z��� renk */
+    font-weight: bold;
+}
+
+/* De���erlendirme say���s��� kolonu i���in ek stil */
+.column-assignments {
+    text-align: center;
+}
+
+/* De���erlendirme a������klamas��� i���in stil */
+.assignment-help {
+    display: block;
+    font-size: 12px;
+    color: #666;
+    margin-top: 5px;
+}
+
+/* De���erlendirme durumlar��� i���in stiller */
+.assignment-count.not-started {
+    color: #f44336; /* K���rm���z��� renk */
+    font-weight: bold;
+}
+
+.assignment-count.in-progress {
+    color: gray; /* Turuncu renk */
+    font-weight: bold;
+}
+
+.assignment-count.completed {
+    color: #4caf50; /* Ye���il renk */
+    font-weight: bold;
+}
+
+/* Durum metni i���in stil */
+.evaluation-status {
+    display: block;
+    font-size: 12px;
+    margin-top: 5px;
+}
+
+.evaluation-status.not-started {
+    color: #f44336;
+}
+
+.evaluation-status.in-progress {
+    color: gray;
+}
+
+.evaluation-status.completed {
+    color: #4caf50;
+}
+
+/* De���erlendirme say���s��� kolonu i���in ek stil */
+.column-assignments {
+    text-align: center;
+}
+
+/* De���erlendirme a������klamas��� i���in stil */
+.assignment-help {
+    display: block;
+    font-size: 12px;
+    color: #666;
+    margin-top: 5px;
+}
+
+/* Modal Styles */
+
+
+.wevoi-modal {
+    display: none;
+    position: fixed;
+    z-index: 100000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.4);
+}
+
+.wevoi-modal-content {
+    background-color: #fefefe;
+    margin: 5% auto;
+    padding: 0;
+    border: 1px solid #888;
+    width: 80%;
+    max-width: 800px;
+    border-radius: 4px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    position: relative;
+}
+
+.wevoi-modal-header {
+    padding: 15px 20px;
+    border-bottom: 1px solid #ddd;
+    background: #f8f9fa;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.wevoi-modal-header h2 {
+    margin: 0;
+    padding: 0;
+    font-size: 1.3em;
+}
+
+.wevoi-modal-body {
+    padding: 20px;
+    max-height: 70vh;
+    overflow-y: auto;
+}
+
+.modal-close {
+    color: #aaa;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+    background: none;
+    border: none;
+    padding: 0;
+}
+
+.modal-close:hover,
+.modal-close:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+/* Tab Styles */
+.stats-tabs {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 10px;
+}
+
+.tab-button {
+    padding: 8px 16px;
+    border: 1px solid #ddd;
+    background: #f5f5f5;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.tab-button.active {
+    background: #2271b1;
+    color: #fff;
+    border-color: #2271b1;
+}
+
+.tab-content {
+    display: none;
+}
+
+.tab-content.active {
+    display: block;
+}
+
+/* Table Styles */
+.stats-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 15px;
+}
+
+.stats-table th,
+.stats-table td {
+    padding: 10px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+.stats-table th {
+    background: #f5f5f5;
+    font-weight: 600;
+}
+
+/* Detailed Stats Styles */
+.detailed-stats {
+    background: #f8f9fa;
+    padding: 15px;
+    border-radius: 4px;
+}
+
+.stat-row {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 0;
+    border-bottom: 1px solid #eee;
+}
+
+.stat-row:last-child {
+    border-bottom: none;
+}
+
+.stat-label {
+    font-weight: 500;
+}
+/* Reduce width of ID column in Email Snippets table */
+.wp-list-table th.column-id,
+.wp-list-table td.column-id {
+    width: 40px;
+    max-width: 40px;
+    min-width: 40px;
+}
+
+.button.email-compose {
+    background-color: #f6f7f7;
+    border-color: #c3c4c7;
+    box-shadow: 0 1px 0 #c3c4c7;
+    margin-right: 0;
+    text-align: center;
+    line-height: 1.5;
+}
+
+.button.email-compose .dashicons {
+    font-size: 16px;
+    width: 16px;
+    height: 16px;
+    line-height: 1;
+    color: #2271b1; /* Blue icon color */
+    vertical-align: text-bottom;
+    display: inline-block;
+}
+
+.button.email-compose:hover {
+    background-color: #f0f0f1;
+    border-color: #8c8f94;
+}
+
+.button.email-compose.dashicons-button {
+    width: auto;
+    height: auto;
+    text-align: center;
+    line-height: 1.5;
+    border-radius: 3px;
+    position: relative;
+    background-color: #f6f7f7;
+    border-color: #c3c4c7;
+    box-shadow: 0 1px 0 #c3c4c7;
+}
+
+.button.email-compose.dashicons-button:hover {
+    background-color: #f0f0f1;
+    border-color: #8c8f94;
+}
+
+.button.email-compose.dashicons-button .dashicons {
+    font-size: 16px;
+    width: 16px;
+    height: 16px;
+    line-height: 1;
+    margin: 0;
+    color: #f6f7f7; /* Blue icon color */
+    vertical-align: text-bottom;
+    display: inline-block;
+    position: static;
+    transform: none;
+}
+
+/* Button spacing in action column */
+.column-actions .button {
+    margin-right: 3px;
+}
+.column-actions .button:last-child {
+    margin-right: 0;
+}
+
+/* Table column widths */
+.wp-list-table .column-registration_date {
+    width: 10%;
+}
+
+.wp-list-table .column-student_details {
+    width: 18%;
+}
+
+.wp-list-table .column-supervisor_name {
+    width: 12%;
+}
+
+.wp-list-table .column-supervisor_email {
+    width: 16%;
+}
+
+.wp-list-table .column-supervisor_phone {
+    width: 10%;
+}
+
+.wp-list-table .column-country {
+    width: 10%;
+}
+
+.wp-list-table .column-school {
+    width: 14%;
+}
+
+.wp-list-table .column-competitions {
+    width: 6%;
+}
+
+.wp-list-table .column-actions {
+    width: 14%;
+}
+
+/* Students tab (scoped) - balanced column widths (sum: 100%) */
+#students-list-view .wp-list-table .column-registration_date {
+    width: 10%;
+}
+
+#students-list-view .wp-list-table .column-student_details {
+    width: 14%; /* reduce */
+}
+
+#students-list-view .wp-list-table .column-supervisor_name {
+    width: 10%;
+}
+
+#students-list-view .wp-list-table .column-supervisor_email {
+    width: 14%;
+}
+
+#students-list-view .wp-list-table .column-supervisor_phone {
+    width: 8%;
+}
+
+#students-list-view .wp-list-table .column-country {
+    width: 8%;
+}
+
+#students-list-view .wp-list-table .column-school {
+    width: 18%; /* increase */
+}
+
+#students-list-view .wp-list-table .column-competitions {
+    width: 6%;
+}
+
+#students-list-view .wp-list-table .column-actions {
+    width: 12%;
+}
+
+/* Supervisors tab (scoped) — compact date/details, space for school/country */
+#supervisors-table-view .wp-list-table {
+    table-layout: fixed;
+    width: 100%;
+}
+
+#supervisors-table-view .wp-list-table .column-registration_date {
+    width: 9%;
+    white-space: nowrap;
+}
+
+#supervisors-table-view .wp-list-table .column-supervisor_details {
+    width: 18%;
+    word-break: break-word;
+}
+
+#supervisors-table-view .wp-list-table .column-supervisor_details .supervisor-email {
+    font-size: 12px;
+    line-height: 1.35;
+}
+
+#supervisors-table-view .wp-list-table .column-country {
+    width: 8%;
+}
+
+#supervisors-table-view .wp-list-table .column-school {
+    width: 24%;
+    word-break: break-word;
+}
+
+#supervisors-table-view .wp-list-table .column-total_students {
+    width: 7%;
+    text-align: center;
+}
+
+#supervisors-table-view .wp-list-table .column-video_submissions {
+    width: 7%;
+    text-align: center;
+}
+
+#supervisors-table-view .wp-list-table .column-pending_videos {
+    width: 7%;
+    text-align: center;
+}
+
+#supervisors-table-view .wp-list-table .column-actions {
+    width: 18%;
+}
+
+/* Supervisors: page title left, Export CSV right on same row */
+.wevoi-supervisors-wrap .wevoi-page-title-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 12px;
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+}
+
+.wevoi-supervisors-wrap .wevoi-page-title-row .wp-heading-inline {
+    margin: 0;
+    line-height: 1.4;
+}
+
+.wevoi-supervisors-wrap .wevoi-page-title-row .page-title-action {
+    flex-shrink: 0;
+}
+
+/* Registration table column widths */
+.wp-list-table .column-registration_date {
+    width: 10%; /* Reduce from default */
+}
+
+.wp-list-table .column-student_details {
+    width: 18%; /* Increase from default */
+}
+
+/* Students table column widths */
+.wp-list-table .column-supervisor_name {
+    width: 12%;
+}
+
+.wp-list-table .column-supervisor_email {
+    width: 16%;
+}
+
+.wp-list-table .column-supervisor_phone {
+    width: 10%;
+}
+
+.wp-list-table .column-country {
+    width: 10%;
+}
+
+.wp-list-table .column-school {
+    width: 14%;
+}
+
+.wp-list-table .column-competitions {
+    width: 6%; /* Reduce width */
+}
+
+.wp-list-table .column-actions {
+    width: 14%; /* Increase width */
+}
+
+#email-modal .submit-wrapper .button-secondary {
+    margin-right: 10px;
+}
+
+
+/* Email Modal Styles */
+#email-modal .form-field {
+    margin-bottom: 15px;
+}
+
+#email-modal label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: 600;
+}
+
+#email-modal .regular-text {
+    width: 100%;
+}
+
+#email-modal textarea.regular-text {
+    min-height: 200px;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+}
+
+#email-modal .submit-wrapper {
+    text-align: right;
+    margin-top: 20px;
+}
+
+#email-modal .spinner {
+    display: none;
+    visibility: visible;
+    vertical-align: middle;
+    margin-left: 5px;
+}
+
+#email-modal.sending .spinner {
+    display: inline-block;
+}
+
+#email-modal.sending .button-text {
+    opacity: 0.7;
+}
+
+#email-modal.sending button {
+    pointer-events: none;
+}
+
+/* Modal base styles */
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0,0,0,0.7);
+    z-index: 159900;
+}
+
+.modal-content {
+    position: relative;
+    background: #fff;
+    margin: 30px auto;
+    max-width: 800px;
+    max-height: calc(100vh - 60px);
+    overflow-y: auto;
+    border-radius: 4px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+}
+
+.modal-header {
+    padding: 15px 20px;
+    border-bottom: 1px solid #ddd;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #f8f9fa;
+}
+
+.modal-header h2 {
+    margin: 0;
+    padding: 0;
+    font-size: 1.3em;
+}
+
+.modal-body {
+    padding: 20px;
+}
+
+.modal-close {
+    cursor: pointer;
+    background: none;
+    border: none;
+    font-size: 24px;
+    color: #666;
+    padding: 0;
+    margin: 0;
+    line-height: 1;
+}
+
+/* Status Badge Stilleri */
+.status-badge {
+    display: inline-block;
+    padding: 4px 8px;
+    border-radius: 3px;
+    font-size: 12px;
+    font-weight: 500;
+    text-align: center;
+    min-width: 80px;
+}
+
+.status-not-yet {
+    background-color: #f0f0f1;
+    color: #50575e;
+}
+
+.status-confirmed {
+    background-color: #e1f3e1;
+    color: #0a6b0a;
+}
+
+.status-on-air {
+    background-color: #e6f3ff;
+    color: #0073aa;
+}
+
+.status-in-que {
+    background-color: #fef8e7;
+    color: #b76800;
+}
+
+.status-closed {
+    background-color: #f1f1f1;
+    color: #666666;
+}
+
+.status-cancelled {
+    background-color: #ffe5e5;
+    color: #d63638;
+}
+
+.status-postponed {
+    background-color: #fff8e5;
+    color: #996800;
+}
+
+.status-evaluating {
+    background-color: #e6f0ff;
+    color: #005177;
+}
+
+.status-rankings-finalized {
+    background-color: #fff4e6;
+    color: #b76800;
+}
+
+.status-completed {
+    background-color: #e1f3e1;
+    color: #0a6b0a;
+}
+
+/* Tablo stil düzenlemeleri */
+.wp-list-table .column-competition_code {
+    width: 10%;
+}
+
+.wp-list-table .column-competition_status {
+    width: 12%;
+}
+
+.wp-list-table .column-competition_date {
+    width: 12%;
+}
+
+.wp-list-table .column-competition_price {
+    width: 10%;
+}
+
+.wp-list-table .column-coupons {
+    width: 8%;
+    text-align: center;
+}
+
+.wp-list-table .column-actions {
+    width: 15%;
+}
+
+/* Competition finalization workflow help on Competitions list */
+.wevoi-competition-workflow {
+    margin: 16px 0 20px;
+    padding: 12px 16px;
+}
+
+.wevoi-competition-workflow h2 {
+    margin: 0 0 8px;
+    font-size: 14px;
+    line-height: 1.4;
+}
+
+.wevoi-competition-workflow ol {
+    margin: 8px 0 8px 1.4em;
+    list-style: decimal;
+}
+
+.wevoi-competition-workflow li {
+    margin-bottom: 6px;
+}
+
+.wevoi-competition-workflow-summary {
+    margin: 10px 0 0;
+    padding-top: 8px;
+    border-top: 1px solid #c3c4c7;
+}
